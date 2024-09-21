@@ -1,0 +1,121 @@
+aside {
+    border: solid 1px green;
+    width: 210px;
+}
+.side-bar {
+    background-color: var(--primary-light);
+    min-height: 100vh;
+    position: relative;
+    width: 100%;
+}
+.side-bar-logo {
+    align-items: center;
+    height: 60px;
+    white-space: nowrap;
+    width: 100%;
+}
+.side-bar-logo img {
+    height: 40px;
+    margin-left: 23px;
+    width: 40px;
+}
+.side-bar-company-name {
+    color: var(--secondary-light);
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 12px;
+}
+/*NAV ITEMS*/
+.side-bar-items {
+    margin-top: 20px;
+}
+.side-bar-item {
+    margin-top: 15px;
+    width: 100%;
+}
+.side-bar-item:nth-child(1) {
+    margin-top: 0px;
+}
+.side-bar-item a {
+    padding: 0px 23px 0px 23px;
+}
+.side-bar-item a:hover i{
+    margin-left: 8px;
+}
+.side-bar-active .side-bar-option {
+    background-color: var(--secondary-light);
+    color: var(--tertiary-text-light);
+}
+.side-bar-option {
+    border-radius: 5px;
+    color: var(--secondary-text-light);
+    font-size: 18px;
+    line-height: normal;
+    padding: 9px 8px;
+    width: 100%;
+}
+i {
+    font-size: 22px;
+    transition: all 0.3s ease;
+}
+.side-bar-item-name {
+    margin-left: 12px;
+}
+@media screen and (max-width : 900px){
+    aside {
+        width: 86px;
+    }
+    .side-bar-nav-item {
+        display: none;
+    }
+    .side-bar-item a:hover i{
+        margin-left: 3px;
+    }
+}
+@media screen and (max-width : 600px){
+    aside {
+        width: 0px;
+        position: fixed;
+        /* left: -100vw; */
+    }
+    /* :host {
+        display: none;
+    } */
+    .side-bar-component {
+        display: none;
+        left: -100vw;
+        transition: display 0.3s ease allow-discrete;
+    }
+    .side-bar-component-open {
+        display: block;
+
+
+        position: fixed;
+        touch-action: none;
+        width: 100vw;
+        left: 0;
+        z-index: 3;
+        transition: left 0.3s ease;
+        @starting-style {
+            left: -100vw;
+        }
+    }
+    .side-bar-menu-open {
+        /* touch-action: none; */
+        min-height: 100vh;
+        /* position: fixed;
+        width: 100vw; */
+        width: 100%;
+        /* z-index: 3; */
+    }
+    .side-bar {
+        border: solid 1px blue;
+        left: -100vw;
+        /* position: fixed; */
+        width: 100%;
+        transition: left 0.3s ease;
+    }
+    .side-bar-menu-open .side-bar {
+        left: 0;
+    }
+}

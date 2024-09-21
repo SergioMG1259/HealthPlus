@@ -1,0 +1,35 @@
+<aside [ngClass]="{'side-bar-menu-open':isMenuResponsiveOpen}">
+    <nav class="side-bar">
+        <div class="flex side-bar-logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/3799/3799797.png" alt="HealthPlus logo">
+            <p class="side-bar-company-name side-bar-nav-item">Health Plus</p>
+        </div>
+        <ul class="side-bar-items">
+            <li class="side-bar-item">
+                <a href="" class="side-bar-active flex">
+                    <div class="side-bar-option flex">
+                        <i class='bx bxs-dashboard'></i>
+                        <p class="side-bar-item-name side-bar-nav-item">Overview</p>
+                    </div>
+                </a>  
+            </li>
+            <li class="side-bar-item">
+                <a href="" class="flex">
+                    <div class="side-bar-option flex">
+                        <i class='bx bx-handicap'></i>
+                        <p class="side-bar-item-name side-bar-nav-item">Patients</p>
+                    </div>
+                </a>  
+            </li>
+            <li class="side-bar-item">
+                <a href="" class="flex">
+                    <div class="side-bar-option flex">
+                        <i class='bx bx-heart'></i>
+                        <p class="side-bar-item-name side-bar-nav-item">Predict</p>
+                    </div>
+                </a>  
+            </li>
+            <button (click)="onClickCloseMenu()">cerrar</button>
+        </ul>
+    </nav>
+</aside>

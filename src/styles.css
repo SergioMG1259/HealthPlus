@@ -9,3 +9,14 @@
     padding: 0;
     text-decoration: none;
 }
+:root {
+    --background-light: rgb(237, 244, 249);
+    --primary-light: rgb(246, 246, 246);
+    --secondary-light: rgb(38, 116, 243);
+
+    --secondary-text-light: #616161;
+    --tertiary-text-light: rgb(235, 235, 235);
+}
+.flex {
+    display: flex;
+}
