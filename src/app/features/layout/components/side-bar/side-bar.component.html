@@ -1,5 +1,4 @@
-<aside [ngClass]="{'side-bar-menu-open':isMenuResponsiveOpen}">
-    <nav class="side-bar">
+<nav class="side-bar" [ngClass]="{'side-bar-menu-open':isMenuResponsiveOpen}">
         <div class="flex side-bar-logo">
             <img src="https://cdn-icons-png.flaticon.com/512/3799/3799797.png" alt="HealthPlus logo">
             <p class="side-bar-company-name side-bar-nav-item">Health Plus</p>
@@ -31,5 +30,4 @@
             </li>
             <button (click)="onClickCloseMenu()">cerrar</button>
         </ul>
-    </nav>
-</aside>
+</nav>

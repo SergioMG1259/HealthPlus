@@ -1,12 +1,9 @@
-aside {
-    border: solid 1px green;
-    width: 210px;
-}
 .side-bar {
     background-color: var(--primary-light);
     min-height: 100vh;
     position: relative;
-    width: 100%;
+    transition: width 0.3s ease;
+    width: 210px;
 }
 .side-bar-logo {
     align-items: center;
@@ -62,7 +59,7 @@ i {
     margin-left: 12px;
 }
 @media screen and (max-width : 900px){
-    aside {
+    .side-bar {
         width: 86px;
     }
     .side-bar-nav-item {
@@ -73,49 +70,33 @@ i {
     }
 }
 @media screen and (max-width : 600px){
-    aside {
-        width: 0px;
-        position: fixed;
-        /* left: -100vw; */
+    .side-bar-nav-item {
+        display: block;
     }
-    /* :host {
-        display: none;
-    } */
     .side-bar-component {
         display: none;
         left: -100vw;
-        transition: display 0.3s ease allow-discrete;
+        position: fixed;
+        transition: display 0.3s ease allow-discrete,left 0.5s ease;
     }
     .side-bar-component-open {
         display: block;
-
-
+        left: 0;
         position: fixed;
         touch-action: none;
-        width: 100vw;
-        left: 0;
-        z-index: 3;
         transition: left 0.3s ease;
+        width: 100vw;
+        z-index: 3;
         @starting-style {
             left: -100vw;
         }
     }
     .side-bar-menu-open {
-        /* touch-action: none; */
         min-height: 100vh;
-        /* position: fixed;
-        width: 100vw; */
         width: 100%;
-        /* z-index: 3; */
     }
     .side-bar {
         border: solid 1px blue;
-        left: -100vw;
-        /* position: fixed; */
         width: 100%;
-        transition: left 0.3s ease;
-    }
-    .side-bar-menu-open .side-bar {
-        left: 0;
     }
 }
