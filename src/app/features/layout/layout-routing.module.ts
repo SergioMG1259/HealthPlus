@@ -6,6 +6,12 @@ const routes: Routes = [
   {
     path:'',
     component:LayoutComponent,
+    children: [
+      {
+        path:'overview',
+        loadChildren: () => import('../overview/overview.module').then(m => m.OverviewModule)
+      },
+    ]
   }
 ];
 

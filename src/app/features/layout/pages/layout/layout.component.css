@@ -3,14 +3,19 @@
     column-gap: 20px;
 }
 .container {
-    border: solid 1px red;
     flex-direction: column;
     min-height: 100vh;
     row-gap: 20px;
     width: 100%;
 }
+.router {
+    max-width: 1300px;
+}
 @media screen and (max-width : 600px) {
     .background {
         column-gap: 0px;
+    }
+    .router {
+        padding: 0px 10px;
     }
 }
