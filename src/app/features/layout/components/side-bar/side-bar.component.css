@@ -8,6 +8,7 @@
 .side-bar-logo {
     align-items: center;
     height: 60px;
+    position: relative;
     white-space: nowrap;
     width: 100%;
 }
@@ -21,6 +22,22 @@
     font-size: 20px;
     font-weight: 600;
     margin-left: 12px;
+}
+.side-bar-btn-close {
+    background-color: var(--secondary-light);
+    border: none;
+    border-radius: 50%;
+    color: var(--tertiary-text-light);
+    display: none;
+    height: 40px;
+    line-height: normal;
+    position: absolute;
+    right: 23px;
+    top: 12px;
+    width: 40px;
+}
+.side-bar-btn-close i{
+    font-size: 20px;
 }
 /*NAV ITEMS*/
 .side-bar-items {
@@ -48,10 +65,10 @@
     color: var(--secondary-text-light);
     font-size: 18px;
     line-height: normal;
-    padding: 9px 8px;
+    padding: 9px 8.5px;
     width: 100%;
 }
-i {
+.side-bar-option i {
     font-size: 22px;
     transition: all 0.3s ease;
 }
@@ -70,6 +87,12 @@ i {
     }
 }
 @media screen and (max-width : 600px){
+    .side-bar-btn-close {
+        display: block;
+    }
+    .side-bar-item a:hover i{
+        margin-left: 8px;
+    }
     .side-bar-nav-item {
         display: block;
     }
@@ -96,7 +119,6 @@ i {
         width: 100%;
     }
     .side-bar {
-        border: solid 1px blue;
         width: 100%;
     }
 }
