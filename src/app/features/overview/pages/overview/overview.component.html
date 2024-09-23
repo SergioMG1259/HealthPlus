@@ -1,1 +1,40 @@
-<p>overview works!</p>
+<p class="welcome-message">Welcome, Dr. Sergio</p>
+<p class="diary-message">Have a nice day at great work</p>
+
+<section class="metrics">
+    <ng-container *ngFor="let metric of cardMetrics">
+        <app-card-metric [metric]="metric" ></app-card-metric>
+    </ng-container>
+</section>
+
+<section class="grid graphics">
+    <app-card>
+        <app-card-header>
+            <h2 class="card-component-title">Earning ratio</h2>
+       </app-card-header>
+    </app-card>
+
+    <app-card>
+        <app-card-header>
+            <h2 class="card-component-title">Patients ratio</h2>
+       </app-card-header>
+    </app-card>
+</section>
+<section class="flex bottom">
+    <app-card class="graphic-circle">
+        <app-card-header>
+            <h2 class="card-component-title">Gender</h2>
+            <p class="card-component-subtitle">Patient gender percentage</p>
+       </app-card-header>
+    </app-card>
+    <app-card class="appointment">
+        <app-card-header>
+            <h2 class="card-component-title">Today appointment</h2>
+       </app-card-header>
+    </app-card>
+    <app-card class="table">
+        <app-card-header>
+            <h2 class="card-component-title">Recent patients</h2>
+       </app-card-header>
+    </app-card>
+</section>

@@ -1,0 +1,18 @@
+.header-card-component {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    width: 100%;
+}
+.card-component-title {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.card-component-subtitle {
+    color: var(--secondary-text-light);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}

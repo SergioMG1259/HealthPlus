@@ -10,7 +10,7 @@
     text-decoration: none;
 }
 :root {
-    --background-light: rgb(237, 244, 249);
+    --background-light: rgb(225, 237, 246);
     --primary-light: rgb(246, 246, 246);
     --secondary-light: rgb(38, 116, 243);
 
@@ -22,6 +22,9 @@
 }
 .flex {
     display: flex;
+}
+.grid {
+    display: grid;
 }
 button {
     align-items: center;

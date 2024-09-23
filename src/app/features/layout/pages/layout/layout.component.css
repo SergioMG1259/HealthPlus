@@ -9,7 +9,16 @@
     width: 100%;
 }
 .router {
+    height: 100%;
     max-width: 1300px;
+    margin: auto;
+    padding-right: 20px;
+    width: 100%;
+}
+@media screen and (min-width : 1700px) {
+    .router {
+        padding-right: 0px;
+    }
 }
 @media screen and (max-width : 600px) {
     .background {

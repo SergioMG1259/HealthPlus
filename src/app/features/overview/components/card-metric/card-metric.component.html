@@ -1,0 +1,14 @@
+<div class="card" [ngClass]="metric.category">
+    <div class="trending">
+        <div class="flex">
+            <i class='bx bx-trending-{{metric.direction}}'></i>
+            <span class="percentage">{{metric.direction == 'up'?'+':'-'}}{{metric.percentage}}%</span>
+        </div>
+        <span>Vs last week</span>
+    </div>
+    <div class="flex icon-container">
+        <i class='bx' [ngClass]="iconsDictionary[metric.category]"></i>
+    </div>
+    <h2 class="category">Total {{metric.category}}</h2>
+    <p class="amount"> {{metric.category == 'earning'? 'S/' : ''}} {{metric.amount}}</p>
+</div>
