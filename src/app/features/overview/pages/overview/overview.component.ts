@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CardMetric } from '../../models/card-metric';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-overview',

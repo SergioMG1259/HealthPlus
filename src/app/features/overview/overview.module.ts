@@ -5,12 +5,14 @@ import { OverviewRoutingModule } from './overview-routing.module';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { CardMetricComponent } from './components/card-metric/card-metric.component';
 import { SharedModule } from "../../shared/shared.module";
+import { AppointmentsTodayComponent } from './components/appointments-today/appointments-today.component';
 
 
 @NgModule({
   declarations: [
     OverviewComponent,
-    CardMetricComponent
+    CardMetricComponent,
+    AppointmentsTodayComponent
   ],
   imports: [
     CommonModule,

@@ -26,14 +26,10 @@
     margin-top: 20px;
     width: 100%;
 }
-.div1,.div2,.div3,.div4,.div5 {
-    border: solid 2px black;
-    height: 30px;
-}
-.graphic-circle, .appointment {
+.card-graphic-circle, .card-appointment {
     flex: 1 1 240px;
 }
-.table {
+.card-table {
     flex: 1 1 400px;
 }
 @media screen and (max-width : 600px) {

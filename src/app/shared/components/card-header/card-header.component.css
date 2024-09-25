@@ -8,11 +8,10 @@
     display: block;
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 6px;
 }
 .card-component-subtitle {
     color: var(--secondary-text-light);
     font-size: 14px;
     font-weight: 500;
-    margin-bottom: 8px;
+    margin: 6px 0px;
 }
