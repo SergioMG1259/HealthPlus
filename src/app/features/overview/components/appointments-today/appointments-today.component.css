@@ -64,6 +64,9 @@
     line-height: 2;
 }
 @media screen and (max-width : 600px) {
+    .current-week {
+        font-size: 14px;
+    }
     /*DAYS*/
     .days-number {
         gap: 8px;

@@ -1,7 +1,7 @@
 .header-card-component {
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     width: 100%;
 }
 .card-component-title {
@@ -14,4 +14,13 @@
     font-size: 14px;
     font-weight: 500;
     margin: 6px 0px;
+}
+a {
+    color: var(--secondary-light);
+    font-size: 14px;
+}
+@media screen and (max-width : 600px) {
+    .card-component-title {
+        font-size: 14px;
+    }
 }
