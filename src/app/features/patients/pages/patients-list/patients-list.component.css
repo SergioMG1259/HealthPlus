@@ -1,0 +1,61 @@
+.top {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+.left {
+    column-gap: 10px;
+}
+/*SEARCH INPUT*/
+.search-input {
+    border-radius: 5px 0px 0px 5px;
+    width: 100%;
+}
+.search-button {
+    border-radius: 0px 5px 5px 0px;
+}
+/*TABLE*/
+.table-wrapper {
+    margin-top: 10px;
+    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: auto;
+    /* height: calc(100vh - 126px); */
+    height: 599;
+    width: 100%;
+}
+.age {
+    min-width: 60px;
+}
+.action {
+    min-width: 30px;
+}
+.paginator {
+    border: solid 1px rebeccapurple;
+    margin-top: 20px;
+    height: 40px;
+    width: 100%;
+}
+/* button:last-child {
+    margin-left: 10px;
+} */
+@media screen and (max-width : 600px) {
+    /* button {
+        flex: 1;
+        min-width: 130px;
+        width: 50%;
+    } */
+    .top {
+        row-gap: 10px;
+    }
+    .left {
+        column-gap: 5px;
+    }
+    .right {
+        width: 100%;
+    }
+    .add-button {
+        width: 100%;
+    }
+}

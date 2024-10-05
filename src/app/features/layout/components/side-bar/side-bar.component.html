@@ -1,4 +1,4 @@
-<nav class="side-bar" [ngClass]="{'side-bar-menu-open':isMenuResponsiveOpen}">
+<nav class="side-bar" [ngClass]="{'side-bar-menu-open':isMenuResponsiveOpen}" [cdkTrapFocus] = "isMenuResponsiveOpen" [cdkTrapFocusAutoCapture] = "isMenuResponsiveOpen">
         <div class="flex side-bar-logo">
             <img src="https://cdn-icons-png.flaticon.com/512/3799/3799797.png" alt="HealthPlus logo">
             <p class="side-bar-company-name side-bar-nav-item">Health Plus</p>
@@ -11,10 +11,10 @@
                         <i class='bx bxs-dashboard'></i>
                         <p class="side-bar-item-name side-bar-nav-item">Overview</p>
                     </div>
-                </a>  
+                </a>
             </li>
             <li class="side-bar-item">
-                <a href="" class="flex">
+                <a href="" class="flex" [routerLink]="['/patients']" routerLinkActive="side-bar-active">
                     <div class="side-bar-option flex">
                         <i class='bx bx-handicap'></i>
                         <p class="side-bar-item-name side-bar-nav-item">Patients</p>

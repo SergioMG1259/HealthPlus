@@ -1,0 +1,45 @@
+<div class="flex top">
+    <div class="flex left">
+        <button class="secondary-button button-icon"><i class='bx bx-filter-alt' ></i>Filter</button>
+        <form class="flex search-form">
+            <input class="primary-input search-input" placeholder="Buscar" type="search" aria-label="Search">
+            <button class="primary-button search-button"><i class='bx bx-search-alt-2'></i></button>
+        </form>
+    </div>
+
+    <div class="right">
+        <button class="primary-button button-icon add-button"><i class='bx bx-plus'></i>Add patient</button>
+    </div>
+</div>
+
+<app-card class="table-wrapper">
+    <app-card-header>
+        <h2 class="card-component-title">List patients</h2>
+    </app-card-header>
+    <table class="table">
+        <thead>
+            <tr class="table-header">
+                <th>Patient Name</th>
+                <th>Gender</th>
+                <th>Height</th>
+                <th>Weight</th>
+                <th class="age">Age</th>
+                <th class="action"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];index as i" [ngClass]="i%2 == 0?'row-table-color-1':'row-table-color-2'">
+                <td>Alfreds Futterkiste</td>
+                <td>Male</td>
+                <td>172</td>
+                <td>68</td>
+                <td class="age">18</td>
+                <td class="action">:::</td>
+            </tr>
+        </tbody>
+    </table>
+</app-card>
+
+<div class="paginator">
+
+</div>

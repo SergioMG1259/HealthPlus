@@ -5,6 +5,7 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
+import { A11yModule } from '@angular/cdk/a11y';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
   ],
   imports: [
     CommonModule,
-    LayoutRoutingModule
+    LayoutRoutingModule,
+    A11yModule
   ]
 })
 export class LayoutModule { }
