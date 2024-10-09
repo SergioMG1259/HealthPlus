@@ -1,0 +1,27 @@
+.dropdown-option-component {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+}
+.dropdown-option-text {
+    border: solid 1px transparent;
+    color: var(--primary-text-light);
+    display: inline-block;
+    flex-grow: 1;
+    font-size: 14px;
+    overflow: hidden;
+    padding: 5px;
+    text-overflow: ellipsis;
+}
+.dropdown-option-selected {
+    background-color: var(--secondary-light);
+}
+.dropdown-option-selected .dropdown-option-text {
+    color: var(--primary-light);
+}
+.dropdown-option-component:not(.dropdown-option-selected):hover,
+.dropdown-option-component:not(.dropdown-option-selected).dropdown-option-focused {
+    background-color: var(--option-light-hover);
+}

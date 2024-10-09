@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import '@angular/cdk/overlay-prebuilt.css';
 * {
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
@@ -13,6 +14,7 @@
     --background-light: rgb(225, 237, 246);
     --primary-light: rgb(246, 246, 246);
     --secondary-light: rgb(38, 116, 243);
+    --grey: #6a6a6a;
 
     --primary-text-light: #2f2f2f;
     --secondary-text-light: #616161;
@@ -25,6 +27,8 @@
 
     --secondary-button-light-hover: #ececec;
     --secondary-button-light-active: rgb(226, 226, 226);
+
+    --option-light-hover:rgb(216, 216, 216);
 }
 .flex {
     display: flex;
@@ -32,6 +36,12 @@
 .grid {
     display: grid;
 }
+.shadow {
+    box-shadow: 0px 5px 7px 2px rgba(0,0,0,0.1);
+}
+
+
+
 button {
     align-items: center;
     cursor: pointer;
@@ -65,7 +75,7 @@ button:focus-visible {
 
 .secondary-button {
     background-color: var(--primary-light);
-    border: solid 1px var(--secondary-text-light);
+    border: solid 1px var(--grey);
     border-radius: 5px;
     color: var(--secondary-text-light);
     font-size: 14px;
@@ -133,7 +143,7 @@ td:last-child {
 
 .primary-input {
     background-color: var(--primary-light);
-    border: solid 1px var(--secondary-text-light);
+    border: solid 1px var(--grey);
     border-radius: 5px;
     color: var(--primary-text-light);
     font-size: 14px;

@@ -16,13 +16,19 @@
     border-radius: 0px 5px 5px 0px;
 }
 /*TABLE*/
-.table-wrapper {
+.card-table {
     margin-top: 10px;
+    width: 100%;
+}
+.select {
+    width: 90px;
+}
+.table-wrapper {
+    min-height: 599px;
     overflow: hidden;
     overflow-x: auto;
     overflow-y: auto;
     /* height: calc(100vh - 126px); */
-    height: 599;
     width: 100%;
 }
 .age {
