@@ -49,6 +49,10 @@ button {
     justify-content: center;
     outline: none;
 }
+button:disabled {
+    background-color: #9a9a9a;
+    color: #6a6a6a;
+}
 button:focus-visible {
     outline: solid 2px var(--outline-light);
 }
@@ -66,10 +70,10 @@ button:focus-visible {
     padding: 8px 15px;
     transition: background-color 0.3s ease;
 }
-.primary-button:hover {
+.primary-button:hover:enabled {
     background-color: var(--primary-button-light-hover);
 }
-.primary-button:active {
+.primary-button:active:enabled {
     background-color: var(--primary-button-light-active);
 }
 
@@ -82,10 +86,10 @@ button:focus-visible {
     padding: 8px 15px;
     transition: background-color 0.3s ease;
 }
-.secondary-button:hover {
+.secondary-button:hover:enabled {
     background-color: var(--secondary-button-light-hover);
 }
-.secondary-button:active {
+.secondary-button:active:enabled {
     background-color: var(--secondary-button-light-active);
 }
 

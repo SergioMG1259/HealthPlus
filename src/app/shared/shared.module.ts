@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 
 
@@ -15,7 +16,8 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     CardComponent,
     CardHeaderComponent,
     DropdownOptionComponent,
-    DropdownComponent
+    DropdownComponent,
+    PaginatorComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     CardComponent,
     CardHeaderComponent,
     DropdownComponent,
-    DropdownOptionComponent
+    DropdownOptionComponent,
+    PaginatorComponent
   ]
 })
 export class SharedModule { }

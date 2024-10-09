@@ -40,7 +40,6 @@
 .paginator {
     border: solid 1px rebeccapurple;
     margin-top: 20px;
-    height: 40px;
     width: 100%;
 }
 /* button:last-child {

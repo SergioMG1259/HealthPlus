@@ -1,0 +1,14 @@
+<ul class="flex">
+        <li ><button  class="secondary-button" [disabled]="this.pageCurrent==1"
+            (click)="this.changePage(this.pageCurrent-1)"><i class='bx bx-left-arrow-alt'></i></button></li>
+
+        <li  *ngFor="let item of pages" >
+            <button #pageButton class="flex" [ngClass]="item.value=='...'?'dots':item.value==this.pageCurrent.toString()?'primary-button':'secondary-button'"
+            [disabled]="item.value=='...'" (click)="this.changePage(item.value, true)" [tabIndex]="item.value=='...'?-1:0">
+                <span>{{item.value}}</span>
+            </button>
+        </li>
+        
+        <li ><button class="secondary-button" [disabled]="this.pageCurrent==totalPages"
+            (click)="this.changePage(this.pageCurrent+1)"><i class='bx bx-right-arrow-alt'></i></button></li>
+</ul>
