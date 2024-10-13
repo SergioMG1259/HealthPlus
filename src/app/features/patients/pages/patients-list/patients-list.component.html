@@ -1,6 +1,8 @@
 <div class="flex top">
     <div class="flex left">
-        <button class="secondary-button button-icon"><i class='bx bx-filter-alt' ></i>Filter</button>
+        <button class="secondary-button button-icon" #overlayButton (click)="openFilter()">
+            <i class='bx bx-filter-alt'></i>Filter
+        </button>
         <form class="flex search-form">
             <input class="primary-input search-input" placeholder="Buscar" type="search" aria-label="Search">
             <button class="primary-button search-button"><i class='bx bx-search-alt-2'></i></button>
@@ -40,7 +42,13 @@
                     <td>172</td>
                     <td>68</td>
                     <td class="age">18</td>
-                    <td class="action">:::</td>
+                    <td class="action">
+                        <app-dropdown placeholder="placeholder" type="dot">
+                            <app-dropdown-option type="dot">Details</app-dropdown-option>
+                            <app-dropdown-option type="dot">Edit</app-dropdown-option>
+                            <app-dropdown-option type="dot">Delete</app-dropdown-option>
+                        </app-dropdown>
+                    </td>
                 </tr>
             </tbody>
         </table>

@@ -128,7 +128,7 @@ export class PaginatorComponent implements OnInit{
       setTimeout(() => {
         const currentPageButton = this.pageButtons.find(button =>
           button.nativeElement.classList.contains('primary-button')
-        );
+        )
         if (currentPageButton) {
           currentPageButton.nativeElement.focus();
         }

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    LayoutModule
+    LayoutModule,
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent]

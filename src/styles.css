@@ -52,6 +52,7 @@ button {
 button:disabled {
     background-color: #9a9a9a;
     color: #6a6a6a;
+    pointer-events: none;
 }
 button:focus-visible {
     outline: solid 2px var(--outline-light);
@@ -159,4 +160,16 @@ td:last-child {
 .primary-input:focus-visible {
     border: solid 1px var(--primary-light);
     outline: solid 2px var(--outline-light);
+}
+.input-number {
+    -moz-appearance: textfield;
+    text-align: center;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.dialog-bg {
+    background-color: #282828b0;
 }

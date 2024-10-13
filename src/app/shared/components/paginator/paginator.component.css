@@ -18,3 +18,8 @@ ul{
 .secondary-button i {
     font-size: 18px;
 }
+@media screen and (max-width : 600px) {
+    ul{
+        column-gap: 2px;
+    }
+}
