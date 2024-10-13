@@ -1,4 +1,4 @@
-import { Overlay, OverlayRef, PositionStrategy } from '@angular/cdk/overlay';
+import { Overlay, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ElementRef, Injectable } from '@angular/core';
 import { FilterPatientComponent } from '../components/filter-patient/filter-patient.component';
@@ -9,6 +9,7 @@ import { FilterPatientComponent } from '../components/filter-patient/filter-pati
 export class FilterPatientService {
   
   positionStrategy:PositionStrategy|null = null
+  scrollStrategy:ScrollStrategy|null = null
   overlayRef!: OverlayRef;
   origin!:ElementRef
   classBack:string = 'cdk-overlay-transparent-backdrop'
@@ -28,12 +29,11 @@ export class FilterPatientService {
     this.isOpen = true
     this.origin = origin;
     this.updatePositionStrategy();
-    this.origin = origin
     this.overlayRef = this.overlay.create({
       hasBackdrop: true,
       backdropClass: this.classBack,
       positionStrategy: this.positionStrategy!,
-      scrollStrategy: this.overlay.scrollStrategies.reposition()
+      scrollStrategy: this.scrollStrategy!
     })
     const filePreviewPortal = new ComponentPortal(FilterPatientComponent)
 
@@ -48,6 +48,9 @@ export class FilterPatientService {
     if (window.innerWidth <= 600) {
       this.classBack = 'dialog-bg'
       this.positionStrategy = this.overlay.position().global().right().top();
+
+      this.scrollStrategy = this.overlay.scrollStrategies.block()
+
     } else {
       this.classBack = 'cdk-overlay-transparent-backdrop'
       this.positionStrategy = this.overlay.position().flexibleConnectedTo(this.origin).withPositions([
@@ -64,6 +67,8 @@ export class FilterPatientService {
           overlayY: 'bottom'
         }
       ]);
+      
+      this.scrollStrategy = this.overlay.scrollStrategies.reposition()
     }
   }
 
@@ -79,7 +84,8 @@ export class FilterPatientService {
   updateOverlayPosition() {
     if (this.overlayRef) {
       this.updatePositionStrategy();
-      this.overlayRef.updatePositionStrategy(this.positionStrategy!);
+      this.overlayRef.updatePositionStrategy(this.positionStrategy!)
+      this.overlayRef.updateScrollStrategy(this.scrollStrategy!)
     }
   }
 

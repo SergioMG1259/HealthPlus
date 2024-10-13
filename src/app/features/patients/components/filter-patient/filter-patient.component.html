@@ -1,11 +1,54 @@
-<section cdkTrapFocus cdkTrapFocusAutoCapture="false" class="wrapper flex">
-    <p class="title">Price Range</p>
-    <div class="filter-section flex">
-        <span class="text-input">min</span>
-        <input type="number" class="primary-input input-number left">
-        <div class="separator">
+<section cdkTrapFocus cdkTrapFocusAutoCapture="true" class="wrapper flex">
+
+
+    <div>
+        <p class="title">Gender</p>
+        <div class="flex checkboxs">
+            <app-checkbox>Male</app-checkbox>
+            <app-checkbox>Female</app-checkbox>
         </div>
-        <input type="number" class="primary-input input-number right">
-        <span class="text-input">max</span>
     </div>
+
+    <div>
+        <p class="title">Weight Range</p>
+        <div class="filter-section flex">
+            <span class="text-input">min</span>
+            <input type="number" class="primary-input input-number left">
+            <div class="separator">
+            </div>
+            <input type="number" class="primary-input input-number right">
+            <span class="text-input">max</span>
+        </div>
+    </div>
+
+    <div>
+        <p class="title">Age Range</p>
+        <div class="filter-section flex">
+            <span class="text-input">min</span>
+            <input type="number" class="primary-input input-number left">
+            <div class="separator">
+            </div>
+            <input type="number" class="primary-input input-number right">
+            <span class="text-input">max</span>
+        </div>
+    </div>
+
+    <div>
+        <p class="title">Height Range</p>
+        <div class="filter-section flex">
+            <span class="text-input">min</span>
+            <input type="number" class="primary-input input-number left">
+            <div class="separator">
+            </div>
+            <input type="number" class="primary-input input-number right">
+            <span class="text-input">max</span>
+        </div>
+    </div>
+
+    <div class="buttons flex">
+        <button class="tertiary-button">Reset</button>
+        <button class="primary-button" (click)="this.close()">Apply</button>
+    </div>
+
+
 </section>

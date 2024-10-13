@@ -8,6 +8,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
 
 
 
@@ -17,7 +18,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     CardHeaderComponent,
     DropdownOptionComponent,
     DropdownComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    CheckboxComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     CardHeaderComponent,
     DropdownComponent,
     DropdownOptionComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    CheckboxComponent
   ]
 })
 export class SharedModule { }

@@ -15,6 +15,11 @@
     color: var(--primary-text-light);
     font-size: 16px;
     font-weight: 600;
+    margin-bottom: 5px;
+}
+.text-input {
+    color: var(--secondary-text-light);
+    font-size: 14px;
 }
 input {
     width: 70px;
@@ -22,17 +27,24 @@ input {
 .filter-section {
     align-items: center;
 }
-.separator {
-    background-color: var(--grey);
-    height: 2px;
-    margin: 0 8px;
-    width: 10px;
-}
 .left {
     margin-left: 5px;
 }
 .right {
     margin-right: 5px;
+}
+.separator {
+    border: solid 1px var(--grey);
+    margin: 0 8px;
+    width: 10px;
+}
+.checkboxs {
+    align-items: start;
+    flex-direction: column;
+    row-gap: 5px;
+}
+.buttons {
+    justify-content: space-between;
 }
 
 @media screen and (max-width : 600px){

@@ -8,7 +8,11 @@ import { FilterPatientService } from '../../services/filter-patient.service';
 })
 export class FilterPatientComponent implements OnInit {
 
-  constructor() { }
+  constructor(private filterService:FilterPatientService) { }
+
+  close() {
+    this.filterService.closeFilter()
+  }
 
   ngOnInit(): void {
   }
