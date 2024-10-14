@@ -1,11 +1,22 @@
 <section cdkTrapFocus cdkTrapFocusAutoCapture="true" class="wrapper flex">
-
+    <div>
+        <span tabindex="-6" cdkFocusInitial></span>
+        <p class="title">Gender</p>
+        <div class="flex checkboxs" [formGroup]="gender">
+            <app-checkbox formControlName="female">Female</app-checkbox>
+            <app-checkbox formControlName="male">Male</app-checkbox>
+        </div>
+    </div>
 
     <div>
-        <p class="title">Gender</p>
-        <div class="flex checkboxs">
-            <app-checkbox>Male</app-checkbox>
-            <app-checkbox>Female</app-checkbox>
+        <p class="title">Height Range</p>
+        <div class="filter-section flex">
+            <span class="text-input">min</span>
+            <input type="number" class="primary-input input-number left" placeholder="0" [(ngModel)]="this.minHeight">
+            <div class="separator">
+            </div>
+            <input type="number" class="primary-input input-number right" placeholder="999" [(ngModel)]="this.maxHeight">
+            <span class="text-input">max</span>
         </div>
     </div>
 
@@ -13,10 +24,10 @@
         <p class="title">Weight Range</p>
         <div class="filter-section flex">
             <span class="text-input">min</span>
-            <input type="number" class="primary-input input-number left">
+            <input type="number" class="primary-input input-number left" placeholder="0" [(ngModel)]="this.minWeight">
             <div class="separator">
             </div>
-            <input type="number" class="primary-input input-number right">
+            <input type="number" class="primary-input input-number right" placeholder="999" [(ngModel)]="this.maxWeight">
             <span class="text-input">max</span>
         </div>
     </div>
@@ -25,29 +36,17 @@
         <p class="title">Age Range</p>
         <div class="filter-section flex">
             <span class="text-input">min</span>
-            <input type="number" class="primary-input input-number left">
+            <input type="number" class="primary-input input-number left" placeholder="0" [(ngModel)]="this.minAge">
             <div class="separator">
             </div>
-            <input type="number" class="primary-input input-number right">
-            <span class="text-input">max</span>
-        </div>
-    </div>
-
-    <div>
-        <p class="title">Height Range</p>
-        <div class="filter-section flex">
-            <span class="text-input">min</span>
-            <input type="number" class="primary-input input-number left">
-            <div class="separator">
-            </div>
-            <input type="number" class="primary-input input-number right">
+            <input type="number" class="primary-input input-number right" placeholder="999" [(ngModel)]="this.maxAge">
             <span class="text-input">max</span>
         </div>
     </div>
 
     <div class="buttons flex">
-        <button class="tertiary-button">Reset</button>
-        <button class="primary-button" (click)="this.close()">Apply</button>
+        <button class="tertiary-button" (click)="this.onClickResetFilters()">Reset</button>
+        <button class="primary-button" (click)="this.onClickCloseFilter()">Apply</button>
     </div>
 
 

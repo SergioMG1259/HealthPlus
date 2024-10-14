@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
     AppRoutingModule,
     HttpClientModule,
     LayoutModule,
-    OverlayModule
+    OverlayModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

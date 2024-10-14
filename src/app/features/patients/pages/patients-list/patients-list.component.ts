@@ -14,13 +14,13 @@ export class PatientsListComponent implements OnInit, AfterViewInit {
   @ViewChild('overlayButton', {read: ElementRef}) private _button!: ElementRef;
   filterResizeSub!:Subscription
   
-  constructor(private filterService:FilterPatientService, public breakpointObserver: BreakpointObserver) { }
+  constructor(private _filterService:FilterPatientService, public breakpointObserver: BreakpointObserver) { }
   
   openFilter() {
-    if (this.filterService.panelOpen == false) {
-      this.filterService.openFilter(this._button)
+    if (this._filterService.panelOpen == false) {
+      this._filterService.openFilter(this._button)
     }else {
-      this.filterService.closeFilter()
+      this._filterService.closeFilter()
     }
   }
   
@@ -29,7 +29,7 @@ export class PatientsListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.filterResizeSub = this.breakpointObserver.observe(['(max-width: 600px)']).subscribe((state: BreakpointState) => {
-      this.filterService.handleScreenResize();
+      this._filterService.handleScreenResize();
     });
   }
 }

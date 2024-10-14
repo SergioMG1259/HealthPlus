@@ -7,7 +7,7 @@ import { PatientsListComponent } from './pages/patients-list/patients-list.compo
 import { SharedModule } from "../../shared/shared.module";
 import { FilterPatientComponent } from './components/filter-patient/filter-patient.component';
 import { A11yModule } from '@angular/cdk/a11y';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     SharedModule,
     FormsModule,
-    A11yModule
+    A11yModule,
+    ReactiveFormsModule
 ]
 })
 export class PatientsModule { }

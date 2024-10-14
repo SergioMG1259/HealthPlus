@@ -18,7 +18,11 @@
     background-color: transparent;
     border: solid 1px var(--grey);
 }
-.checkbox:not(.colorful):checked {
+/* .checkbox:not(.colorful):checked {
+    background-color: var(--secondary-light);
+    border: solid 1px var(--secondary-light);
+} */
+.checkbox:not(.colorful).checked {
     background-color: var(--secondary-light);
     border: solid 1px var(--secondary-light);
 }
@@ -45,7 +49,7 @@
 .white-check {
     color: var(--tertiary-text-light);
 }
-.checked {
+.icon-checked {
     opacity: 1;
 }
 .text-checkbox {
