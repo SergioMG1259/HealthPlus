@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
 
 interface Page{
   value:string
@@ -13,8 +13,10 @@ export class PaginatorComponent implements OnInit{
   
   @Input() pageCurrent:number = 1/*valor o numero de pagina actual*/
   @Input() totalPages:number = 1
-  @Input()spaces:number=1 /*numero de espacios a la derecha e izquierad de la pagina actual*/
-
+  @Input() spaces:number=1 /*numero de espacios a la derecha e izquierad de la pagina actual*/
+  @Output() pageCurrentChange:EventEmitter<number> = new EventEmitter<number>()
+  
+  isClickEvent:boolean = false
   positionCurrent:number=1/*posicion dentro del arreglo(rango) donde se encuentra la pagina actual*/
   pages:Page[]=[]
   @ViewChildren('pageButton') pageButtons!: QueryList<ElementRef>;
@@ -66,14 +68,16 @@ export class PaginatorComponent implements OnInit{
       return 4
     }*/
     /*esto es con el valor del número de pagina (1,2,3....10 o 100)*/
-      prev=this.pageCurrent-this.spaces //si no funciona es un 1
-      next=this.pageCurrent+this.spaces
-      addRatePrev=prev-1/*para saber a cuantos espacios esta el boton 1 del limite anterior al boton actual*/
-      addRateNext=this.totalPages-next/*para saber a cuantos espacios esta el último boton del limite posterior al boton actual*/
 
-      add=2*this.spaces+1+this.checkSpacesToAdd(addRatePrev)+this.checkSpacesToAdd(addRateNext)
+    prev = this.pageCurrent - this.spaces //si no funciona es un 1
+    next = this.pageCurrent + this.spaces
+    addRatePrev = prev-1/*para saber a cuantos espacios esta el boton 1 del limite anterior al boton actual*/
+    addRateNext = this.totalPages-next/*para saber a cuantos espacios esta el último boton del limite posterior al boton actual*/
+
+    add=2*this.spaces + 1 + this.checkSpacesToAdd(addRatePrev) + this.checkSpacesToAdd(addRateNext)
+
       /*3 es por el boton actual,el anterior y posterior*/ 
-      return add    
+    return add    
     
   }
 
@@ -124,6 +128,14 @@ export class PaginatorComponent implements OnInit{
     this.pageCurrent=Number(value)
     this.fillPages()
     
+    // Indicar que se ha hecho un clic y evitar que se ejecute fillPages en ngOnChanges
+    this.isClickEvent = true;
+
+    // Resetear la bandera después de un breve retraso
+    setTimeout(() => {
+      this.isClickEvent = false; // Resetear la bandera después de emitir el cambio
+    }, 0);
+
     if(clickInPages) {
       setTimeout(() => {
         const currentPageButton = this.pageButtons.find(button =>
@@ -134,11 +146,15 @@ export class PaginatorComponent implements OnInit{
         }
       });
     }
-    
+    this.pageCurrentChange.emit(this.pageCurrent)
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes['pageCurrent'] && !this.isClickEvent)
+      this.fillPages() //Volver a calcular las páginas cuando cambie pageCurrent
   }
 
   ngOnInit(): void {
-    this.fillPages()
-    
+     // this.fillPages() Volver a calcular las páginas cuando cambie pageCurrent
   }
 }

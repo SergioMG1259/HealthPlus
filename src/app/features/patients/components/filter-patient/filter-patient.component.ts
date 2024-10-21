@@ -50,7 +50,6 @@ export class FilterPatientComponent implements OnInit, OnDestroy {
 
     // Solo agregar a la URL si es true
     female? queryParams['female'] = true: queryParams['female'] = null
-
     male? queryParams['male'] = true: queryParams['male'] = null
 
     // Establecer los parámetros de la URL con los filtros actuales
@@ -61,7 +60,6 @@ export class FilterPatientComponent implements OnInit, OnDestroy {
   }
 
   onClickResetFilters(): void {
-
     this.gender.patchValue({
       female: null, // Convertir el string a booleano
       male: null

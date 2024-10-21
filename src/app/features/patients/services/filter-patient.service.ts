@@ -76,6 +76,7 @@ export class FilterPatientService {
     if (this.overlayRef) {
       this.overlayRef.detach()
       this.isOpen = false
+      this.overlayRef.dispose()
       // Eliminar el listener del evento 'keydown' al cerrar el filtro
       document.removeEventListener('keydown', this.boundKeydownHandler);
     }

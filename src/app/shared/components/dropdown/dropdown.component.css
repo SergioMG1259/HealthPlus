@@ -41,6 +41,8 @@
     max-width: calc(100% - 20px);
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
 }
 .dropdown-component-placeholder {
     color: var(--secondary-text-light);

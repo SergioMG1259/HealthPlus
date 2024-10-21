@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostBinding, Input, NgZone, OnInit, Output, QueryList, ViewChild } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostBinding, Input, NgZone, OnDestroy, OnInit, Output, QueryList, SimpleChanges, ViewChild } from '@angular/core';
 import {ConnectedPosition, ScrollStrategyOptions, ViewportRuler} from '@angular/cdk/overlay'
 import {ViewEncapsulation} from '@angular/core';
 import { Observable, Subject, defer, merge, startWith, switchMap, take, takeUntil } from 'rxjs';
@@ -17,7 +17,7 @@ import { DropdownOptionComponent, OptionChange } from '../dropdown-option/dropdo
   },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DropdownComponent implements OnInit,AfterContentInit {
+export class DropdownComponent implements OnInit, AfterContentInit, OnDestroy {
   @ContentChildren(DropdownOptionComponent) options?:QueryList<DropdownOptionComponent>
   @ViewChild('trigger') trigger!: ElementRef
   @Input() placeholder:string = ''
@@ -200,6 +200,11 @@ export class DropdownComponent implements OnInit,AfterContentInit {
     if(this.options){
       this.initSelectOption()
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes['value'])
+      this.initSelectOption()
   }
 
   ngOnDestroy():void {

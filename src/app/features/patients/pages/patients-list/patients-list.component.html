@@ -4,8 +4,9 @@
             <i class='bx bx-filter-alt'></i>Filter
         </button>
         <form class="flex search-form">
-            <input class="primary-input search-input" placeholder="Buscar" type="search" aria-label="Search">
-            <button class="primary-button search-button"><i class='bx bx-search-alt-2'></i></button>
+            <input class="primary-input search-input" placeholder="Search" type="search" aria-label="Search" 
+            name="search" [(ngModel)]="this.inputSearch">
+            <button class="primary-button search-button" (click)="onClickSearch()"><i class='bx bx-search-alt-2'></i></button>
         </form>
     </div>
 
@@ -13,14 +14,17 @@
         <button class="primary-button button-icon add-button"><i class='bx bx-plus'></i>Add patient</button>
     </div>
 </div>
-
 <app-card class="card-table">
     <app-card-header>
         <h2 class="card-component-title">List patients</h2>
-        <app-dropdown placeholder="placeholder" [(value)]="aux" class="select" >
-            <app-dropdown-option [value]=1>weekly</app-dropdown-option>
-            <app-dropdown-option [value]=2>monthly</app-dropdown-option>
-            <app-dropdown-option [value]=3>yearly</app-dropdown-option>
+        <app-dropdown class="select" placeholder="Order by" [value]="this.orderBy" (valueChange)="this.changeOrderBy($event)">
+            <app-dropdown-option value="default">Default</app-dropdown-option>
+            <app-dropdown-option value="height asc">Shortest to tallest</app-dropdown-option>
+            <app-dropdown-option value="height dsc">Tallest to shortest</app-dropdown-option>
+            <app-dropdown-option value="weight asc">Thinner to fatter</app-dropdown-option>
+            <app-dropdown-option value="weight dsc">Fatter to thinner</app-dropdown-option>
+            <app-dropdown-option value="age asc">Younger to older</app-dropdown-option>
+            <app-dropdown-option value="age dsc">Older to younger</app-dropdown-option>
         </app-dropdown>
     </app-card-header>
     <div class="table-wrapper">
@@ -57,5 +61,5 @@
 </app-card>
 
 <div class="paginator">
-    <app-paginator [totalPages]="7" [pageCurrent]="1"></app-paginator>
+    <app-paginator [totalPages]="7" [(pageCurrent)]="this.page" (pageCurrentChange)="changePage($event)"></app-paginator>
 </div>

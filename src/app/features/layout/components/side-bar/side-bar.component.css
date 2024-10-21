@@ -74,6 +74,9 @@
 }
 .side-bar-item-name {
     margin-left: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
 }
 @media screen and (max-width : 900px){
     .side-bar {
