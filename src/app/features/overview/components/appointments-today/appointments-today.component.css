@@ -13,7 +13,7 @@
     width: 20px;
 }
 .days-number {
-    gap: 10px;
+    gap: 8px;
     grid-template-columns: repeat(7, 1fr);
     margin-top: 10px;
 }

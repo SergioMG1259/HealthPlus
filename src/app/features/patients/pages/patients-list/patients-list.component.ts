@@ -76,6 +76,10 @@ export class PatientsListComponent implements OnInit, AfterViewInit, OnDestroy {
       queryParamsHandling: 'merge',
     });
   }
+
+  onClickGoToAddPatient() {
+    this.router.navigate(['/patients/add']);
+  }
   
   ngOnInit(): void {
     this._queryParamsSubscription = this.route.queryParams.subscribe(params => {

@@ -11,7 +11,7 @@
     </div>
 
     <div class="right">
-        <button class="primary-button button-icon add-button"><i class='bx bx-plus'></i>Add patient</button>
+        <button class="primary-button button-icon add-button" (click)="onClickGoToAddPatient()"><i class='bx bx-plus'></i>Add patient</button>
     </div>
 </div>
 <app-card class="card-table">
@@ -19,12 +19,10 @@
         <h2 class="card-component-title">List patients</h2>
         <app-dropdown class="select" placeholder="Order by" [value]="this.orderBy" (valueChange)="this.changeOrderBy($event)">
             <app-dropdown-option value="default">Default</app-dropdown-option>
-            <app-dropdown-option value="height asc">Shortest to tallest</app-dropdown-option>
-            <app-dropdown-option value="height dsc">Tallest to shortest</app-dropdown-option>
-            <app-dropdown-option value="weight asc">Thinner to fatter</app-dropdown-option>
-            <app-dropdown-option value="weight dsc">Fatter to thinner</app-dropdown-option>
             <app-dropdown-option value="age asc">Younger to older</app-dropdown-option>
             <app-dropdown-option value="age dsc">Older to younger</app-dropdown-option>
+            <app-dropdown-option value="created asc">Created asc</app-dropdown-option>
+            <app-dropdown-option value="created dsc">Created dsc</app-dropdown-option>
         </app-dropdown>
     </app-card-header>
     <div class="table-wrapper">
@@ -33,9 +31,9 @@
                 <tr class="table-header">
                     <th>Patient Name</th>
                     <th>Gender</th>
-                    <th>Height</th>
-                    <th>Weight</th>
                     <th class="age">Age</th>
+                    <th>Phone</th>
+                    <th>Date</th>
                     <th class="action"></th>
                 </tr>
             </thead>
@@ -43,9 +41,9 @@
                 <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];index as i" [ngClass]="i%2 == 0?'row-table-color-1':'row-table-color-2'">
                     <td>Alfreds Futterkiste</td>
                     <td>Male</td>
-                    <td>172</td>
-                    <td>68</td>
                     <td class="age">18</td>
+                    <td>939192382</td>
+                    <td>Dec 31, 24</td>
                     <td class="action">
                         <app-dropdown placeholder="placeholder" type="dot">
                             <app-dropdown-option type="dot">Details</app-dropdown-option>

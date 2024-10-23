@@ -8,13 +8,15 @@ import { SharedModule } from "../../shared/shared.module";
 import { FilterPatientComponent } from './components/filter-patient/filter-patient.component';
 import { A11yModule } from '@angular/cdk/a11y';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AddPatientComponent } from './pages/add-patient/add-patient.component';
 
 
 @NgModule({
   declarations: [
     PatientsComponent,
     PatientsListComponent,
-    FilterPatientComponent
+    FilterPatientComponent,
+    AddPatientComponent
   ],
   imports: [
     PatientsRoutingModule,

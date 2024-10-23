@@ -7,6 +7,7 @@
     min-height: 100vh;
     row-gap: 20px;
     width: 100%;
+    min-width: 0;
 }
 .router {
     height: 100%;
@@ -15,6 +16,7 @@
     padding-right: 20px;
     padding-bottom: 20px;
     width: 100%;
+    min-width: 0;
 }
 @media screen and (min-width : 1700px) {
     .router {

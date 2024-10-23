@@ -47,18 +47,18 @@
                 <tr class="table-header">
                     <th>Patient Name</th>
                     <th>Gender</th>
-                    <th>Height</th>
-                    <th>Weight</th>
                     <th class="age">Age</th>
+                    <th>phone</th>
+                    <th>Date</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of [1,2,3,4,5,6];index as i" [ngClass]="i%2 == 0?'row-table-color-1':'row-table-color-2'">
                     <td>Alfreds Futterkiste</td>
                     <td>Male</td>
-                    <td>172</td>
-                    <td>68</td>
                     <td class="age">18</td>
+                    <td>939192382</td>
+                    <td>Dec 31, 24</td>
                 </tr>
             </tbody>
         </table>

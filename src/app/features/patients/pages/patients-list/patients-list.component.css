@@ -18,18 +18,19 @@
 /*TABLE*/
 .card-table {
     margin-top: 10px;
-    width: 100%;
 }
 .select {
     width: 120px;
 }
 .table-wrapper {
-    min-height: 599px;
-    overflow: hidden;
+    /* height: 665px; */
+    /* overflow: hidden; */
+
+    min-height: 652px;
     overflow-x: auto;
-    overflow-y: auto;
+    overflow-y: hidden;
     /* height: calc(100vh - 126px); */
-    width: 100%;
+    /* position: relative; */
 }
 .age {
     min-width: 60px;

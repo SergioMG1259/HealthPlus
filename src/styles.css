@@ -132,7 +132,7 @@ th,td {
     color: var(--tertiary-text-light);
     font-weight: 500;
     /* min-width: 90px; */
-    padding: 10px 8px;
+    padding: 10px 5px;
     text-align: start;
 }
 th:first-child {

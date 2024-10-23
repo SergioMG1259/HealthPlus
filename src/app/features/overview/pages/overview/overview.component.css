@@ -27,7 +27,7 @@
     width: 100%;
 }
 .card-graphic-circle, .card-appointment {
-    flex: 1 1 240px;
+    flex: 1 1 260px;
 }
 /*TABLE*/
 .card-table {
@@ -39,7 +39,6 @@
     overflow-x: auto;
     width: 100%;
 }
-
 .age {
     min-width: 60px;
 }

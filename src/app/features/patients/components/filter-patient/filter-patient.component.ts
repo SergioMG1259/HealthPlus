@@ -16,10 +16,10 @@ export class FilterPatientComponent implements OnInit, OnDestroy {
     male: false
   });
 
-  minWeight:number|null = null
-  maxWeight:number|null = null
-  minHeight:number|null = null
-  maxHeight:number|null = null
+  // minWeight:number|null = null
+  // maxWeight:number|null = null
+  // minHeight:number|null = null
+  // maxHeight:number|null = null
   minAge:number|null = null
   maxAge:number|null = null
 
@@ -40,12 +40,13 @@ export class FilterPatientComponent implements OnInit, OnDestroy {
     const male = this.gender.get('male')!.value
 
     const queryParams: any = {
-      minHeight: this.minHeight,
-      maxHeight: this.maxHeight,
-      minWeight: this.minWeight,
-      maxWeight: this.maxWeight,
+      // minHeight: this.minHeight,
+      // maxHeight: this.maxHeight,
+      // minWeight: this.minWeight,
+      // maxWeight: this.maxWeight,
       minAge: this.minAge,
-      maxAge: this.maxAge
+      maxAge: this.maxAge,
+      page: null
     }
 
     // Solo agregar a la URL si es true
@@ -64,10 +65,10 @@ export class FilterPatientComponent implements OnInit, OnDestroy {
       female: null, // Convertir el string a booleano
       male: null
     })
-    this.minHeight = null
-    this.maxHeight = null
-    this.minWeight = null
-    this.maxWeight = null
+    // this.minHeight = null
+    // this.maxHeight = null
+    // this.minWeight = null
+    // this.maxWeight = null
     this.minAge = null
     this.maxAge = null
 
@@ -88,10 +89,10 @@ export class FilterPatientComponent implements OnInit, OnDestroy {
       })
 
       // Obtener los parámetros de la URL al inicializar el componente, (+) es para convertirlo a número
-      this.minHeight = params['minHeight'] ? +params['minHeight'] : null
-      this.maxHeight = params['maxHeight'] ? +params['maxHeight'] : null
-      this.minWeight = params['minWeight'] ? +params['minWeight'] : null
-      this.maxWeight = params['maxWeight'] ? +params['maxWeight'] : null
+      // this.minHeight = params['minHeight'] ? +params['minHeight'] : null
+      // this.maxHeight = params['maxHeight'] ? +params['maxHeight'] : null
+      // this.minWeight = params['minWeight'] ? +params['minWeight'] : null
+      // this.maxWeight = params['maxWeight'] ? +params['maxWeight'] : null
       this.minAge = params['minAge'] ? +params['minAge'] : null
       this.maxAge = params['maxAge'] ? +params['maxAge'] : null
     })
