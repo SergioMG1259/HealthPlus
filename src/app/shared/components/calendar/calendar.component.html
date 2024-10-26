@@ -1,0 +1,31 @@
+<div class="flex header-wrapper">
+    <p>{{ monthDateCurrent | date: 'MMMM, y' }}</p>
+    <div class="buttons-calendar">
+        <button class="primary-button" (click)="onClickchangeMonth('prev')"><i class='bx bx-left-arrow-alt'></i></button>
+        <button class="primary-button" (click)="onClickchangeMonth('next')"><i class='bx bx-right-arrow-alt'></i></button>
+    </div>
+</div>
+
+<div class="calendar">
+    <div class="header">
+        <div class="day">Sun</div>
+        <div class="day">Mon</div>
+        <div class="day">Tue</div>
+        <div class="day">Wed</div>
+        <div class="day">Thu</div>
+        <div class="day">Fri</div>
+        <div class="day">Sat</div>
+    </div>
+    <div class="grid">
+        <button *ngFor="let day of days; let i = index" class="day" #dayButton
+            [ngClass]="{'other-month': day.isOtherMonth, 'active': isActive(day), 'today': isToday(day)}" 
+            [disabled]="day.isOtherMonth" 
+            [attr.tabindex]="isActive(day) || isToday(day) ||this.indexFocus == i ? 0 : -1" 
+            (click)="this.selectDay(day.date)"
+            (keydown)="handleKeyDown($event, i,day.date)">
+              <span>
+                {{ day.date.getDate() }}
+              </span>
+        </button>
+    </div>
+</div>

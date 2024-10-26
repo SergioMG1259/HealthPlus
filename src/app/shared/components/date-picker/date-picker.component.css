@@ -1,0 +1,27 @@
+:host {
+    border: solid 3px green;
+    display: block;
+    width: fit-content;
+}
+.wrapper {
+    position: relative;
+}
+.button-calendar {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    color: var(--secondary-light);
+    font-size: 20px;
+    height: 25px;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translate(-20%, -50%);
+    width: 25px;
+}
+.button-calendar:hover {
+    background-color: var(--secondary-button-light-hover);
+}
+.button-calendar:active {
+    background-color: var(--secondary-button-light-active);
+}

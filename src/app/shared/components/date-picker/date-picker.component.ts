@@ -1,13 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-add-patient',
-  templateUrl: './add-patient.component.html',
-  styleUrls: ['./add-patient.component.css']
+  selector: 'app-date-picker',
+  templateUrl: './date-picker.component.html',
+  styleUrls: ['./date-picker.component.css']
 })
-export class AddPatientComponent implements OnInit {
+export class DatePickerComponent implements OnInit {
+
+  value:Date | null = null
+  cadena:string = this.getDateAsString(this.value)
 
   constructor() { }
+
+  getDateAsString(date: Date | null): string {
+    if (!date) {
+      return ''
+    }
+    const day = String(date.getDate()).padStart(2, '0')
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const year = date.getFullYear()
+    
+    return `${day}/${month}/${year}`
+  }
 
   onInput(event: Event): void {
     const input = (event.target as HTMLInputElement)
@@ -31,10 +45,17 @@ export class AddPatientComponent implements OnInit {
       const [day, month, year] = value.split('/').map(Number);
       if (!this.isValidDate(day, month, year)) {
         input.value = '' // Borrar el valor si la fecha es inválida
+        this.cadena = ''
+        this.value = null
+      } else {
+        this.value = new Date(year,month - 1, day)
+        console.log(new Date(year,month - 1, day))
       }
     } else {
       // Si la fecha está incompleta, también borrar el valor
       input.value = ''
+      this.cadena = ''
+      this.value = null
     }
   }
 

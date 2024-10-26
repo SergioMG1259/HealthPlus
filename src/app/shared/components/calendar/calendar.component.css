@@ -1,0 +1,74 @@
+:host {
+    background-color: var(--primary-light);
+    border-radius: 8px;
+    display: block;
+    overflow: hidden;
+    padding: 8px;
+    width: fit-content;
+}
+.header-wrapper {
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.primary-button {
+    font-size: 16px;
+    height: 25px;
+    width: 25px;
+}
+.primary-button:nth-child(2) {
+    margin-left: 5px;
+}
+.wrapper p {
+    color: var(--secondary-text-light);
+    font-size: 16px;
+}
+.calendar {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(7, 35px);
+}
+.header {
+    display: contents; /* Para usar el grid de forma directa */
+}
+.day {
+    background-color: transparent;
+    border-radius: 5px;
+    border: none;
+    color: var(--primary-text-light);
+    font-size: 16px;
+    text-align: center;
+}
+.header .day {
+    font-weight: 600;
+}
+.grid .day {
+    height: 35px;
+}
+.grid {
+    display: contents; /* Para usar el grid de forma directa */
+}
+.other-month {
+    color: var(--quaternary-text-light); /* Color para los días de otro mes */
+}
+.active {
+    background-color: var(--secondary-light);
+    color: var(--tertiary-text-light);
+}
+.grid .day:not(.active):hover {
+    background-color: var(--secondary-button-light-hover);
+}
+.today {
+    border: solid 1px var(--secondary-light);
+}
+@media screen and (max-width : 600px) {
+    :host {
+        padding: 6px;
+    }
+    .calendar {
+        grid-template-columns: repeat(7, 28px);
+    }
+    .day {
+        font-size: 14px;
+    }
+}

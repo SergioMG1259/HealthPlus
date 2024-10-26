@@ -2,18 +2,24 @@
     border: solid 2px rebeccapurple;
 }
 .steps {
+    border: solid 1px brown;
+    justify-content: space-between;
     margin: auto;
-    width: fit-content;
+    width: 100%;
 }
 .step {
-    position: relative;
+    align-items: center;
     /* display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center; */
-    min-width: 150px;
+    /* min-width: 150px; */
+    flex-direction: column;
+    flex: 1;
+    position: relative;
 }
 .circle {
+    background-color: transparent;
     border-radius: 50%; /* Para hacerlo circular */
     font-size: 20px;
     height: 30px;
@@ -39,26 +45,80 @@
     left: 0px;
     top: 15px;
     background-color: var(--grey);
-    width: calc(100% - 35px);
+    /* width: calc(100% - 35px);
     height: 2px;
-    transform: translateX(calc(-100% - 2px));
+    transform: translateX(calc(-50% - 2px)); */
+    height: 3px;
+    width: calc(100% - 35px);
+    transform: translateX(-50%);
 }
 .step.successful + .step::after {
     background-color: green; /* Cambia a verde si el paso tiene la clase successful */
 }
-
-.successful .circle {
+.circle:focus-visible {
+    border: solid 2px transparent;
+}
+.successful .circle:not(:focus-visible) {
     border: solid 2px green;
 }
 .successful i {
     color: green;
 }
-.current .circle{
+.current .circle:not(:focus-visible){
     border: solid 2px var(--secondary-light);
 }
 .current i {
     color: var(--secondary-light);
 }
-.pending .circle{
+.pending .circle:not(:focus-visible){
     border: solid 2px var(--grey);
+}
+
+/*CONTENT*/
+.content {
+    margin-top: 20px;
+}
+.basic-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.row {
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.input-container {
+    flex-direction: column; /* Coloca los elementos en columna */
+}
+input:not([type="radio"]) {
+    width: 200px;
+}
+  
+.label-section {
+    color: var(--primary-text-light);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px; /* Espaciado entre el label y el input */
+}
+.label-radio {
+    color: var(--secondary-text-light);
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+fieldset {
+    border: none;
+    width: fit-content;
+}
+.radio-field {
+    align-items: center;
+    color: var(--primary-text-light);
+    font-size: 16px;
+}
+.notes {
+    height: 100px;
+    max-width: 420px;
+}
+.footer {
+    text-align: end;
 }

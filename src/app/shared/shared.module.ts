@@ -9,6 +9,8 @@ import { PortalModule } from '@angular/cdk/portal';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { DatePickerComponent } from './components/date-picker/date-picker.component';
 
 
 
@@ -19,7 +21,9 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     DropdownOptionComponent,
     DropdownComponent,
     PaginatorComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    CalendarComponent,
+    DatePickerComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +37,9 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     DropdownComponent,
     DropdownOptionComponent,
     PaginatorComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    CalendarComponent,
+    DatePickerComponent
   ]
 })
 export class SharedModule { }

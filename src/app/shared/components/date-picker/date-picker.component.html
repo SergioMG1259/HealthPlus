@@ -1,0 +1,7 @@
+<div class="wrapper">
+    <input type="text" id="dateOfBirth" (input)="onInput($event)" (blur)="onBlur($event)" [(ngModel)]="this.cadena"
+    class="primary-input" placeholder="dd/mm/yyyy">
+    <button class="button-calendar"><i class='bx bx-calendar'></i></button>
+</div>
+{{this.cadena}}
+{{this.value}}
