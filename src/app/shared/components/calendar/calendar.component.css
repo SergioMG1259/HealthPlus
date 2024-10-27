@@ -63,9 +63,10 @@
 }
 @media screen and (max-width : 600px) {
     :host {
-        padding: 6px;
+        padding: 5px;
     }
     .calendar {
+        gap: 4px;
         grid-template-columns: repeat(7, 28px);
     }
     .day {

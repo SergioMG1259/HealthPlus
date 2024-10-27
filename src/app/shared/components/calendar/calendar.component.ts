@@ -1,4 +1,4 @@
-import { Component, ElementRef, forwardRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, forwardRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 interface Day {
@@ -20,7 +20,7 @@ interface Day {
 })
 export class CalendarComponent implements OnInit {
 
-  @Input() value: Date | null = null // Fecha inicial
+  value: Date | null = null // Fecha inicial
   days: Day[] = []
   monthDateCurrent:Date = new Date()
   indexFocus:number = 0
@@ -196,9 +196,10 @@ export class CalendarComponent implements OnInit {
     // this.setFocusToCurrentDay()
   }
 
-    // Métodos para ControlValueAccessor
+  // Métodos para ControlValueAccessor
   writeValue(value: Date): void {
-    this.value = value;  // Actualizamos el valor del checkbox
+    this.value = value;  // Actualizamos el valor
+    this.fillCalendar(this.value? this.value:new Date())
   }
   
   registerOnChange(fn: any): void {

@@ -1,3 +1,4 @@
+/*HEADER*/
 .steps-wrapper {
     border: solid 2px rebeccapurple;
 }
@@ -34,11 +35,6 @@
     font-weight: 600;
     margin-top: 5px;
 }
-.bar {
-    background-color: var(--grey);
-    height: 3px;
-    width: 80px;
-}
 .step + .step::after {
     content: "";
     position: absolute;
@@ -73,53 +69,15 @@
 .pending .circle:not(:focus-visible){
     border: solid 2px var(--grey);
 }
-
 /*CONTENT*/
 .content {
+    border: solid 1px rebeccapurple;
     margin-top: 20px;
+    width: 100%;
 }
-.basic-info {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-.row {
-    gap: 20px;
-    flex-wrap: wrap;
-}
-.input-container {
-    flex-direction: column; /* Coloca los elementos en columna */
-}
-input:not([type="radio"]), .datepicker {
-    width: 200px;
-}
-  
-.label-section {
-    color: var(--primary-text-light);
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 5px; /* Espaciado entre el label y el input */
-    width: fit-content;
-}
-.label-radio {
-    color: var(--secondary-text-light);
-    font-weight: 500;
-    margin-left: 5px;
-}
-
-fieldset {
-    border: none;
-    width: fit-content;
-}
-.radio-field {
-    align-items: center;
-    color: var(--primary-text-light);
-    font-size: 16px;
-}
-.notes {
-    height: 100px;
-    max-width: 420px;
-}
+/*FOOTER*/
 .footer {
-    text-align: end;
+    border: solid 2px green;
+    justify-content: space-between;
+    margin-top: 10px;
 }

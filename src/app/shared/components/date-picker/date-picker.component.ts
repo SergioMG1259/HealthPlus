@@ -1,16 +1,60 @@
-import { Component, OnInit } from '@angular/core';
+import { ConnectedPosition } from '@angular/cdk/overlay';
+import { Component, forwardRef, OnInit } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-date-picker',
   templateUrl: './date-picker.component.html',
-  styleUrls: ['./date-picker.component.css']
+  styleUrls: ['./date-picker.component.css'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DatePickerComponent),
+      multi: true,
+    },
+  ]
 })
 export class DatePickerComponent implements OnInit {
 
   value:Date | null = null
   cadena:string = this.getDateAsString(this.value)
+  private _isOpen:boolean = false
 
+  onChange: (value: Date | null) => void = () => {};
+  onTouched: () => void = () => {};
+  
   constructor() { }
+
+  get panelOpen():boolean {
+    return this._isOpen
+  }
+
+  toggle() {
+    this._isOpen? this.close() : this.open()
+  }
+
+  open() {
+    this._isOpen = true
+  }
+
+  close() {
+    if (this._isOpen) {
+      this._isOpen = false
+    }
+  }
+
+  get _positions(): ConnectedPosition[] {
+    let positions: ConnectedPosition[] = [
+      {
+        originX: 'start',   // Alinea el overlay con el borde izquierdo del origen
+        originY: 'bottom',  // Posiciona el overlay debajo del origen
+        overlayX: 'start',  // Comienza el overlay desde el borde izquierdo
+        overlayY: 'top'     // Aparece desde la parte superior del overlay
+      },
+    ]
+
+    return positions
+  }
 
   getDateAsString(date: Date | null): string {
     if (!date) {
@@ -21,6 +65,13 @@ export class DatePickerComponent implements OnInit {
     const year = date.getFullYear()
     
     return `${day}/${month}/${year}`
+  }
+
+  selectedDate(date: Date | null) {
+    this.value = date
+    this.cadena = this.getDateAsString(date)
+    this.onChange(this.value);
+    this.close()
   }
 
   onInput(event: Event): void {
@@ -36,6 +87,7 @@ export class DatePickerComponent implements OnInit {
       input.value = formattedValue
     }
   }
+
   onBlur(event: Event): void {
     const input = (event.target as HTMLInputElement)
     const value = input.value
@@ -49,7 +101,6 @@ export class DatePickerComponent implements OnInit {
         this.value = null
       } else {
         this.value = new Date(year,month - 1, day)
-        console.log(new Date(year,month - 1, day))
       }
     } else {
       // Si la fecha está incompleta, también borrar el valor
@@ -57,6 +108,7 @@ export class DatePickerComponent implements OnInit {
       this.cadena = ''
       this.value = null
     }
+    this.onChange(this.value);
   }
 
   private formatDate(value: string): string {
@@ -108,7 +160,25 @@ export class DatePickerComponent implements OnInit {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
   }
 
+  onClickOpenCalendar() {
+    this.toggle()
+  }
+
   ngOnInit(): void {
+  }
+
+   // Métodos para ControlValueAccessor
+  writeValue(value: Date): void {
+    this.value = value;  // Actualizamos el valor
+    this.cadena = this.getDateAsString(this.value)
+  }
+    
+  registerOnChange(fn: any): void {
+    this.onChange = fn;  // Registramos el callback para notificar cambios
+  }
+    
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;  // Registramos el callback para cuando el campo es "tocado"
   }
 
 }

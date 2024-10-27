@@ -1,0 +1,26 @@
+<ul class="flex steps">
+    <li *ngFor="let step of steps; let i = index" class="flex step" [ngClass]="step.status">
+        <button class="circle">
+            <i *ngIf="step.status != 'pending'" class="bx"
+            [ngClass]="{'bx-check':step.status === 'successful', 'bx-current-location':step.status == 'current'}">
+        </i>
+        </button>
+        <p class="step-name">{{step.title}}</p>
+    </li>
+</ul>
+
+<div class="content">
+    <ng-content select="app-step"></ng-content>
+</div>
+
+<footer class="flex footer">
+    <button (click)="onClickPrevStep()" [disabled] ="this.indexCurrent == 0" class="primary-button">
+        Prev
+    </button>
+    <button (click)="onClickNextStep()" [disabled]="nextDisabled()" *ngIf="this.indexCurrent != this.steps.length - 1" class="primary-button">
+        Next
+    </button>
+    <button (click)="emitStepperCompleted()" *ngIf="this.indexCurrent == this.steps.length - 1" class="primary-button">
+        Completed
+    </button>
+</footer>

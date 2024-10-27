@@ -1,4 +1,4 @@
-<ul class="flex steps">
+<!-- <ul class="flex steps">
     <li class="flex step successful">
         <button class="circle"><i class='bx bx-check'></i></button>
         <p class="step-name">Basic Information</p>
@@ -12,7 +12,6 @@
         <p class="step-name">Medical Information</p>
     </li>
 </ul>
-
 <section class="content">
     <app-card class="basic-info">
         <div class="flex row">
@@ -29,7 +28,7 @@
         <div class="flex row">
             <div class="flex input-container">
                 <label for="dateOfBirth" class="label-section">Date of Birth</label>
-                <input type="text" id="dateOfBirth" (input)="onInput($event)" (blur)="onBlur($event)"  class="primary-input" placeholder="dd/mm/yyyy">
+                <app-date-picker class="datepicker"></app-date-picker>
             </div>
             <div class="flex input-container">
                 <label for="age" class="label-section">Age</label>
@@ -60,6 +59,66 @@
             <button class="primary-button">Next</button>
         </footer>
     </app-card>
-</section>
-<app-calendar></app-calendar>
-<app-date-picker></app-date-picker>
+</section> -->
+
+<!-- <app-stepper (stepperCompleted)="this.aux()">
+    <app-step [title]="'asdad'" ><input type="text"></app-step>
+    <app-step [title]="'asdad2'" >2ddddddd</app-step>
+</app-stepper> -->
+
+<app-stepper (stepperCompleted)="this.aux()">
+    <app-step [title]="'Basic Information'" [completed]="this.firstStep.valid">
+        <app-card>
+            <form [formGroup]="firstStep" class="basic-info">
+                <div class="flex row">
+                    <div class="flex input-container">
+                        <label for="names" class="label-section">Names</label>
+                        <input type="text" id="names" class="primary-input" placeholder="Sergio" formControlName="names">
+                    </div>
+                    <div class="flex input-container">
+                        <label for="lastNames" class="label-section">Last Names</label>
+                        <input type="text" id="lastNames" class="primary-input" placeholder="Guanilo" formControlName="lastNames">
+                    </div>
+                </div>
+        
+                <div class="flex row">
+                    <div class="flex input-container">
+                        <label for="dateOfBirth" class="label-section">Date of Birth</label>
+                        <app-date-picker class="datepicker" formControlName="dateOfBirth"></app-date-picker>
+                    </div>
+                    <div class="flex input-container">
+                        <label for="age" class="label-section">Age</label>
+                        <input type="number" id="age" class="primary-input" placeholder="18" maxlength="3" formControlName="age">
+                    </div>
+                </div>
+        
+                <div class="flex input-container">
+                    <label for="gender-male" class="label-section">Gender</label>
+                    <fieldset class="flex row"> 
+                        <div class="flex radio-field">
+                            <input type="radio" value="1" name="gender" id="gender-male" formControlName="gender">
+                            <label class="label-radio">Man</label>
+                        </div>
+                        <div class="flex radio-field">
+                            <input type="radio" value="2" name="gender" formControlName="gender">
+                            <label class="label-radio">Woman</label>
+                        </div>
+                    </fieldset>
+                </div>
+        
+                <div class="flex input-container">
+                    <label for="pacient notes" class="label-section">Notes</label>
+                    <textarea id="pacient notes" class="notes" formControlName="notes"></textarea>
+                </div>
+            </form>
+        </app-card>
+    </app-step>
+
+    <app-step [title]="'Contact Informatio'">
+        a
+    </app-step>
+
+    <app-step [title]="'Medical Information'">
+        b
+    </app-step>
+</app-stepper>

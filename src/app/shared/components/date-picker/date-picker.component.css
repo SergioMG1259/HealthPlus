@@ -1,10 +1,12 @@
 :host {
-    border: solid 3px green;
     display: block;
-    width: fit-content;
+    width: fit-content
 }
 .wrapper {
     position: relative;
+}
+input {
+    width: 100%;
 }
 .button-calendar {
     background-color: transparent;
@@ -24,4 +26,9 @@
 }
 .button-calendar:active {
     background-color: var(--secondary-button-light-active);
+}
+
+.calendar-container {
+    border-radius: 8px;
+    margin-top: 5px;
 }

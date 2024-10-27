@@ -1,7 +1,21 @@
-<div class="wrapper">
+<div class="wrapper" cdk-overlay-origin #origin="cdkOverlayOrigin">
     <input type="text" id="dateOfBirth" (input)="onInput($event)" (blur)="onBlur($event)" [(ngModel)]="this.cadena"
     class="primary-input" placeholder="dd/mm/yyyy">
-    <button class="button-calendar"><i class='bx bx-calendar'></i></button>
+    <button class="button-calendar" (click)="onClickOpenCalendar()"><i class='bx bx-calendar'></i></button>
 </div>
-{{this.cadena}}
-{{this.value}}
+
+<ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayHasBackdrop
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayOrigin]="origin"
+  [cdkConnectedOverlayOpen]="panelOpen"
+  [cdkConnectedOverlayPositions]="_positions"
+  (backdropClick)="close()"
+  (detach)="close()"
+>
+  <div class="calendar-container shadow">
+      <!-- Aquí insertamos el CalendarComponent y vinculamos directamente con [(ngModel)] -->
+      <app-calendar cdkTrapFocus cdkTrapFocusAutoCapture="true" [ngModel]="this.value" (ngModelChange)="this.selectedDate($event)"></app-calendar>
+  </div>
+</ng-template>

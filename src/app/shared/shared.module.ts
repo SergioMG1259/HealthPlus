@@ -11,6 +11,9 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { A11yModule } from '@angular/cdk/a11y';
+import { StepperComponent } from './components/stepper/stepper.component';
+import { StepComponent } from './components/step/step.component';
 
 
 
@@ -23,12 +26,15 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     PaginatorComponent,
     CheckboxComponent,
     CalendarComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    StepperComponent,
+    StepComponent
   ],
   imports: [
     CommonModule,
     OverlayModule,
     PortalModule,
+    A11yModule,
     FormsModule
   ],
   exports: [
@@ -39,7 +45,9 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     PaginatorComponent,
     CheckboxComponent,
     CalendarComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    StepperComponent,
+    StepComponent
   ]
 })
 export class SharedModule { }
