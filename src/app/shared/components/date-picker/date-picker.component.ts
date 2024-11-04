@@ -1,6 +1,6 @@
 import { ConnectedPosition } from '@angular/cdk/overlay';
-import { Component, forwardRef, OnInit } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef, HostListener, OnInit } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-date-picker',
@@ -24,6 +24,13 @@ export class DatePickerComponent implements OnInit {
   onTouched: () => void = () => {};
   
   constructor() { }
+
+  @HostListener('focusout')
+  onHostBlur() {
+    this.onTouched();
+    //focusout se dispara cuando cualquier elemento dentro del :host pierde el foco, 
+    //lo que hace que onTouched() funcione para el host completo.
+  }
 
   get panelOpen():boolean {
     return this._isOpen

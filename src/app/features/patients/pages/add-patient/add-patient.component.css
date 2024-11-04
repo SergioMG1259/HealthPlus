@@ -101,6 +101,9 @@ input:not([type="radio"]), .datepicker {
     margin-bottom: 5px; /* Espaciado entre el label y el input */
     width: fit-content;
 }
+.label-section span {
+    font-weight: 500;
+}
 .label-radio {
     color: var(--secondary-text-light);
     font-weight: 500;
@@ -122,4 +125,35 @@ fieldset {
 }
 .footer {
     text-align: end;
+}
+
+.additional-allergies {
+    margin-top: 20px;
+}
+.wrapper-input-array {
+    flex-direction: column;
+    gap: 8px;
+    width: fit-content;
+}
+.input-array {
+    position: relative;
+}
+.delete {
+    border-color: #d23922;
+    border-radius: 50%;
+    color: #d23922;
+    height: 28px;
+    padding: 0px;
+    position: absolute;
+    right: -35px;
+    top: 2px;
+    font-size: 14px;
+    width: 28px;
+}
+.add-button {
+    border-radius: 50%;
+    font-size: 16px;
+    height: 30px;
+    padding: 0px;
+    width: 30px;
 }

@@ -9,6 +9,7 @@ import { FilterPatientComponent } from './components/filter-patient/filter-patie
 import { A11yModule } from '@angular/cdk/a11y';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddPatientComponent } from './pages/add-patient/add-patient.component';
+import { PatientDetailsComponent } from './pages/patient-details/patient-details.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { AddPatientComponent } from './pages/add-patient/add-patient.component';
     PatientsComponent,
     PatientsListComponent,
     FilterPatientComponent,
-    AddPatientComponent
+    AddPatientComponent,
+    PatientDetailsComponent
   ],
   imports: [
     PatientsRoutingModule,

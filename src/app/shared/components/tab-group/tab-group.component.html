@@ -1,0 +1,22 @@
+<header class="header" (keydown)="this.handleKeyDown($event)">
+    <div class="flex">
+        <div class="box-title" *ngFor="let tab of tabs; let i = index" 
+            (click)="selectTab(i)" 
+            [tabIndex]="this.focusedIndex == i? 0: -1" #box>
+            <p>{{tab.title}}</p>
+        </div>
+    </div>
+    <span class="bar" [class.animate]="animate" [ngStyle]="{
+        width: indicatorWidth + 'px',
+        left: indicatorLeft + 'px'
+      }"></span>
+</header>
+
+<!-- <section class="tab-content" [ngStyle]="{minWidth: header.offsetWidth + 'px'}"> -->
+<section class="tab-content">
+    <ng-container *ngFor="let tab of tabs; let i = index">
+      <div *ngIf="i === this.selectedIndex">
+        <ng-container *ngTemplateOutlet="tab.content"></ng-container>
+      </div>
+    </ng-container>
+</section>

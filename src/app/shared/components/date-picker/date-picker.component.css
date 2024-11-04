@@ -13,6 +13,7 @@ input {
     border: none;
     border-radius: 5px;
     color: var(--secondary-light);
+    cursor: pointer;
     font-size: 20px;
     height: 25px;
     position: absolute;

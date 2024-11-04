@@ -14,7 +14,8 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
 import { A11yModule } from '@angular/cdk/a11y';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { StepComponent } from './components/step/step.component';
-
+import { TabGroupComponent } from './components/tab-group/tab-group.component';
+import { TabComponent } from './components/tab/tab.component';
 
 
 @NgModule({
@@ -28,7 +29,9 @@ import { StepComponent } from './components/step/step.component';
     CalendarComponent,
     DatePickerComponent,
     StepperComponent,
-    StepComponent
+    StepComponent,
+    TabGroupComponent,
+    TabComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +50,9 @@ import { StepComponent } from './components/step/step.component';
     CalendarComponent,
     DatePickerComponent,
     StepperComponent,
-    StepComponent
+    StepComponent,
+    TabGroupComponent,
+    TabComponent
   ]
 })
 export class SharedModule { }

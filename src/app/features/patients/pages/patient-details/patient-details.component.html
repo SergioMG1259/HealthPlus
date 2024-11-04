@@ -1,0 +1,189 @@
+<section class="flex wrapper">
+    <app-card class="personal-info-wrapper">
+        <app-card-header>
+            <h2 class="card-component-title">Basic information</h2>
+        </app-card-header>
+        <div class="items-basic">
+            <div class="personal-info-item">
+                <p class="category-info">Names</p>
+                <p class="personal-info">Joe Smith</p>
+                <span class="line"></span>
+            </div>
+            <div class="personal-info-item">
+                <p class="category-info">Age</p>
+                <p class="personal-info">23</p>
+                <span class="line"></span>
+            </div>
+            <div class="personal-info-item">
+                <p class="category-info">Birthday</p>
+                <p class="personal-info">15/05/2001</p>
+                <span class="line"></span>
+            </div>
+            <div class="personal-info-item">
+                <p class="category-info">Gender</p>
+                <p class="personal-info">Male</p>
+                <span class="line"></span>
+            </div>
+            <div class="personal-info-item">
+                <p class="category-info">DNI</p>
+                <p class="personal-info">78021192</p>
+                <span class="line"></span>
+            </div>
+            <div class="personal-info-item">
+                <p class="category-info">Phone</p>
+                <p class="personal-info">908171335</p>
+                <span class="line"></span>
+            </div>
+            <div class="personal-info-item">
+                <p class="category-info">Email</p>
+                <p class="personal-info">Examplaeemail@gmail.com</p>
+                <span class="line"></span>
+            </div>
+            <!-- <div class="personal-info-item">
+                <p class="category-info">Created date</p>
+                <p class="personal-info">15/05/2001</p>
+                <span class="line"></span>
+            </div> -->
+            <div class="personal-info-item">
+                <p class="category-info">Adress 1</p>
+                <p class="personal-info">Jorge Desmaison 538</p>
+                <span class="line"></span>
+            </div>
+            <!-- <div class="personal-info-item">
+                <p class="category-info">Adress 2</p>
+                <p class="personal-info">Jorge Desmaison 538</p>
+                <span class="line"></span>
+            </div> -->
+        </div>
+
+    </app-card>
+    <app-card class="medical-information-wrapper">
+        <app-card-header>
+            <h2 class="card-component-title">Medical information</h2>
+       </app-card-header>
+       <div class="items">
+        <div class="medical-info-item">
+            <p class="category-info">Weight (kg)</p>
+            <p>80.5</p>
+        </div>
+        <div class="medical-info-item">
+            <p class="category-info">Height (cm)</p>
+            <p>175.3</p>
+        </div>
+        <div class="medical-info-item">
+            <p class="category-info">BMI</p>
+            <p>18.5</p>
+        </div>
+        <div class="medical-info-item">
+            <p class="category-info">Blood group</p>
+            <p>A</p>
+        </div>
+        <div class="medical-info-item">
+            <p class="category-info">Blood pressure</p>
+            <p>158/88</p>
+        </div>
+        <div class="medical-info-item">
+            <p class="category-info">Heart rate</p>
+            <p>72</p>
+        </div>
+       </div>
+    </app-card>
+    <app-card class="conditions-wrapper">
+        <app-tab-group>
+            <app-tab title="Meets">
+                <div class="flex meets-wrapper">
+                    <div class="flex meet-card" *ngFor="let item of [1,2,3,4,5]">
+                        <div class="flex meet-column meet-date">
+                            <div class="flex group">
+                                <p class="title">21/05/2024</p>
+                                <p class="sub-title">9:00 - 10:00</p>
+                            </div>
+                        </div>
+                        <div class="flex meet-column issue">
+                            <div class="flex group">
+                                <p class="sub-title">Issue</p>
+                                <p>Clinic consulting</p>
+                            </div>
+                        </div>
+                        <div class="flex meet-column specialist">
+                            <div class="flex group">
+                                <p class="sub-title">Specialist</p>
+                                <p>Joe Smith</p>
+                            </div>
+                        </div>
+                        <div class="flex meet-column">
+                            <div class="flex group">
+                                <p class="sub-title">Created at</p>
+                                <p>15/05/2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </app-tab>
+            <app-tab title="Allergies">
+                <form [formGroup]="this.allergiesForm" class="flex allergies-wrapper" (keydown.enter)="$event.preventDefault()">
+                    <div formGroupName="allergies" class="allergies-checkbox">
+                        <app-checkbox formControlName = "penicillin">Penicillin</app-checkbox>
+                        <app-checkbox formControlName = "aspirin">Aspirin</app-checkbox>
+                        <app-checkbox formControlName = "sulfonamides">Sulfonamides</app-checkbox>
+                        <app-checkbox formControlName = "cephalosporins">Cephalosporins</app-checkbox>
+                        <app-checkbox formControlName = "nsaids">Nonsteroidal Anti-Inflammatory Drugs (NSAIDs)</app-checkbox>
+                        <app-checkbox formControlName = "opioids">Opioids (e.g., Morphine, Codeine)</app-checkbox>
+                        <app-checkbox formControlName = "tetracyclines">Tetracyclines</app-checkbox>
+                        <app-checkbox formControlName = "other" (changeEvent)="this.onOtherCheckboxChange()">Other</app-checkbox> 
+                    </div>
+                    <!-- Mostrar inputs adicionales cuando "Other" esté activo -->
+                    <div *ngIf="this.showOtherInput" formArrayName="additionalAllergies" class="flex additional-allergies">
+                        <div *ngFor="let control of additionalAllergies.controls; let i = index" class="flex wrapper-input-array">
+                            <div class="input-array">
+                                <input class="primary-input"
+                                [formControlName]="i"
+                                placeholder="Specify allergy"
+                                [class.invalid]="control.invalid && control.touched" />
+                            
+                                <button class="secondary-button delete" (click)="removeAdditionalAllergy(i)">
+                                <i class='bx bx-minus'></i>
+                                </button>
+
+                                <p *ngIf="control.invalid && control.touched" class="warning">Required field</p>
+                            </div>
+                        </div>
+                        <button class="primary-button add-button" 
+                            (click)="addAdditionalAllergy()">
+                            <i class='bx bx-plus'></i>
+                        </button>
+                    </div>
+                    <footer class="footer"><button class="primary-button">Save</button></footer>
+                </form>
+                
+            </app-tab>
+            <app-tab title="Medications">
+                <table class="table">
+                    <thead>
+                        <tr class="table-header">
+                            <th class="aux">Patient Name</th>
+                            <th>Gender</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of [1,2,3,4];index as i" [ngClass]="i%2 == 0?'row-table-color-1':'row-table-color-2'" (click)="this.expandRow(i)">
+                            <td class="medications" [ngClass]="this.expandedIndex == i?'expanded' : 'reduced'">
+                                Alfreds Futterkisteddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+                            </td>
+                            <td>Male</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </app-tab>
+        </app-tab-group>
+    </app-card>
+    <app-card class="notes-wrapper">
+        <app-card-header>
+            <h2 class="card-component-title">Notes</h2>
+       </app-card-header>
+       <textarea class="notes"></textarea>
+       <div class="button-wrapper">
+           <button class="primary-button">Save</button>
+       </div>
+    </app-card>
+</section>

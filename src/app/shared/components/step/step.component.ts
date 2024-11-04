@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 
 export type StepStatus = 'successful' | 'current' | 'pending';
 
@@ -12,7 +12,19 @@ export class StepComponent implements OnInit {
   private _title: string = ''
   private _status: StepStatus = 'pending'
   private _completed: boolean = true
+  // @ViewChild('focusTrap', { static: false }) focusTrap!: ElementRef;
 
+  @Output() next = new EventEmitter<void>();
+  @ViewChild(TemplateRef, { static: true }) content!: TemplateRef<any>
+  // onNext() {
+  //   this.next.emit(); // Emite el evento cuando el botón es presionado
+  //   this.focusFirstElement()
+  // }
+  // focusFirstElement() {
+  //   // Establece el foco en el señuelo para evitar el salto fuera del stepper
+  //   this.focusTrap.nativeElement.focus();
+  //   console.log(this.focusTrap)
+  // }
   constructor() { }
 
   @Input()

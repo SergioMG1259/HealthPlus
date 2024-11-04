@@ -6,7 +6,7 @@
         </div>
         <ul class="side-bar-items">
             <li class="side-bar-item">
-                <a class="flex" [routerLink]="['/overview']" routerLinkActive="side-bar-active">
+                <a class="flex" [routerLink]="['/overview']" routerLinkActive="side-bar-active" (click)="this.onClickCloseMenu()">
                     <div class="side-bar-option flex">
                         <i class='bx bxs-dashboard'></i>
                         <p class="side-bar-item-name side-bar-nav-item">Overview</p>
@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li class="side-bar-item">
-                <a href="" class="flex" [routerLink]="['/patients']" routerLinkActive="side-bar-active">
+                <a href="" class="flex" [routerLink]="['/patients']" routerLinkActive="side-bar-active" (click)="this.onClickCloseMenu()">
                     <div class="side-bar-option flex">
                         <i class='bx bx-handicap'></i>
                         <p class="side-bar-item-name side-bar-nav-item">Patients</p>

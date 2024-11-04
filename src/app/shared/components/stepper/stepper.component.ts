@@ -15,6 +15,17 @@ export class StepperComponent implements OnInit {
 
   constructor() { }
 
+  // onNextStep(index: number) {
+  //   // Verifica que el índice actual sea el correcto antes de avanzar
+  //   if (index === this.indexCurrent && this.indexCurrent < this.steps.length - 1) {
+  //     this.steps.toArray()[this.indexCurrent].status = 'successful';
+  //     this.indexCurrent++;
+  //     this.steps.toArray()[this.indexCurrent].status = 'current';
+  //     // Aquí puedes actualizar el estado de los pasos (opcional)
+  //   }
+  // }
+
+
   onClickNextStep() {
     if (this.indexCurrent < this.steps.length - 1) {
       this.steps.toArray()[this.indexCurrent].status = 'successful';
@@ -39,6 +50,12 @@ export class StepperComponent implements OnInit {
     return false
   }
 
+  completeDisabled() {
+    if(!this.steps.toArray()[this.indexCurrent].completed)
+      return true
+    return false
+  }
+
   emitStepperCompleted() {
     this.stepperCompleted.emit(); // Emitir evento al hacer clic en el botón
   }
@@ -51,6 +68,11 @@ export class StepperComponent implements OnInit {
     const index = this.steps.toArray().findIndex(step => step.status === 'current')
     this.indexCurrent =  index == -1? 0 : index
     this.steps.toArray()[this.indexCurrent].status = 'current';
+
+    // this.steps.forEach((step, index) => {
+    //   // Suscribirse al evento `next` de cada `StepComponent`
+    //   step.next.subscribe(() => this.onNextStep(index));
+    // });
   }
 
 }

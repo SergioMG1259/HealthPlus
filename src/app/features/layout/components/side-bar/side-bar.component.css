@@ -1,9 +1,9 @@
 .side-bar {
     background-color: var(--primary-light);
     height: 100%;
-    position: relative;
     transition: width 0.3s ease;
     width: 210px;
+    position: fixed;
 }
 .side-bar-logo {
     align-items: center;
@@ -78,8 +78,14 @@
     white-space: nowrap;
     word-break: break-all;
 }
+.side-bar-component {
+    display: block;
+    height: 100vh;
+    width: 210px;
+    transition: width 0.3s ease
+}
 @media screen and (max-width : 900px){
-    .side-bar {
+    .side-bar-component,.side-bar {
         width: 86px;
     }
     .side-bar-nav-item {
@@ -90,6 +96,9 @@
     }
 }
 @media screen and (max-width : 600px){
+    .side-bar {
+        min-height: 100vh;
+    }
     .side-bar-btn-close {
         display: block;
     }
@@ -103,16 +112,16 @@
         display: none;
         left: -100vw;
         position: fixed;
-        transition: display 0.3s ease allow-discrete,left 0.5s ease;
+        transition: display 0.5s ease allow-discrete,left 0.5s ease;
+        z-index: 3;
     }
     .side-bar-component-open {
         display: block;
         left: 0;
         position: fixed;
         touch-action: none;
-        transition: left 0.3s ease;
+        transition: left 0.5s ease;
         width: 100vw;
-        z-index: 3;
         @starting-style {
             left: -100vw;
         }

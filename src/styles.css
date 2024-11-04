@@ -240,6 +240,12 @@ textarea:focus-visible {
     outline: solid 2px var(--outline-light);
 }
 
+.warning {
+    color: #d23922;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
 .dialog-bg {
     background-color: #282828b0;
 }

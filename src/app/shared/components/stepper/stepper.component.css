@@ -1,9 +1,8 @@
 /*HEADER*/
-.steps-wrapper {
-    border: solid 2px rebeccapurple;
+.stepper-simplified {
+    display: none;
 }
 .steps {
-    border: solid 1px brown;
     justify-content: space-between;
     margin: auto;
     width: 100%;
@@ -71,13 +70,24 @@
 }
 /*CONTENT*/
 .content {
-    border: solid 1px rebeccapurple;
     margin-top: 20px;
     width: 100%;
 }
 /*FOOTER*/
 .footer {
-    border: solid 2px green;
     justify-content: space-between;
     margin-top: 10px;
+}
+
+@media screen and (max-width : 600px) {
+    .steps {
+        display: none;
+    }
+    .stepper-simplified {
+        display: flex;
+        justify-content: center;
+    }
+    .stepper-simplified {
+        column-gap: 10px;
+    }
 }

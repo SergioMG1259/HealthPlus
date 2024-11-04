@@ -8,9 +8,22 @@
         <p class="step-name">{{step.title}}</p>
     </li>
 </ul>
+<div class="stepper-simplified current">
+    <div class="circle">
+        <i class="bx bx-current-location"></i>
+    </div>
+    <p class="step-name">
+        {{this.steps.toArray()[this.indexCurrent].title}}
+    </p>
+</div>
 
 <div class="content">
-    <ng-content select="app-step"></ng-content>
+    <!-- <ng-content select="app-step"></ng-content> -->
+    <ng-container *ngFor="let step of steps; let i = index">
+        <div *ngIf="i === this.indexCurrent">
+          <ng-container *ngTemplateOutlet="step.content"></ng-container>
+        </div>
+      </ng-container>
 </div>
 
 <footer class="flex footer">
@@ -20,7 +33,7 @@
     <button (click)="onClickNextStep()" [disabled]="nextDisabled()" *ngIf="this.indexCurrent != this.steps.length - 1" class="primary-button">
         Next
     </button>
-    <button (click)="emitStepperCompleted()" *ngIf="this.indexCurrent == this.steps.length - 1" class="primary-button">
+    <button (click)="emitStepperCompleted()" *ngIf="this.indexCurrent == this.steps.length - 1" class="primary-button" [disabled]="completeDisabled()">
         Completed
     </button>
 </footer>

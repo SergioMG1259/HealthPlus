@@ -1,0 +1,48 @@
+:host {
+    display: block;
+    overflow-x: auto;
+    /* width: fit-content; */
+}
+.header {
+    position: relative;
+    width: fit-content;
+}
+.box-title {
+    border-radius: 5px;
+    color: var(--secondary-text-light);
+    cursor: pointer;
+    padding: 10px 10px;
+}
+.box-title p {
+    white-space: nowrap;
+}
+.bar {
+    background-color: var(--secondary-light);
+    bottom: 1px;
+    height: 3px;
+    position: absolute;
+}
+.animate {
+    transition: all 0.3s ease;
+}
+.box-title:focus-visible {
+    background-color: var(--background-light);
+    color: var(--primary-text-light);
+    outline: none;
+}
+
+.tab-content {
+    border: solid 4px green;
+    margin-top: 10px;
+    /* width: 100%;
+    min-width: fit-content; */
+}
+@media screen and (max-width : 600px) {
+    :host {
+        max-width: 100%;
+        /* overflow-x: auto; */
+    }
+    .box-title {
+        font-size: 14px;
+    }
+}

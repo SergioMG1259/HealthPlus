@@ -67,17 +67,19 @@
 </app-stepper> -->
 
 <app-stepper (stepperCompleted)="this.aux()">
-    <app-step [title]="'Basic Information'" [completed]="this.firstStep.valid">
+    <app-step [title]="'Basic Information'" [completed]="this.firstStep.valid"> <!--[completed]="this.firstStep.valid"> -->
         <app-card>
-            <form [formGroup]="firstStep" class="basic-info">
+            <form [formGroup]="firstStep" class="basic-info" (keydown.enter)="$event.preventDefault()">
                 <div class="flex row">
                     <div class="flex input-container">
                         <label for="names" class="label-section">Names</label>
-                        <input type="text" id="names" class="primary-input" placeholder="Sergio" formControlName="names">
+                        <input type="text" id="names" class="primary-input" placeholder="Ex. Joe" formControlName="names">
+                        <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p>
                     </div>
                     <div class="flex input-container">
                         <label for="lastNames" class="label-section">Last Names</label>
-                        <input type="text" id="lastNames" class="primary-input" placeholder="Guanilo" formControlName="lastNames">
+                        <input type="text" id="lastNames" class="primary-input" placeholder="Ex. Smith" formControlName="lastNames">
+                        <p *ngIf="isFieldInvalid(this.firstStep,'lastNames')" class="warning">Required field</p>
                     </div>
                 </div>
         
@@ -85,10 +87,12 @@
                     <div class="flex input-container">
                         <label for="dateOfBirth" class="label-section">Date of Birth</label>
                         <app-date-picker class="datepicker" formControlName="dateOfBirth"></app-date-picker>
+                        <p *ngIf="isFieldInvalid(this.firstStep,'dateOfBirth')" class="warning">Required field</p>
                     </div>
                     <div class="flex input-container">
                         <label for="age" class="label-section">Age</label>
-                        <input type="number" id="age" class="primary-input" placeholder="18" maxlength="3" formControlName="age">
+                        <input type="number" id="age" class="primary-input" placeholder="Ex. 18" maxlength="3" formControlName="age">
+                        <p *ngIf="isFieldInvalid(this.firstStep,'age')" class="warning">Required field</p>
                     </div>
                 </div>
         
@@ -97,28 +101,95 @@
                     <fieldset class="flex row"> 
                         <div class="flex radio-field">
                             <input type="radio" value="1" name="gender" id="gender-male" formControlName="gender">
-                            <label class="label-radio">Man</label>
+                            <label class="label-radio">Female</label>
                         </div>
                         <div class="flex radio-field">
                             <input type="radio" value="2" name="gender" formControlName="gender">
-                            <label class="label-radio">Woman</label>
+                            <label class="label-radio">Male</label>
                         </div>
                     </fieldset>
                 </div>
+
+                <div class="flex input-container">
+                    <label for="dni" class="label-section">Dni</label>
+                    <input type="text" id="dni" class="primary-input" placeholder="Max. 9 digits" formControlName="dni">
+                    <p *ngIf="isFieldInvalid(this.firstStep,'dni')" class="warning">Required field</p>
+                </div>
         
                 <div class="flex input-container">
-                    <label for="pacient notes" class="label-section">Notes</label>
+                    <label for="pacient notes" class="label-section">Notes<span> (optional)</span></label>
                     <textarea id="pacient notes" class="notes" formControlName="notes"></textarea>
                 </div>
             </form>
         </app-card>
     </app-step>
 
-    <app-step [title]="'Contact Informatio'">
-        a
+    <app-step [title]="'Contact Information'" [completed]="this.secondStep.valid">
+        <app-card>
+            <form [formGroup]="this.secondStep" class="basic-info">
+                <div class="flex input-container">
+                    <label for="phone" class="label-section">Phone</label>
+                    <input type="text" id="phone" class="primary-input" placeholder="Ex. 999999999" maxlength="9" formControlName="phone">
+                    <p *ngIf="isFieldInvalid(this.secondStep,'phone')" class="warning">Required field</p>
+                </div>
+    
+                <div class="flex input-container">
+                    <label for="email" class="label-section">Email</label>
+                    <input type="email" id="email" class="primary-input" placeholder="ex@example.com" formControlName="email">
+                    <p *ngIf="isFieldInvalid(this.secondStep,'email')" class="warning">Required field</p>
+                </div>
+    
+                <div class="flex input-container">
+                    <label for="adress1" class="label-section">Adress 1</label>
+                    <input type="text" id="adress1" class="primary-input" placeholder="Ex. Calle 234" formControlName="adress1">
+                    <p *ngIf="isFieldInvalid(this.secondStep,'adress1')" class="warning">Required field</p>
+                </div>
+
+                <div class="flex input-container">
+                    <label for="adress2" class="label-section">Adress 2<span> (optional)</span></label>
+                    <input type="text" id="adress2" class="primary-input" placeholder="Calle 234" formControlName="adress2">
+                    <p *ngIf="isFieldInvalid(this.secondStep,'adress2')" class="warning">Required field</p>
+                </div>
+            </form>
+        </app-card>
     </app-step>
 
-    <app-step [title]="'Medical Information'">
-        b
+    <app-step [title]="'Allergies'" [completed]="this.allergiesForm.valid">
+        <app-card>
+            <form [formGroup]="this.allergiesForm">
+                <div formGroupName="allergies" class="basic-info">
+                    <app-checkbox formControlName = "penicillin">Penicillin</app-checkbox>
+                    <app-checkbox formControlName = "aspirin">Aspirin</app-checkbox>
+                    <app-checkbox formControlName = "sulfonamides">Sulfonamides</app-checkbox>
+                    <app-checkbox formControlName = "cephalosporins">Cephalosporins</app-checkbox>
+                    <app-checkbox formControlName = "nsaids">Nonsteroidal Anti-Inflammatory Drugs (NSAIDs)</app-checkbox>
+                    <app-checkbox formControlName = "opioids">Opioids (e.g., Morphine, Codeine)</app-checkbox>
+                    <app-checkbox formControlName = "tetracyclines">Tetracyclines</app-checkbox>
+                    <app-checkbox formControlName = "other" (changeEvent)="this.onOtherCheckboxChange()">Other</app-checkbox> 
+                </div>
+   
+                <!-- Mostrar inputs adicionales cuando "Other" esté activo -->
+                <div *ngIf="this.showOtherInput" formArrayName="additionalAllergies" class="basic-info additional-allergies">
+                    <div *ngFor="let control of additionalAllergies.controls; let i = index" class="flex wrapper-input-array">
+                        <div class="input-array">
+                            <input class="primary-input"
+                            [formControlName]="i"
+                            placeholder="Specify allergy"
+                            [class.invalid]="control.invalid && control.touched" />
+                            
+                            <button class="secondary-button delete" (click)="removeAdditionalAllergy(i)">
+                                <i class='bx bx-minus'></i>
+                            </button>
+
+                            <p *ngIf="control.invalid && control.touched" class="warning">Required field</p>
+                        </div>
+                    </div>
+                    <button class="primary-button add-button" 
+                        (click)="addAdditionalAllergy()">
+                        <i class='bx bx-plus'></i>
+                    </button>
+                </div>
+            </form>
+        </app-card>    
     </app-step>
 </app-stepper>

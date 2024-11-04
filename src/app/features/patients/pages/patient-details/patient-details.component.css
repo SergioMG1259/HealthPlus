@@ -1,0 +1,184 @@
+.wrapper {
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.personal-info-wrapper, .conditions-wrapper {
+    flex: 2 1 540px;
+}
+.notes-wrapper, .medical-information-wrapper {
+    flex: 1 1 240px;
+}
+.items-basic {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 30px;
+}
+.personal-info-item {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 18%;
+    min-width: 160px;
+    row-gap: 10px;
+}
+.category-info {
+    color: var(--secondary-text-light);
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.personal-info {
+    font-size: 14px;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.line {
+    border: solid 1px #ececec;
+    width: 100%;
+}
+/*MEDICAL INFORMATION*/
+.items {
+    display: flex;
+    row-gap: 10px;
+    flex-direction: column;
+}
+.medical-info-item {
+    display: flex;
+    justify-content: space-between;
+}
+/*NOTES*/
+.notes-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.notes {
+    min-height: 140px;
+    height: calc(100% - 76px);
+    width: 100%;
+}
+.button-wrapper {
+    margin-top: 10px;
+    text-align: end;
+}
+/*MEETS*/
+.meets-wrapper {
+    background-color: var(--background-light);
+    border-radius: 5px;
+    flex-direction: column;
+    height: 310px;
+    max-width: 100%;
+    min-width: fit-content;
+    overflow-y: auto;overflow-x: auto;
+    padding: 10px;
+    row-gap: 10px;
+}
+.meet-card {
+    background-color: var(--primary-light);
+    border-radius: 5px;
+    margin: auto;
+    width: fit-content;
+}
+.meet-column {
+    align-items: center;
+    flex-direction: column;
+    height: 90px;
+    justify-content: center;
+    min-width: 190px;
+}
+.title {
+    font-size: 20px;
+}
+.sub-title {
+    color: var(--secondary-text-light);
+    font-size: 14px;
+}
+.group {
+    flex-direction: column;
+    row-gap: 5px;
+}
+.meet-date {
+    min-width: 190px;
+}
+.issue {
+    min-width: 140px;
+}
+.specialist {
+    min-width: 150px;
+}
+
+/*ALLERGIES*/
+.allergies-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 310px;
+    overflow-y: auto;
+}
+.allergies-checkbox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.additional-allergies {
+    flex-direction: column;
+    row-gap: 20px;
+}
+.wrapper-input-array {
+    flex-direction: column;
+    gap: 8px;
+    width: fit-content;
+}
+.input-array {
+    position: relative;
+}
+.delete {
+    border-color: #d23922;
+    border-radius: 50%;
+    color: #d23922;
+    height: 28px;
+    padding: 0px;
+    position: absolute;
+    right: -35px;
+    top: 2px;
+    font-size: 14px;
+    width: 28px;
+}
+.add-button {
+    border-radius: 50%;
+    font-size: 16px;
+    height: 30px;
+    padding: 0px;
+    width: 30px;
+}
+.footer {
+    text-align: end;
+}
+
+/*MEDICATIONS*/
+.medications {
+    word-wrap: break-word;
+    max-width: 250px;
+}
+.reduced {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.expanded {
+    height: 80px;
+    white-space: normal;
+    /* word-wrap: break-word;
+    overflow: visible; */
+}
+@media screen and (max-width : 600px) {
+    .category-info {
+        font-size: 14px;
+    }
+    .personal-info-wrapper {
+        row-gap: 20px;
+    }
+    .medical-info-item {
+        font-size: 14px;
+    }
+}
