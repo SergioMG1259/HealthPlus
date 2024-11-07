@@ -80,14 +80,18 @@ export class PatientsListComponent implements OnInit, AfterViewInit, OnDestroy {
   onClickGoToAddPatient() {
     this.router.navigate(['/patients/add']);
   }
+
+  onClickGoToDetailsPatient() {
+    this.router.navigate(['/patients/details']); // Cambia '/ruta-destino' por la ruta deseada
+  }
   
   ngOnInit(): void {
     this._queryParamsSubscription = this.route.queryParams.subscribe(params => {
-      console.log(params)
 
       this.inputSearch = params['search']? params['search'] : null
       this.page = params['page']? +params['page'] : 1
       this.orderBy = params['orderby']? params['orderby'] : 'default' 
+      
     })
   }
 

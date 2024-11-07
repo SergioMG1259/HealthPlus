@@ -6,7 +6,7 @@
         <div class="items-basic">
             <div class="personal-info-item">
                 <p class="category-info">Names</p>
-                <p class="personal-info">Joe Smith</p>
+                <p class="personal-info">Alfreds Futterkiste</p>
                 <span class="line"></span>
             </div>
             <div class="personal-info-item">
@@ -31,7 +31,7 @@
             </div>
             <div class="personal-info-item">
                 <p class="category-info">Phone</p>
-                <p class="personal-info">908171335</p>
+                <p class="personal-info">939192382</p>
                 <span class="line"></span>
             </div>
             <div class="personal-info-item">
@@ -108,7 +108,7 @@
                         <div class="flex meet-column specialist">
                             <div class="flex group">
                                 <p class="sub-title">Specialist</p>
-                                <p>Joe Smith</p>
+                                <p>Alfreds Futterkiste</p>
                             </div>
                         </div>
                         <div class="flex meet-column">
@@ -158,22 +158,25 @@
                 
             </app-tab>
             <app-tab title="Medications">
-                <table class="table">
-                    <thead>
-                        <tr class="table-header">
-                            <th class="aux">Patient Name</th>
-                            <th>Gender</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of [1,2,3,4];index as i" [ngClass]="i%2 == 0?'row-table-color-1':'row-table-color-2'" (click)="this.expandRow(i)">
-                            <td class="medications" [ngClass]="this.expandedIndex == i?'expanded' : 'reduced'">
-                                Alfreds Futterkisteddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-                            </td>
-                            <td>Male</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="flex medications-wrapper">
+                    <div class="medications-button-wrapper">
+                        <button class="primary-button">Add medications</button>
+                    </div>
+                    <div *ngFor="let item of [1,2,3,4,5,6,7,8];index as i" class="flex medications-card" [tabIndex]="0"
+                    [ngClass]="this.expandedIndex == i?'expanded' : 'reduced'" (click)="this.expandRow(i)" 
+                    (keydown.enter)="this.expandRow(i)">
+                        <div class="column medications-card-left">
+                            <p class="medications-sub-title">Medications</p>
+                            <p>Take one 400 mg ibuprofen tablet every 8 hours for five days. It is recommended to take the 
+                                medication after meals to minimize the risk of stomach irritation.</p>
+                        </div>
+                        <div class="column medications-card-right">
+                            <p class="medications-sub-title">Date</p>
+                            <p>15/05/2024</p>
+                        </div>
+                    </div>
+
+                </div>
             </app-tab>
         </app-tab-group>
     </app-card>
@@ -181,7 +184,7 @@
         <app-card-header>
             <h2 class="card-component-title">Notes</h2>
        </app-card-header>
-       <textarea class="notes"></textarea>
+       <textarea class="notes" placeholder="Max. 200 characters"></textarea>
        <div class="button-wrapper">
            <button class="primary-button">Save</button>
        </div>

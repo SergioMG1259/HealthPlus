@@ -113,6 +113,7 @@
     flex-direction: column;
     gap: 20px;
     height: 310px;
+    padding-left: 8px;
     overflow-y: auto;
 }
 .allergies-checkbox {
@@ -160,7 +161,7 @@
     word-wrap: break-word;
     max-width: 250px;
 }
-.reduced {
+/* .reduced {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -169,7 +170,69 @@
     height: 80px;
     white-space: normal;
     /* word-wrap: break-word;
-    overflow: visible; */
+    overflow: visible; 
+} */
+
+.medications-wrapper {
+    background-color: var(--background-light);
+    border-radius: 5px;
+    flex-direction: column;
+    max-height: 310px;
+    max-width: 100%;
+    min-width: fit-content;
+    overflow-y: auto;
+    padding: 10px;
+    row-gap: 10px;
+}
+.medications-button-wrapper {
+    margin: auto;
+    text-align: end;
+    width: 630px;
+}
+.medications-card {
+    background-color: var(--primary-light);
+    border-radius: 5px;
+    column-gap: 10px;
+    cursor: pointer;
+    margin: auto;
+    padding: 10px;
+    transition: min-height 0.3s ease;
+    width: fit-content;
+}
+.medications-card:focus-visible {
+    outline: solid 2px var(--outline-light);
+}
+.column {
+    color: var(--primary-text-light);
+    font-size: 16px;
+    overflow: hidden;
+}
+.expanded {
+    min-height: 160px;
+}
+.reduced {
+    min-height: 70px;
+}
+.medications-card-left {
+    max-width: 450px;
+}
+.reduced .medications-card-left p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.expanded .medications-card-left-left p {
+    overflow: visible;
+    word-wrap: break-word;
+    white-space: normal;
+}
+.medications-card-right {
+    width: 150px;
+}
+.medications-sub-title {
+    color: var(--secondary-text-light);
+    margin-bottom: 5px;
+    font-size: 14px;
 }
 @media screen and (max-width : 600px) {
     .category-info {
