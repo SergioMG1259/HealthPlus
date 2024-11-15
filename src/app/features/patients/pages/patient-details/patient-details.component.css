@@ -134,16 +134,9 @@
     position: relative;
 }
 .delete {
-    border-color: #d23922;
-    border-radius: 50%;
-    color: #d23922;
-    height: 28px;
-    padding: 0px;
     position: absolute;
     right: -35px;
-    top: 2px;
-    font-size: 14px;
-    width: 28px;
+    top: 4px;
 }
 .add-button {
     border-radius: 50%;
@@ -186,7 +179,6 @@
 }
 .medications-button-wrapper {
     margin: auto;
-    text-align: end;
     width: 630px;
 }
 .medications-card {

@@ -1,0 +1,28 @@
+.calendar-options {
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: end;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.calendar-type-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    color: var(--secondary-text-light);
+    font-size: 14px;
+    padding: 8px 15px;
+}
+.calendar-type-button.active {
+    color: var(--secondary-light);
+}
+
+
+@media screen and (max-width : 600px) {
+    .add-button {
+        width: 100%;
+    }
+    .calendar-type-button {
+        width: calc(50% - 5px);
+    }
+}

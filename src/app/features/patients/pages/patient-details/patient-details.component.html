@@ -2,6 +2,7 @@
     <app-card class="personal-info-wrapper">
         <app-card-header>
             <h2 class="card-component-title">Basic information</h2>
+            <button class="button-only-icon icon-default"><i class='bx bx-cog'></i></button>
         </app-card-header>
         <div class="items-basic">
             <div class="personal-info-item">
@@ -60,6 +61,7 @@
     <app-card class="medical-information-wrapper">
         <app-card-header>
             <h2 class="card-component-title">Medical information</h2>
+            <button class="button-only-icon icon-default"><i class='bx bx-cog'></i></button>
        </app-card-header>
        <div class="items">
         <div class="medical-info-item">
@@ -141,8 +143,11 @@
                                 placeholder="Specify allergy"
                                 [class.invalid]="control.invalid && control.touched" />
                             
-                                <button class="secondary-button delete" (click)="removeAdditionalAllergy(i)">
+                                <!-- <button class="secondary-button delete" (click)="removeAdditionalAllergy(i)">
                                 <i class='bx bx-minus'></i>
+                                </button> -->
+                                <button class="delete button-only-icon icon-warning" (click)="removeAdditionalAllergy(i)">
+                                    <i class='bx bx-trash'></i>
                                 </button>
 
                                 <p *ngIf="control.invalid && control.touched" class="warning">Required field</p>

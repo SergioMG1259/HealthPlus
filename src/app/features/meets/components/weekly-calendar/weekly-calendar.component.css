@@ -1,0 +1,154 @@
+.buttons {
+    column-gap: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.arrow{
+    font-size: 16px;
+}
+.week-range {
+    align-items: center;
+    background-color: var(--primary-light);
+    border: solid 1px var(--grey);
+    border-radius: 5px;
+    color: var(--secondary-text-light);
+    font-size: 14px;
+    padding: 0px 8px;
+}
+.range {
+    color: var(--primary-text-light);
+}
+.calendar-container {
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+.calendar-wrapper {
+    overflow-x: auto;
+    width: 100%;
+}
+.hour-header {
+    align-items: center;
+    background-color: var(--primary-light);
+    border-radius: 5px 0px 0px 5px;
+    color: var(--primary-text-light);
+    font-size: 18px;
+    height: 29.2px;
+    justify-content: center;
+    width: 47px;
+}
+.hour-column {
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 20px;
+}
+.hour-cell {
+    height: 100px;
+    position: relative;
+}
+.hour {
+    color: var(--secondary-text-light);
+    font-size: 16px;
+    position: absolute;
+}
+.hour-top {
+    top: -2px;
+}
+.hour-normal {
+    top: -12px;
+}
+.hour-bottom {
+    bottom: 0px;
+}
+
+.calendar-week {
+    /* display: grid;
+    grid-template-columns: repeat(7, minmax(150px, 1fr));
+    gap: 3px; */
+    overflow: auto;
+    padding-bottom: 12px;
+    width: 100%;
+}
+.grid-header {
+    /* display: contents; */
+    display: grid;
+    gap: 3px;
+    grid-template-columns: repeat(7, minmax(150px, 1fr));
+    text-align: center;
+}
+.day-name {
+    background-color: var(--primary-light);
+    color: var(--primary-text-light);
+    font-size: 16px;
+    margin: 0px -3px;/* Elimina visualmente el espacio del gap */
+    padding: 5px 0px;
+}
+.today {
+    color: var(--secondary-light);
+}
+.day-name:last-child {
+    border-radius: 0px 5px 5px 0px;
+    margin-right: 0;
+}
+.grid {
+    /* display: contents; */
+    display: grid;
+    gap: 3px;
+    grid-template-columns: repeat(7, minmax(150px, 1fr));
+    margin-top: 20px;
+    width: 100%;
+}
+.day {
+    border: solid 0.5px #bcbcbc;
+    border-radius: 5px;
+    height: 100px;
+    position: relative;
+    width: 100%;
+}
+
+.event {
+    background-color: var(--primary-light);
+    border-radius: 5px;
+    left: 0px;
+    position: absolute;
+    top: -1px;
+    width: 100%;
+    z-index: 1;
+}
+.top-line {
+    background-color: var(--secondary-light);
+    border-radius: 5px 5px 0px 0px;
+    height: 4px;
+    width: 100%;
+}
+.event-content-wrapper {
+    height: calc(100% - 4px);
+    padding: 5px 8px;
+    position: relative;
+}
+.patient-name {
+    color: var(--primary-text-light);
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}
+.patient-issue {
+    color: var(--secondary-text-light);
+    font-size: 14px;
+    margin-top: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}
+.event-hours {
+    bottom: 5px;
+    color: var(--secondary-text-light);
+    font-size: 14px;
+    position: absolute;
+}
+@media screen and (max-width : 600px) {
+    .buttons {
+        column-gap: 3px;
+    }
+}

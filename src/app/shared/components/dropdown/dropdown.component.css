@@ -64,5 +64,20 @@
     flex-basis: 100%;
     margin-top: 5px;
     max-height: 256px;
-    overflow: hidden;
+    overflow-y: auto;
+}
+/* Personalización del scrollbar */
+.options-container-dropdown-component::-webkit-scrollbar {
+    width: 5px; /* Ajusta el ancho del scrollbar */
+}
+.options-container-dropdown-component::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color del fondo del track */
+}
+
+.options-container-dropdown-component::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color del scroll */
+    border-radius: 8px; /* Opcional: bordes redondeados */
+}
+.options-container-dropdown-component::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color del scroll al hacer hover */
 }

@@ -1,0 +1,65 @@
+<section class="flex buttons">
+    <button class="secondary-button arrow" (click)="this.changeWeek('prev')"><i class='bx bx-left-arrow-alt'></i></button>
+    <button class="secondary-button range" cdk-overlay-origin #origin="cdkOverlayOrigin" (click)="this.onClickOpenCalendar()">
+        <p >
+            {{ generateWeekRange() }}
+        </p>
+    </button>
+    <button class="secondary-button arrow" (click)="this.changeWeek('next')"><i class='bx bx-right-arrow-alt'></i></button>
+</section>
+
+<ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayHasBackdrop
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayOrigin]="origin"
+  [cdkConnectedOverlayOpen]="panelOpen"
+  [cdkConnectedOverlayPositions]="_positions"
+  (backdropClick)="close()"
+  (detach)="close()"
+>
+  <div class="calendar-container shadow">
+      <app-calendar cdkTrapFocus cdkTrapFocusAutoCapture="true" [minYear]="2020" [ngModel]="this.indexDay" 
+      (ngModelChange)="this.selectedDate($event)"></app-calendar>
+  </div>
+</ng-template>
+
+
+<section class="calendar-wrapper flex">
+    <div>
+        <div class="flex hour-header">
+            <i class='bx bx-time-five'></i>
+        </div>
+        <div class="flex hour-column">
+            <div *ngFor="let item of [].constructor(16); let i = index" class="hour-cell">
+                <p class="hour" [ngClass]="{'hour-top': i == 0, 'hour-normal': i != 0}">{{i + 6 + ':00'}}</p>
+                <p class="hour hour-bottom" *ngIf="i == 15">{{i + 7 + ':00'}}</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="calendar-week">
+        <div class="grid-header">
+            <div *ngFor="let day of this.daysOfWeek" class="day-name" [ngClass]="{'today': this.isToday(day)}">
+                {{day | date:'EEE d'}}
+            </div>
+        </div>
+        <div class="grid">
+            <div *ngFor="let cell of gridData; let i = index" class="day">
+                <!-- {{ cell.day | date: 'EEEE, MMM d' }} - {{ cell.hour }}:00 -->
+                <ng-container *ngFor="let event of events">
+                    <div *ngIf="hasEventAt(event.start,cell.day,cell.hour)" 
+                    class="event shadow"
+                    [ngStyle]="{ 'height': getEventHeight(event) + 'px' }">
+                        <div class="top-line"></div>
+                        <div class="event-content-wrapper">
+                            <p class="patient-name">Alfreds Futterkiste</p>
+                            <p class="patient-issue">Clinic consulting</p>
+                            <p class="event-hours">{{event.start.getHours() + ':00' + ' - ' + event.finish.getHours() + ':00'}}</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</section>

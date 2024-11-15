@@ -1,0 +1,24 @@
+<section class="flex calendar-options">
+    <button class="calendar-type-button" [ngClass]="{'active': this.type == 'weekly'}" 
+        (click)="this.type = 'weekly'">
+        Weekly
+    </button>
+    
+    <button class="calendar-type-button" [ngClass]="{'active': this.type == 'monthly'}" 
+    (click)="this.toggleDropdowns()">
+        Monthly
+    </button>
+    
+    <button class="primary-button button-icon add-button">
+        <i class='bx bx-plus'></i>Add apointment
+    </button>
+</section>
+
+<ng-container *ngIf="this.type == 'weekly'">
+    <app-weekly-calendar [events]="this.events"></app-weekly-calendar>
+</ng-container>
+
+<ng-container *ngIf="this.type == 'monthly'">
+    <app-monthly-calendar [events]="this.events"></app-monthly-calendar>
+</ng-container>
+

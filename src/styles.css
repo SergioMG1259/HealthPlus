@@ -21,7 +21,12 @@
     --tertiary-text-light: rgb(235, 235, 235);
     --quaternary-text-light: rgb(177, 177, 177);
 
-    --outline-light:rgb(238, 21, 93);
+    /* --outline-light:rgb(238, 21, 93); */
+    --outline-light:rgb(233, 132, 23);
+
+    --warning: rgb(223, 9, 38);
+    --waring-hover:rgba(231, 21, 53, 0.06);
+    --waring-active:rgba(255, 0, 38, 0.125);
 
     --primary-button-light-hover: rgb(36, 106, 220);
     --primary-button-light-active: rgb(28, 90, 189);
@@ -64,6 +69,44 @@ button:focus-visible {
     margin-right: 8px;
     line-height: 1;
 }
+/*ONLY ICON IN BUTTON*/
+.button-only-icon {
+    background-color: transparent;
+    border-radius: 50%;
+    font-size: 16px;
+    padding: 5px;
+    transition: background-color 0.3s ease;
+}
+/*DEFAULT COLOR*/
+.button-only-icon.icon-default {
+    border: solid 1px var(--secondary-light);
+}
+.icon-default i {
+    color: var(--secondary-light);
+}
+.icon-default:hover:enabled {
+    background-color: var(--secondary-button-light-hover);
+}
+.icon-default:active:enabled {
+    background-color: var(--secondary-button-light-active);
+}
+/*WARNING COLOR*/
+.button-only-icon.icon-warning {
+    border: solid 1px var(--warning);
+}
+.icon-warning i {
+    color: var(--warning);
+}
+.icon-warning:hover:enabled {
+    background-color: var(--waring-hover);
+}
+.icon-warning:active:enabled {
+    background-color: var(--waring-active);
+}
+/*FOCUS*/
+.button-only-icon:focus-visible {
+    border-color: transparent;
+}
 
 .primary-button {
     background-color: var(--secondary-light);
@@ -95,6 +138,9 @@ button:focus-visible {
 }
 .secondary-button:active:enabled {
     background-color: var(--secondary-button-light-active);
+}
+.secondary-button:focus-visible {
+    border-color: transparent;
 }
 
 .tertiary-button {
@@ -241,7 +287,7 @@ textarea:focus-visible {
 }
 
 .warning {
-    color: #d23922;
+    color: var(--warning);
     font-size: 14px;
     margin-top: 5px;
 }

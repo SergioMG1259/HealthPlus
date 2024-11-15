@@ -164,17 +164,17 @@ export class DropdownComponent implements OnInit, AfterContentInit, OnDestroy {
 
   focusPrevOption() {
     if (this.options && this.focusedOptionIndex > 0){
-      this.options.toArray()[this.focusedOptionIndex].setFocus(false);
+      this.options.toArray()[this.focusedOptionIndex].setFocus(false)
       this.focusedOptionIndex--;
-      this.options.toArray()[this.focusedOptionIndex].setFocus(true);
+      this.options.toArray()[this.focusedOptionIndex].setFocus(true)
     }
   }
 
   focusNextOption() {
     if (this.options && this.focusedOptionIndex < this.options.length - 1) {
-      this.options.toArray()[this.focusedOptionIndex].setFocus(false);
+      this.options.toArray()[this.focusedOptionIndex].setFocus(false)
       this.focusedOptionIndex++;
-      this.options.toArray()[this.focusedOptionIndex].setFocus(true);
+      this.options.toArray()[this.focusedOptionIndex].setFocus(true)
     }
   }
 
@@ -189,7 +189,7 @@ export class DropdownComponent implements OnInit, AfterContentInit, OnDestroy {
           this.widthOptionsList = this.trigger.nativeElement.getBoundingClientRect().width
         this.changeDetectorRef.markForCheck()
       }
-    });
+    })
   }
   
   ngAfterContentInit() {

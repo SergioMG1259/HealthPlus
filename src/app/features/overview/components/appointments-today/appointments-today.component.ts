@@ -14,33 +14,66 @@ export class AppointmentsTodayComponent implements OnInit {
 
   constructor() { this.getWeekDays() }
 
+  // getWeekDays(): void {
+  //   const today = new Date();
+  //   const dayOfWeek = today.getDay(); // 0 = domingo, 1 = lunes, ..., 6 = sábado
+  //   const saturdayOffset = (dayOfWeek + 1) % 7; //sábado probar quitar el módulo
+  //   // calcular cuántos días debes retroceder desde el día actual (today) para llegar al último sábado.
+
+  //   const lastSaturday = new Date(today);
+  //   lastSaturday.setDate(today.getDate() - saturdayOffset);
+  //   // se generan los días de la semana
+  //   for (let i = 0; i < 7; i++) {
+  //     const currentDay = new Date(lastSaturday); // se clona el sábado
+  //     currentDay.setDate(lastSaturday.getDate() + (i > 0 ? i+1 : 0)); // no se cuenta el domingo
+  //     const formattedDate = formatDate(currentDay, 'dd', 'en-US');
+
+  //     this.weekDays.push({
+  //       letter: ['S', 'M', 'T', 'W', 'T', 'F', 'S'][i],//i se utiliza como índice para acceder a la letra correspondiente en el arreglo de letras de días.
+  //       date: formattedDate
+  //     });
+  //   }
+
+  //   //para rango de la semana
+  //   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  //   const startDate = formatDate(new Date(today.getFullYear(), today.getMonth(), today.getDate() - saturdayOffset), 'dd', 'en-US');
+  //   const endDate = formatDate(new Date(today.getFullYear(), today.getMonth(), today.getDate() - saturdayOffset + 7), 'dd', 'en-US');
+  //   const monthAbbreviation = months[today.getMonth()]; // Obtiene la abreviatura del mes actual
+  
+  //   this.currentWeekRange = `${startDate} - ${endDate} ${monthAbbreviation}, ${today.getFullYear()}`;
+  // }
+
   getWeekDays(): void {
     const today = new Date();
     const dayOfWeek = today.getDay(); // 0 = domingo, 1 = lunes, ..., 6 = sábado
-    const saturdayOffset = (dayOfWeek + 1) % 7; //sábado probar quitar el módulo
-    // calcular cuántos días debes retroceder desde el día actual (today) para llegar al último sábado.
+    const sundayOffset = dayOfWeek; // Desplazamiento para encontrar el último domingo
 
-    const lastSaturday = new Date(today);
-    lastSaturday.setDate(today.getDate() - saturdayOffset);
-    // se generan los días de la semana
+    // Calcular el último domingo
+    const lastSunday = new Date(today);
+    lastSunday.setDate(today.getDate() - sundayOffset);
+
+    // Limpiar weekDays
+    this.weekDays = [];
+
+    // Generar los días de la semana, comenzando desde el domingo
     for (let i = 0; i < 7; i++) {
-      const currentDay = new Date(lastSaturday); // se clona el sábado
-      currentDay.setDate(lastSaturday.getDate() + (i > 0 ? i+1 : 0)); // no se cuenta el domingo
-      const formattedDate = formatDate(currentDay, 'dd', 'en-US');
+        const currentDay = new Date(lastSunday); // Clona el domingo
+        currentDay.setDate(lastSunday.getDate() + i);
+        const formattedDate = formatDate(currentDay, 'dd', 'en-US');
 
-      this.weekDays.push({
-        letter: ['S', 'M', 'T', 'W', 'T', 'F', 'S'][i],//i se utiliza como índice para acceder a la letra correspondiente en el arreglo de letras de días.
-        date: formattedDate
-      });
+        this.weekDays.push({
+            letter: ['U', 'M', 'T', 'W', 'R', 'F', 'S'][i],
+            date: formattedDate
+        });
     }
 
-    //para rango de la semana
+    // Rango de la semana
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const startDate = formatDate(lastSunday, 'dd', 'en-US');
+    const endDate = formatDate(new Date(lastSunday.getFullYear(), lastSunday.getMonth(), lastSunday.getDate() + 6), 'dd', 'en-US');
+    const monthAbbreviation = months[lastSunday.getMonth()];
 
-    const startDate = formatDate(new Date(today.getFullYear(), today.getMonth(), today.getDate() - saturdayOffset), 'dd', 'en-US');
-    const endDate = formatDate(new Date(today.getFullYear(), today.getMonth(), today.getDate() - saturdayOffset + 7), 'dd', 'en-US');
-    const monthAbbreviation = months[today.getMonth()]; // Obtiene la abreviatura del mes actual
-  
     this.currentWeekRange = `${startDate} - ${endDate} ${monthAbbreviation}, ${today.getFullYear()}`;
   }
 

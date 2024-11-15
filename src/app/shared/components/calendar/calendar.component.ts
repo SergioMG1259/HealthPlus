@@ -1,4 +1,4 @@
-import { Component, ElementRef, forwardRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, forwardRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 interface Day {
@@ -16,9 +16,14 @@ interface Day {
       useExisting: forwardRef(() => CalendarComponent),
       multi: true,
     },
-  ]
+  ], 
 })
 export class CalendarComponent implements OnInit {
+
+  months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  indexMonth!:number
+  years: number[] = []
+  indexYear!:number
 
   value: Date | null = null // Fecha inicial
   days: Day[] = []
@@ -26,16 +31,21 @@ export class CalendarComponent implements OnInit {
   indexFocus:number = 0
   
   @ViewChildren('dayButton') dayButtons!: QueryList<ElementRef>
+  @Input() minYear:number = new Date().getFullYear() - 100
+  @Input() maxYear:number = new Date().getFullYear() + 5
 
   onChange: (value: Date) => void = () => {};
   onTouched: () => void = () => {};
 
   constructor() { }
 
-  
   fillCalendar(date: Date) {
     const year = date.getFullYear()
     const month = date.getMonth()
+    this.indexMonth = month
+    
+    this.indexYear = year
+
     // Primer día del mes
     const firstDay = new Date(year, month, 1)
     // Último día del mes
@@ -58,7 +68,7 @@ export class CalendarComponent implements OnInit {
       this.days.push({
         date: new Date(current),
         isOtherMonth: isOtherMonth,
-      });
+      })
       current.setDate(current.getDate() + 1) // Pasar al siguiente día
     }
   }
@@ -161,6 +171,8 @@ export class CalendarComponent implements OnInit {
 
   findFirstCurrentMonthIndex() {
     const firstCurrentMonthIndex = this.days.findIndex(day => !day.isOtherMonth)
+    //encuentra le indice del primer día del mes actual, ya que a veces, las primeras celdas corresponden a los
+    //últimos días del mes anterior
     if (firstCurrentMonthIndex !== -1) {
       this.indexFocus = firstCurrentMonthIndex
     }
@@ -192,8 +204,17 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.years = Array.from({ length: this.maxYear - this.minYear + 1 }, (_, i) =>this.maxYear - i)
     this.fillCalendar(this.value? this.value:new Date())
     // this.setFocusToCurrentDay()
+  }
+
+  monthChange(index:number) {
+    this.fillCalendar(new Date(this.indexYear, index, 1))
+  }
+
+  yearChange(index:number) {
+    this.fillCalendar(new Date(index, this.indexMonth, 1))
   }
 
   // Métodos para ControlValueAccessor

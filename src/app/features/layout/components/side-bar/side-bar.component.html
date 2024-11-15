@@ -22,6 +22,14 @@
                 </a>  
             </li>
             <li class="side-bar-item">
+                <a href="" class="flex" [routerLink]="['/meets']" routerLinkActive="side-bar-active" (click)="this.onClickCloseMenu()">
+                    <div class="side-bar-option flex">
+                        <i class='bx bx-calendar-week'></i>
+                        <p class="side-bar-item-name side-bar-nav-item">Appointments</p>
+                    </div>
+                </a>  
+            </li>
+            <li class="side-bar-item">
                 <a href="" class="flex">
                     <div class="side-bar-option flex">
                         <i class='bx bx-heart'></i>

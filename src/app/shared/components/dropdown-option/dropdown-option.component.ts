@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 export class OptionChange<T = any> {
   constructor(public source:DropdownOptionComponent<T>) {}
@@ -15,6 +15,7 @@ export class OptionChange<T = any> {
     '(click)': 'select()',
     'class':'dropdown-option-component',
   },
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownOptionComponent <T = any> implements OnInit {
   private _selected = false

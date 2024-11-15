@@ -11,6 +11,9 @@
     justify-content: space-between;
     margin-bottom: 10px;
 }
+.month-year {
+    column-gap: 3px;
+}
 .primary-button {
     font-size: 16px;
     height: 25px;

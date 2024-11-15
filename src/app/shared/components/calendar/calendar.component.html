@@ -1,9 +1,23 @@
 <span tabindex="-6" cdkFocusInitial></span>
 <div class="flex header-wrapper">
-    <p>{{ monthDateCurrent | date: 'MMMM, y' }}</p>
+    <!-- <p>{{ monthDateCurrent | date: 'MMMM, y' }}</p> -->
+    <div class="flex month-year">
+        <app-dropdown [value]="this.indexMonth" (valueChange)="this.monthChange($event)">
+            <app-dropdown-option *ngFor="let month of months; index as i" [value]="i">{{month}}</app-dropdown-option>
+        </app-dropdown>
+        <app-dropdown [value]="this.indexYear" (valueChange)="this.yearChange($event)">
+            <app-dropdown-option *ngFor="let year of years" [value]="year">{{year}}</app-dropdown-option>
+        </app-dropdown>
+    </div>
     <div class="buttons-calendar">
-        <button class="primary-button" (click)="onClickchangeMonth('prev')"><i class='bx bx-left-arrow-alt'></i></button>
-        <button class="primary-button" (click)="onClickchangeMonth('next')"><i class='bx bx-right-arrow-alt'></i></button>
+        <button class="primary-button" (click)="onClickchangeMonth('prev')"
+        [disabled]="this.indexMonth == 0 && this.indexYear == this.minYear">
+            <i class='bx bx-left-arrow-alt'></i>
+        </button>
+        <button class="primary-button" (click)="onClickchangeMonth('next')" 
+        [disabled]="this.indexMonth == 11 && this.indexYear == this.maxYear">
+            <i class='bx bx-right-arrow-alt'></i>
+        </button>
     </div>
 </div>
 

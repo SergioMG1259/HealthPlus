@@ -1,0 +1,82 @@
+.buttons {
+    column-gap: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.arrow{
+    font-size: 16px;
+}
+app-dropdown {
+    background-color: var(--primary-light);
+    width: 70px;
+}
+.grid-header {
+    /* display: contents; */
+    display: grid;
+    gap: 3px;
+    grid-template-columns: repeat(7, minmax(150px, 1fr));
+    text-align: center;
+    padding-left: 3px;
+}
+.calendar-week {
+    overflow: auto;
+    padding-bottom: 5px;
+    width: 100%;
+}
+.day-name {
+    background-color: var(--primary-light);
+    border: solid 3px var(--primary-light);
+    color: var(--primary-text-light);
+    font-size: 16px;
+    margin: 0px -3px;/* Elimina visualmente el espacio del gap */
+    padding: 5px 0px;
+}
+.day-name:first-child {
+    border-radius: 5px;
+}
+.day-name:last-child {
+    border-radius: 0px 5px 5px 0px;
+    margin-right: 0;
+}
+.grid {
+    /* display: contents; */
+    display: grid;
+    gap: 3px;
+    grid-template-columns: repeat(7, minmax(150px, 1fr));
+    margin-top: 20px;
+    width: 100%;
+}
+.day {
+    border: solid 0.5px #bcbcbc;
+    border-radius: 5px;
+    color: var(--primary-text-light);
+    height: 100px;
+    padding: 5px;
+    position: relative;
+    width: 100%;
+
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+.other-month {
+    color: var(--secondary-text-light);
+}
+.today {
+    color: var(--secondary-light);
+}
+
+.events-wrapper {
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.event {
+    background-color: var(--secondary-light);
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+}
+.events-remainings {
+    color: var(--primary-text-light);
+    font-size: 14px;
+}

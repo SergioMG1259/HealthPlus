@@ -1,0 +1,44 @@
+<section class="flex buttons">
+    <button class="secondary-button arrow" 
+    (click)="this.onClickchangeMonth('prev')" [disabled]="this.indexMonth == 0 && this.indexYear == minYear">
+        <i class='bx bx-left-arrow-alt'></i>
+    </button>
+
+    <app-dropdown [value]="this.indexMonth" (valueChange)="this.monthChange($event)">
+        <app-dropdown-option *ngFor="let month of months; index as i" [value]="i">{{month}}</app-dropdown-option>
+    </app-dropdown>
+    
+    <app-dropdown [value]="this.indexYear" (valueChange)="this.yearChange($event)">
+        <app-dropdown-option *ngFor="let year of years" [value]="year">{{year}}</app-dropdown-option>
+    </app-dropdown>
+
+    <button class="secondary-button arrow" 
+    (click)="this.onClickchangeMonth('next')" [disabled]="this.indexMonth == 11 && this.indexYear == maxYear">
+        <i class='bx bx-right-arrow-alt'></i>
+    </button>
+</section>
+<div class="calendar-week">
+    <div class="grid-header">
+        <div class="day-name first">Sun</div>
+        <div class="day-name">Mon</div>
+        <div class="day-name">Tue</div>
+        <div class="day-name">Wed</div>
+        <div class="day-name">Thu</div>
+        <div class="day-name">Fri</div>
+        <div class="day-name">Sat</div>
+    </div>
+    <div class="grid">
+        <div *ngFor="let cell of gridData; let i = index" class="flex day" 
+        [ngClass]="{'other-month': cell.isOtherMonth, 'today': this.isToday(cell.day)}">
+            <p>{{cell.day.getDate()}}</p>
+            <div class="flex events-wrapper">
+                <ng-container *ngFor="let event of getEventsForDay(cell.day).events">
+                    <div class="event"></div>
+                </ng-container>
+                <p *ngIf="getEventsForDay(cell.day).remaining > 0" class="events-remainings">
+                    + {{ getEventsForDay(cell.day).remaining }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
