@@ -49,6 +49,7 @@ input {
 
 @media screen and (max-width : 600px){
     :host {
+        border-radius: 8px 0px 0px 0px;
         min-height: 100vh;
         margin-top: 0px;
         width: 240px;

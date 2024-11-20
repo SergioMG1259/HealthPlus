@@ -15,6 +15,8 @@ export class PatientsListComponent implements OnInit, AfterViewInit, OnDestroy {
   orderBy:string = 'default'
   page:number = 1
 
+  redirection:string|null = null
+
   @ViewChild('overlayButton', {read: ElementRef}) private _button!: ElementRef;
 
   private _filterResizeSub!:Subscription
@@ -78,11 +80,17 @@ export class PatientsListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onClickGoToAddPatient() {
-    this.router.navigate(['/patients/add']);
+    this.router.navigate(['/patients/add'])
+  }
+
+  redirections(value: string) {
+    this.redirection = value
+    if(this.redirection == 'details')
+      this.onClickGoToDetailsPatient()
   }
 
   onClickGoToDetailsPatient() {
-    this.router.navigate(['/patients/details']); // Cambia '/ruta-destino' por la ruta deseada
+    this.router.navigate(['/patients/details']) // Cambia '/ruta-destino' por la ruta deseada
   }
   
   ngOnInit(): void {

@@ -3,7 +3,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 interface Day {
   date: Date;
-  isOtherMonth: boolean;
+  disabled: boolean;
 }
 
 @Component({
@@ -33,6 +33,7 @@ export class CalendarComponent implements OnInit {
   @ViewChildren('dayButton') dayButtons!: QueryList<ElementRef>
   @Input() minYear:number = new Date().getFullYear() - 100
   @Input() maxYear:number = new Date().getFullYear() + 5
+  @Input() minDate:Date|null = null
 
   onChange: (value: Date) => void = () => {};
   onTouched: () => void = () => {};
@@ -64,15 +65,24 @@ export class CalendarComponent implements OnInit {
     let current = startDay
     this.days = []
     while (current <= endDay) {
-      const isOtherMonth = current.getMonth() !== month
+      let disabled = current.getMonth() !== month
+      if (this.minDate && this.normalizeDate(this.minDate).getTime() > this.normalizeDate(current).getTime()) {
+        disabled = true
+      }
+
       this.days.push({
         date: new Date(current),
-        isOtherMonth: isOtherMonth,
+        disabled: disabled,
       })
       current.setDate(current.getDate() + 1) // Pasar al siguiente día
     }
   }
 
+  normalizeDate(date: Date): Date {
+    const newDate = new Date(date)
+    newDate.setHours(0, 0, 0, 0) // Establece la hora al inicio del día
+    return newDate
+  }
   // setFocusToCurrentDay() {
   //   const dayIndex = this.days.findIndex((day) => this.isActive(day))
   //   if (dayIndex !== -1) {
@@ -91,13 +101,13 @@ export class CalendarComponent implements OnInit {
     }
 
     return this.value.getDate() === day.date.getDate() && this.value.getMonth() === day.date.getMonth() && 
-            this.value.getFullYear() == day.date.getFullYear() && !day.isOtherMonth
+            this.value.getFullYear() == day.date.getFullYear() && !day.disabled
   }
 
   isToday(day: Day):boolean {
     const aux = new Date()
     return aux.getDate() === day.date.getDate() && aux.getMonth() === day.date.getMonth() && 
-    aux.getFullYear() == day.date.getFullYear() && !day.isOtherMonth
+    aux.getFullYear() == day.date.getFullYear() && !day.disabled
   }
 
   handleKeyDown(event: KeyboardEvent, index: number,day:Date) {
@@ -142,35 +152,67 @@ export class CalendarComponent implements OnInit {
     //   index += (index > buttons.length / 2 ? -1 : 1);// Esto es por si el indice cae en un día de otro mes
     // }
     let button
-    let isOtherMonth
+    let disabled
     if (index >= 0 && index < buttons.length) {
 
       button = buttons[index] as HTMLElement
-      isOtherMonth = button.classList.contains('other-month')
+      disabled = button.classList.contains('disabled')
 
-      if (!isOtherMonth) {
+      if (!disabled) {
         this.indexFocus = index
         button.focus()
       }
-      if(index > buttons.length / 2 && isOtherMonth) {
-        this.fillCalendar(new Date(this.monthDateCurrent.getFullYear(), this.monthDateCurrent.getMonth() + 1, 1))
-        this.setFocusToDayInNewMonth()
-      } else if (index < buttons.length / 2 && isOtherMonth) {
-        this.fillCalendar(new Date(this.monthDateCurrent.getFullYear(), this.monthDateCurrent.getMonth() - 1, 1))
-        this.setFocusToDayInNewMonth()
+
+      if(index > buttons.length / 2 && disabled) {
+
+        if(this.minDate && this.normalizeDate(this.minDate).getTime() > this.normalizeDate(this.days[index].date).getTime()) {
+          return
+        }
+
+        const date = new Date(this.monthDateCurrent.getFullYear(), this.monthDateCurrent.getMonth() + 1, 1)
+
+        if (this.normalizeDate(date).getTime() < this.normalizeDate(new Date(this.maxYear, 11, 31)).getTime()) {
+          this.fillCalendar(date)
+          this.setFocusToDayInNewMonth()
+        }
+
+      } else if (index < buttons.length / 2 && disabled) {
+
+        if(this.minDate && this.normalizeDate(this.minDate).getTime() > this.normalizeDate(this.days[index].date).getTime()) {
+          return
+        }
+
+        const date = new Date(this.monthDateCurrent.getFullYear(), this.monthDateCurrent.getMonth() - 1, 1)
+
+        if (this.normalizeDate(date).getTime() >= this.normalizeDate(new Date(this.minYear, 0, 1)).getTime()) {
+          this.fillCalendar(date)
+          this.setFocusToDayInNewMonth()
+        }
       }
 
     } else if (index >= buttons.length) {
-      this.fillCalendar(new Date(this.monthDateCurrent.getFullYear(), this.monthDateCurrent.getMonth() + 1, 1))
-      this.setFocusToDayInNewMonth()
+
+      const date = new Date(this.monthDateCurrent.getFullYear(), this.monthDateCurrent.getMonth() + 1, 1)
+
+      if (this.normalizeDate(date).getTime() < this.normalizeDate(new Date(this.maxYear, 11, 31)).getTime()) {
+        this.fillCalendar(date)
+        this.setFocusToDayInNewMonth()
+      }
+
     } else if (index < 0) {
-      this.fillCalendar(new Date(this.monthDateCurrent.getFullYear(), this.monthDateCurrent.getMonth() - 1, 1))
-      this.setFocusToDayInNewMonth()
+
+      const date = new Date(this.monthDateCurrent.getFullYear(), this.monthDateCurrent.getMonth() - 1, 1)
+
+      if (this.normalizeDate(date).getTime() >= this.normalizeDate(new Date(this.minYear, 0, 1)).getTime()) {
+        this.fillCalendar(date)
+        this.setFocusToDayInNewMonth()
+      }
+
     }
   }
 
   findFirstCurrentMonthIndex() {
-    const firstCurrentMonthIndex = this.days.findIndex(day => !day.isOtherMonth)
+    const firstCurrentMonthIndex = this.days.findIndex(day => !day.disabled)
     //encuentra le indice del primer día del mes actual, ya que a veces, las primeras celdas corresponden a los
     //últimos días del mes anterior
     if (firstCurrentMonthIndex !== -1) {
@@ -211,10 +253,12 @@ export class CalendarComponent implements OnInit {
 
   monthChange(index:number) {
     this.fillCalendar(new Date(this.indexYear, index, 1))
+    this.findFirstCurrentMonthIndex()
   }
 
   yearChange(index:number) {
     this.fillCalendar(new Date(index, this.indexMonth, 1))
+    this.findFirstCurrentMonthIndex()
   }
 
   // Métodos para ControlValueAccessor

@@ -1,5 +1,5 @@
 import { ConnectedPosition } from '@angular/cdk/overlay';
-import { Component, forwardRef, HostListener, OnInit } from '@angular/core';
+import { Component, forwardRef, HostListener, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -15,6 +15,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class DatePickerComponent implements OnInit {
+
+  @Input() minDate: Date|null = null
+  @Input() minYear: number = new Date().getFullYear()
 
   value:Date | null = null
   cadena:string = this.getDateAsString(this.value)

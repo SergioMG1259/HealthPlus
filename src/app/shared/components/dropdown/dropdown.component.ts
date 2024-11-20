@@ -108,10 +108,12 @@ export class DropdownComponent implements OnInit, AfterContentInit, OnDestroy {
   }
 
   selectOption(option:DropdownOptionComponent) {
+
     if (this._selectedOption && option !== this._selectedOption) {
       this._selectedOption.deselect()
       this._selectedOption.setFocus(false)
     }
+
     this._selectedOption = option
     this.selectedOptionText = this._selectedOption.textContent
     this.value = this._selectedOption.value
@@ -123,6 +125,7 @@ export class DropdownComponent implements OnInit, AfterContentInit, OnDestroy {
     const matchedOption = this.options?.find((option) => {return option.value === this.value})
     if (matchedOption) {
       matchedOption.select() //emite el evento
+      this.changeDetectorRef.markForCheck()
     }
   }
 

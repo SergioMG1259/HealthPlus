@@ -16,8 +16,8 @@ const routes: Routes = [
         loadChildren: () => import('../patients/patients.module').then(m => m.PatientsModule)
       },
       {
-        path: 'meets',
-        loadChildren: () => import('../meets/meets.module').then(m => m.MeetsModule)
+        path: 'appointments',
+        loadChildren: () => import('../appointments/appointments.module').then(m => m.AppointmentsModule)
       },
       { path: '', redirectTo: 'overview', pathMatch: 'full' },
       { path: '**', redirectTo: 'overview' }

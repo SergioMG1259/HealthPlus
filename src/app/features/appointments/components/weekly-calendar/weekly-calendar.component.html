@@ -1,6 +1,6 @@
 <section class="flex buttons">
     <button class="secondary-button arrow" (click)="this.changeWeek('prev')"><i class='bx bx-left-arrow-alt'></i></button>
-    <button class="secondary-button range" cdk-overlay-origin #origin="cdkOverlayOrigin" (click)="this.onClickOpenCalendar()">
+    <button class="secondary-button range" cdk-overlay-origin #originCalendar="cdkOverlayOrigin" (click)="this.onClickOpenCalendar()">
         <p >
             {{ generateWeekRange() }}
         </p>
@@ -12,11 +12,11 @@
   cdkConnectedOverlay
   cdkConnectedOverlayHasBackdrop
   cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
-  [cdkConnectedOverlayOrigin]="origin"
-  [cdkConnectedOverlayOpen]="panelOpen"
-  [cdkConnectedOverlayPositions]="_positions"
-  (backdropClick)="close()"
-  (detach)="close()"
+  [cdkConnectedOverlayOrigin]="originCalendar"
+  [cdkConnectedOverlayOpen]="panelOpenCalendar"
+  [cdkConnectedOverlayPositions]="_positionsCalendar"
+  (backdropClick)="closeCalendar()"
+  (detach)="closeCalendar()"
 >
   <div class="calendar-container shadow">
       <app-calendar cdkTrapFocus cdkTrapFocusAutoCapture="true" [minYear]="2020" [ngModel]="this.indexDay" 
@@ -35,6 +35,10 @@
                 <p class="hour" [ngClass]="{'hour-top': i == 0, 'hour-normal': i != 0}">{{i + 6 + ':00'}}</p>
                 <p class="hour hour-bottom" *ngIf="i == 15">{{i + 7 + ':00'}}</p>
             </div>
+            <!-- <div class="flex line-wrapper">
+                <div class="aux">20:20</div>
+                <div class="linea"></div>
+            </div> -->
         </div>
 
     </div>
@@ -44,16 +48,19 @@
                 {{day | date:'EEE d'}}
             </div>
         </div>
-        <div class="grid">
+        <div class="grid-calendar-days">
             <div *ngFor="let cell of gridData; let i = index" class="day">
                 <!-- {{ cell.day | date: 'EEEE, MMM d' }} - {{ cell.hour }}:00 -->
                 <ng-container *ngFor="let event of events">
                     <div *ngIf="hasEventAt(event.start,cell.day,cell.hour)" 
                     class="event shadow"
                     [ngStyle]="{ 'height': getEventHeight(event) + 'px' }">
-                        <div class="top-line"></div>
+                        <div class="top-line" [ngClass]="{'last-day': !this.compareDates(event.start, this.today)}"></div>
                         <div class="event-content-wrapper">
-                            <p class="patient-name">Alfreds Futterkiste</p>
+                            <div class="flex">
+                                <p class="patient-name">Alfreds Futterkiste</p>
+                                <button class="button-details" (click)="this.openDetail(event)"><i class='bx bx-dots-vertical-rounded'></i></button>
+                            </div>
                             <p class="patient-issue">Clinic consulting</p>
                             <p class="event-hours">{{event.start.getHours() + ':00' + ' - ' + event.finish.getHours() + ':00'}}</p>
                         </div>

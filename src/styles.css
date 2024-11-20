@@ -28,6 +28,8 @@
     --waring-hover:rgba(231, 21, 53, 0.06);
     --waring-active:rgba(255, 0, 38, 0.125);
 
+    --successful: rgb(5, 220, 73);
+
     --primary-button-light-hover: rgb(36, 106, 220);
     --primary-button-light-active: rgb(28, 90, 189);
 
@@ -143,22 +145,31 @@ button:focus-visible {
     border-color: transparent;
 }
 
-.tertiary-button {
+.tertiary-button:enabled {
     background-color: transparent;
     border: solid 1px transparent;
-    border-radius: 8px;
+    border-radius: 5px;
     color: var(--secondary-light);
     font-size: 14px;
     padding: 8px 15px;
     transition: background-color 0.3s ease;
 }
-.tertiary-button:hover {
+.tertiary-button:hover:enabled {
     background-color: var(--tertiary-light-hover);
     /* border: solid 1px var(--hover-tertiary-light); */
 }
-.tertiary-button:active {
+.tertiary-button:active:enabled {
     background-color: var(--tertiary-light-active);
     /* border: solid 1px var(--active-tertiary-light); */
+}
+.tertiary-button.warning {
+    color: var(--warning);
+}
+.tertiary-button.warning:hover:enabled {
+    background-color: var(--waring-hover);
+}
+.tertiary-button.warning:active:enabled {
+    background-color: var(--waring-active);
 }
 
 .table {
@@ -294,4 +305,8 @@ textarea:focus-visible {
 
 .dialog-bg {
     background-color: #282828b0;
+}
+
+a:focus-visible {
+    outline: solid 2px var(--outline-light);
 }

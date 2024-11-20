@@ -2,7 +2,7 @@
         <div class="flex side-bar-logo">
             <img src="https://cdn-icons-png.flaticon.com/512/3799/3799797.png" alt="HealthPlus logo">
             <p class="side-bar-company-name side-bar-nav-item">Health Plus</p>
-            <button class="side-bar-btn-close" (click)="onClickCloseMenu()"><i class='bx bx-x'></i></button>
+            <button class="side-bar-btn-close" aria-label="close menu" (click)="onClickCloseMenu()"><i class='bx bx-x'></i></button>
         </div>
         <ul class="side-bar-items">
             <li class="side-bar-item">
@@ -22,7 +22,7 @@
                 </a>  
             </li>
             <li class="side-bar-item">
-                <a href="" class="flex" [routerLink]="['/meets']" routerLinkActive="side-bar-active" (click)="this.onClickCloseMenu()">
+                <a href="" class="flex" [routerLink]="['/appointments']" routerLinkActive="side-bar-active" (click)="this.onClickCloseMenu()">
                     <div class="side-bar-option flex">
                         <i class='bx bx-calendar-week'></i>
                         <p class="side-bar-item-name side-bar-nav-item">Appointments</p>

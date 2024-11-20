@@ -45,10 +45,10 @@
                     <td>939192382</td>
                     <td>31/12/2024</td>
                     <td class="action">
-                        <app-dropdown placeholder="placeholder" type="dot">
-                            <app-dropdown-option type="dot" (click)="this.onClickGoToDetailsPatient()">Details</app-dropdown-option>
-                            <app-dropdown-option type="dot">Edit</app-dropdown-option>
-                            <app-dropdown-option type="dot">Delete</app-dropdown-option>
+                        <app-dropdown placeholder="placeholder" type="dot" [value]="this.redirection" (valueChange)="this.redirections($event)">
+                            <app-dropdown-option type="dot" value="details">Details</app-dropdown-option>
+                            <app-dropdown-option type="dot" value="edit">Edit</app-dropdown-option>
+                            <app-dropdown-option type="dot" value="delete">Delete</app-dropdown-option>
                         </app-dropdown>
                     </td>
                 </tr>

@@ -10,7 +10,7 @@ export class FilterPatientService {
   
   positionStrategy:PositionStrategy|null = null
   scrollStrategy:ScrollStrategy|null = null
-  overlayRef!: OverlayRef;
+  overlayRef!: OverlayRef
   origin!:ElementRef
   classBack:string = 'cdk-overlay-transparent-backdrop'
   isOpen:boolean = false
@@ -47,7 +47,7 @@ export class FilterPatientService {
   updatePositionStrategy() {
     if (window.innerWidth <= 600) {
       this.classBack = 'dialog-bg'
-      this.positionStrategy = this.overlay.position().global().right().top();
+      this.positionStrategy = this.overlay.position().global().right().top()
 
       this.scrollStrategy = this.overlay.scrollStrategies.block()
 
@@ -66,7 +66,7 @@ export class FilterPatientService {
           overlayX: 'start',
           overlayY: 'bottom'
         }
-      ]);
+      ])
       
       this.scrollStrategy = this.overlay.scrollStrategies.reposition()
     }

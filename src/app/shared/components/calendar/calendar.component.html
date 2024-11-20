@@ -33,8 +33,8 @@
     </div>
     <div class="grid">
         <button *ngFor="let day of days; let i = index" class="day" #dayButton
-            [ngClass]="{'other-month': day.isOtherMonth, 'active': isActive(day), 'today': isToday(day)}" 
-            [disabled]="day.isOtherMonth" 
+            [ngClass]="{'disabled': day.disabled, 'active': isActive(day), 'today': isToday(day)}" 
+            [disabled]="day.disabled" 
             [attr.tabindex]="isActive(day) || isToday(day) ||this.indexFocus == i ? 0 : -1" 
             (click)="this.selectDay(day.date)"
             (keydown)="handleKeyDown($event, i,day.date)">

@@ -1,6 +1,8 @@
-import { ConnectedPosition } from '@angular/cdk/overlay';
+import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { TemplatePortal } from '@angular/cdk/portal';
 import { formatDate } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { AppointmentDetailService } from '../../services/appointment-detail.service';
 
 interface Event {
   start: Date
@@ -13,33 +15,38 @@ interface Event {
   styleUrls: ['./weekly-calendar.component.css']
 })
 export class WeeklyCalendarComponent implements OnInit {
+  
+  @Input() events: Event[] = []
 
   daysOfWeek:Date[] = []
   gridData: { day: Date, hour: number }[] = []
 
-  @Input() events: Event[] = []
-
   indexDay: Date = new Date()
+  today: Date = new Date()
 
   private _isOpenCalendar:boolean = false
 
-  constructor() { }
+  constructor(private appointmentDetailService: AppointmentDetailService) { }
 
-  toggle() {
-    this._isOpenCalendar? this.close() : this.open()
+  toggleCalendar() {
+    this._isOpenCalendar? this.closeCalendar() : this.openCalendar()
   }
 
-  open() {
+  openCalendar() {
     this._isOpenCalendar = true
   }
 
-  close() {
+  openDetail(appointment: Event) {
+    this.appointmentDetailService.openDetail(appointment)
+  }
+
+  closeCalendar() {
     if (this._isOpenCalendar) {
       this._isOpenCalendar = false
     }
   }
 
-  get _positions(): ConnectedPosition[] {
+  get _positionsCalendar(): ConnectedPosition[] {
     let positions: ConnectedPosition[] = [
       {
         originX: 'start',   // Alinea el overlay con el borde izquierdo del origen
@@ -52,17 +59,17 @@ export class WeeklyCalendarComponent implements OnInit {
     return positions
   }
 
-  get panelOpen(): boolean {
+  get panelOpenCalendar(): boolean {
     return this._isOpenCalendar
   }
 
   onClickOpenCalendar() {
-    this.toggle()
+    this.toggleCalendar()
   }
 
   selectedDate(date: Date) {
     this.generateGridData(date)
-    this.close()
+    this.closeCalendar()
   }
 
   fillDaysArray(date: Date) {
@@ -135,6 +142,16 @@ export class WeeklyCalendarComponent implements OnInit {
       this.generateGridData(new Date(this.indexDay.getFullYear(), this.indexDay.getMonth(), this.indexDay.getDate() + 7))
     else if (i == 'prev')
       this.generateGridData(new Date(this.indexDay.getFullYear(), this.indexDay.getMonth(), this.indexDay.getDate() - 7))
+  }
+
+  compareDates(firstDate: Date, secondDate: Date): boolean {
+    const date1 = new Date(firstDate)
+    const date2 = new Date(secondDate)
+
+    date1.setHours(0, 0, 0, 0)
+    date2.setHours(0, 0, 0, 0)
+
+    return date1.getTime() >= date2.getTime()
   }
 
   ngOnInit(): void {

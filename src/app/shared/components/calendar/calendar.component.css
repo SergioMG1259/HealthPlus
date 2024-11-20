@@ -51,7 +51,7 @@
 .grid {
     display: contents; /* Para usar el grid de forma directa */
 }
-.other-month {
+.disabled {
     color: var(--quaternary-text-light); /* Color para los días de otro mes */
 }
 .active {

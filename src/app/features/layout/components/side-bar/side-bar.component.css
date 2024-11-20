@@ -32,7 +32,7 @@
     height: 40px;
     line-height: normal;
     position: absolute;
-    right: 23px;
+    right: 13px;
     top: 12px;
     width: 40px;
 }
@@ -81,7 +81,7 @@
 .side-bar-component {
     display: block;
     height: 100vh;
-    width: 210px;
+    width: 220px;
     transition: width 0.3s ease
 }
 @media screen and (max-width : 900px){
@@ -113,7 +113,7 @@
         left: -100vw;
         position: fixed;
         transition: display 0.5s ease allow-discrete,left 0.5s ease;
-        z-index: 3;
+        z-index: 5;
     }
     .side-bar-component-open {
         display: block;

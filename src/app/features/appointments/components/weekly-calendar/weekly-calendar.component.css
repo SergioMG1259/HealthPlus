@@ -26,6 +26,7 @@
 .calendar-wrapper {
     overflow-x: auto;
     width: 100%;
+    /* position: relative; */
 }
 .hour-header {
     align-items: center;
@@ -73,7 +74,7 @@
     /* display: contents; */
     display: grid;
     gap: 3px;
-    grid-template-columns: repeat(7, minmax(150px, 1fr));
+    grid-template-columns: repeat(7, minmax(160px, 1fr));
     text-align: center;
 }
 .day-name {
@@ -90,14 +91,31 @@
     border-radius: 0px 5px 5px 0px;
     margin-right: 0;
 }
-.grid {
+.grid-calendar-days {
     /* display: contents; */
     display: grid;
     gap: 3px;
-    grid-template-columns: repeat(7, minmax(150px, 1fr));
+    grid-template-columns: repeat(7, minmax(160px, 1fr));
     margin-top: 20px;
     width: 100%;
 }
+
+/* .line-wrapper {
+    top: 425px;
+    left: 0px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+.aux {
+    width: 47px;
+}
+.linea {
+    width: calc(100% - 47px);
+    height: 2px;
+    background-color: rgb(34, 237, 20);
+} */
+
 .day {
     border: solid 0.5px #bcbcbc;
     border-radius: 5px;
@@ -121,6 +139,9 @@
     height: 4px;
     width: 100%;
 }
+.top-line.last-day {
+    background-color: var(--successful);
+}
 .event-content-wrapper {
     height: calc(100% - 4px);
     padding: 5px 8px;
@@ -128,11 +149,22 @@
 }
 .patient-name {
     color: var(--primary-text-light);
+    flex: 1;
     font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
     text-wrap: nowrap;
 }
+
+.button-details {
+    background-color: transparent;
+    border: solid 1px transparent;
+    border-radius: 5px;
+    font-size: 16px;
+    height: 100%;
+    width: 20px;
+}
+
 .patient-issue {
     color: var(--secondary-text-light);
     font-size: 14px;
@@ -147,6 +179,13 @@
     font-size: 14px;
     position: absolute;
 }
+
+.global-overlay-content {
+    width: 80px;
+    background-color: #bcbcbc;
+}
+
+
 @media screen and (max-width : 600px) {
     .buttons {
         column-gap: 3px;
