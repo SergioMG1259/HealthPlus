@@ -91,7 +91,7 @@
     flex-wrap: wrap;
 }
 .input-container {
-    flex-direction: column; /* Coloca los elementos en columna */
+    flex-direction: column;
 }
 input:not([type="radio"]), .datepicker {
     width: 200px;

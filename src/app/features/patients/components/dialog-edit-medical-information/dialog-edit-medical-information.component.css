@@ -1,0 +1,42 @@
+:host {
+    color: var(--primary-text-light);
+}
+.wrapper {
+    flex-direction: column;
+    gap: 20px;
+}
+.title {
+    font-size: 18px;
+    font-weight: 600;
+}
+.row {
+    gap: 20px;
+}
+.input-container {
+    flex-direction: column;
+}
+.dropdown {
+    width: 184.8px;
+}
+.label-section {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px; /* Espaciado entre el label y el input */
+    width: fit-content;
+}
+.buttons {
+    column-gap: 20px;
+    justify-content: end;
+}
+
+@media screen and (max-width: 600px) {
+    .title {
+        font-size: 14px;
+    }
+    .row {
+        flex-direction: column;
+    }
+    input {
+        width: 100%;
+    }
+}

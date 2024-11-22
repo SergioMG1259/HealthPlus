@@ -36,7 +36,7 @@ export class DialogService {
     this.overlayRef
     .keydownEvents()
     .pipe(
-      filter((event: KeyboardEvent) => event.key === 'Escape') // Detecta la tecla Escape
+      filter((event: KeyboardEvent) => event.key === 'Escape')
     )
     .subscribe(() => this.close())
 

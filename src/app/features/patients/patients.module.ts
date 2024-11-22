@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddPatientComponent } from './pages/add-patient/add-patient.component';
 import { PatientDetailsComponent } from './pages/patient-details/patient-details.component';
 import { DialogDeletePatientComponent } from './components/dialog-delete-patient/dialog-delete-patient.component';
+import { DialogEditMedicalInformationComponent } from './components/dialog-edit-medical-information/dialog-edit-medical-information.component';
+import { DialogEditBasicInformationComponent } from './components/dialog-edit-basic-information/dialog-edit-basic-information.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { DialogDeletePatientComponent } from './components/dialog-delete-patient
     FilterPatientComponent,
     AddPatientComponent,
     PatientDetailsComponent,
-    DialogDeletePatientComponent
+    DialogDeletePatientComponent,
+    DialogEditMedicalInformationComponent,
+    DialogEditBasicInformationComponent
   ],
   imports: [
     PatientsRoutingModule,

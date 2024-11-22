@@ -76,7 +76,7 @@
                         <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p>
                     </div>
                     <div class="flex input-container">
-                        <label for="lastNames" class="label-section">Last Names</label>
+                        <label for="lastNames" class="label-section">Last names</label>
                         <input type="text" id="lastNames" class="primary-input" placeholder="Ex. Smith" formControlName="lastNames">
                         <p *ngIf="isFieldInvalid(this.firstStep,'lastNames')" class="warning">Required field</p>
                     </div>
@@ -84,7 +84,7 @@
         
                 <div class="flex row">
                     <div class="flex input-container">
-                        <label class="label-section">Date of Birth</label>
+                        <label class="label-section">Date of birth</label>
                         <app-date-picker class="datepicker" formControlName="dateOfBirth" 
                             [minYear]="1900"></app-date-picker>
                         <p *ngIf="isFieldInvalid(this.firstStep,'dateOfBirth')" class="warning">Required field</p>
@@ -111,8 +111,8 @@
                 </div>
 
                 <div class="flex input-container">
-                    <label for="dni" class="label-section">Dni</label>
-                    <input type="text" id="dni" class="primary-input" placeholder="Max. 9 digits" formControlName="dni">
+                    <label for="dni" class="label-section">DNI</label>
+                    <input type="text" id="dni" class="primary-input" placeholder="Max. 8 digits" formControlName="dni">
                     <p *ngIf="isFieldInvalid(this.firstStep,'dni')" class="warning">Required field</p>
                 </div>
         

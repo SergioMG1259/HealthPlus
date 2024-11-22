@@ -2,7 +2,7 @@
     <app-card class="personal-info-wrapper">
         <app-card-header>
             <h2 class="card-component-title">Basic information</h2>
-            <button class="button-only-icon icon-default"
+            <button class="button-only-icon icon-default" (click)="this.onClickOpenEditBasicInformation()"
             aria-label="edit basic information" title="edit"><i class='bx bx-cog'></i>
             </button>
         </app-card-header>
@@ -63,7 +63,7 @@
     <app-card class="medical-information-wrapper">
         <app-card-header>
             <h2 class="card-component-title">Medical information</h2>
-            <button class="button-only-icon icon-default" 
+            <button class="button-only-icon icon-default" (click)="this.onClickOpenEditMedicalInformation()"
             aria-label="edit medical information" title="edit"><i class='bx bx-cog'></i>
             </button>
        </app-card-header>

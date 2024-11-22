@@ -1,0 +1,79 @@
+<section class="flex wrapper" cdkTrapFocus cdkTrapFocusAutoCapture="true">
+    <p class="title">Edit basic information</p>
+    <div class="flex row">
+        <div class="flex input-container">
+            <label for="names" class="label-section">Names</label>
+            <input type="number" id="names" class="primary-input" placeholder="Ex. Joe">
+            <!-- <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p> -->
+        </div>
+
+        <div class="flex input-container">
+            <label for="lastNames" class="label-section">Last names</label>
+            <input type="number" id="lastNames" class="primary-input" placeholder="Ex. Smith">
+            <!-- <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p> -->
+        </div>
+    </div>
+
+    <div class="flex row">
+        <div class="flex input-container">
+            <label class="label-section">Birthday</label>
+            <app-date-picker class="datepicker"
+            [minYear]="1900"></app-date-picker>
+            <!-- <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p> -->
+        </div>
+
+        <div class="flex input-container">
+            <label for="age" class="label-section">Age</label>
+            <input type="number" id="age" class="primary-input" placeholder="Ex. 20">
+            <!-- <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p> -->
+        </div>
+    </div>
+
+    <div class="flex row">
+        <div class="flex input-container">
+            <label class="label-section">Gender</label>
+            <fieldset class="flex row"> 
+                <div class="flex radio-field">
+                    <input type="radio" value="1" name="gender" id="gender-female">
+                    <label class="label-radio" for="gender-female">Female</label>
+                </div>
+                <div class="flex radio-field">
+                    <input type="radio" value="2" name="gender" id="gender-male">
+                    <label class="label-radio" for="gender-male">Male</label>
+                </div>
+            </fieldset>
+            <!-- <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p> -->
+        </div>
+
+        <div class="flex input-container">
+            <label for="dni" class="label-section">DNI</label>
+            <input type="number" id="dni" class="primary-input" placeholder="Max. 8 digits">
+            <!-- <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p> -->
+        </div>
+    </div>
+
+    <div class="flex row">
+        <div class="flex input-container">
+            <label for="phone" class="label-section">Phone</label>
+            <input type="text" id="phone" class="primary-input" placeholder="Ex. 999999999">
+            <!-- <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p> -->
+        </div>
+
+        <div class="flex input-container">
+            <label for="email" class="label-section">Email</label>
+            <input type="email" id="email" class="primary-input" placeholder="ex@example.com">
+            <!-- <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p> -->
+        </div>
+    </div>
+
+    <div class="flex input-container">
+        <label for="adress" class="label-section">Adress</label>
+        <input type="text" id="adress" class="primary-input" placeholder="Ex. Calle 234">
+        <!-- <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p> -->
+    </div>
+
+    <div class="flex buttons">
+        <button class="tertiary-button" (click)="onClickCancel()">Cancel</button>
+        <button class="primary-button" (click)="onClickSave()">Save</button>
+    </div>
+</section>

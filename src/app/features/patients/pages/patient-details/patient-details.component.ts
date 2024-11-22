@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DialogService } from 'src/app/core/services/dialog.service';
+import { DialogEditMedicalInformationComponent } from '../../components/dialog-edit-medical-information/dialog-edit-medical-information.component';
+import { DialogEditBasicInformationComponent } from '../../components/dialog-edit-basic-information/dialog-edit-basic-information.component';
 
 @Component({
   selector: 'app-patient-details',
@@ -13,7 +16,7 @@ export class PatientDetailsComponent implements OnInit {
 
   showOtherInput:boolean = false
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private dialogService: DialogService) { }
 
   expandRow(index: number) {
     if(this.expandedIndex == index)
@@ -48,6 +51,32 @@ export class PatientDetailsComponent implements OnInit {
   // Método para eliminar un control de alergia adicional por índice
   removeAdditionalAllergy(index: number): void {
     this.additionalAllergies.removeAt(index)
+  }
+
+  onClickOpenEditMedicalInformation() {
+    const dialogRef = this.dialogService.open(DialogEditMedicalInformationComponent)
+
+    dialogRef.subscribe(result => {
+      console.log(result)
+      if (result) {
+        console.log('Dialog Edit closed with result:', result);
+      } else {
+        console.log('Dialog Edit closed without result');
+      }
+    })
+  }
+
+  onClickOpenEditBasicInformation() {
+    const dialogRef = this.dialogService.open(DialogEditBasicInformationComponent)
+
+    dialogRef.subscribe(result => {
+      console.log(result)
+      if (result) {
+        console.log('Dialog Edit B closed with result:', result);
+      } else {
+        console.log('Dialog Edit B closed without result');
+      }
+    })
   }
 
   ngOnInit(): void {

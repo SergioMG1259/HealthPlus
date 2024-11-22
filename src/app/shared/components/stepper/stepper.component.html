@@ -1,10 +1,10 @@
 <ul class="flex steps">
     <li *ngFor="let step of steps; let i = index" class="flex step" [ngClass]="step.status">
-        <button class="circle">
+        <div class="circle">
             <i *ngIf="step.status != 'pending'" class="bx"
             [ngClass]="{'bx-check':step.status === 'successful', 'bx-current-location':step.status == 'current'}">
         </i>
-        </button>
+        </div>
         <p class="step-name">{{step.title}}</p>
     </li>
 </ul>

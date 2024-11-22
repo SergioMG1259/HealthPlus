@@ -1,7 +1,9 @@
 <div class="wrapper" cdk-overlay-origin #origin="cdkOverlayOrigin">
     <input type="text" (input)="onInput($event)" (blur)="onBlur($event)" [(ngModel)]="this.cadena"
     class="primary-input" placeholder="dd/mm/yyyy">
-    <button class="button-calendar" (click)="onClickOpenCalendar()"><i class='bx bx-calendar'></i></button>
+    <button class="button-calendar" aria-label="open calendar" (click)="onClickOpenCalendar()">
+      <i class='bx bx-calendar'></i>
+    </button>
 </div>
 
 <ng-template
