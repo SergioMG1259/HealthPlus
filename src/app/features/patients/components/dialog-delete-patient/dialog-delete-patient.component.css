@@ -1,0 +1,9 @@
+:host {
+    color: var(--primary-text-light);
+    font-size: 16px;
+}
+.buttons {
+    column-gap: 20px;
+    justify-content: end;
+    margin-top: 20px;
+}

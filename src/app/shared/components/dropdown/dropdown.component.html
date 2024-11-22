@@ -1,4 +1,5 @@
-<div cdk-overlay-origin class="flex" (click)="toggle()" [ngClass]="this.type == 'select'? 'dropdown-content-component' : 'dot-content-component'"
+<div cdk-overlay-origin class="flex" (click)="toggle()" 
+   [ngClass]="this.type == 'select'? 'dropdown-content-component' : 'dot-content-component'"
    #origin="cdkOverlayOrigin" #trigger>
    <ng-container *ngIf="this.type == 'select'">
       <span class="dropdown-component-placeholder" *ngIf="placeholder && !selectedOptionText">{{placeholder}}</span>
@@ -23,12 +24,13 @@
   [cdkConnectedOverlayWidth]="widthOptionsList"
   (backdropClick)="close()"
   (detach)="close()"
->
+  (attach)="onOverlayAttached()">
    <!-- detach se dispara cuando el overlay se cierra, incluyendo cuando se hace scroll -->
-  <div class="options-container-dropdown-component shadow" (keydown)="_handleKeydown($event)">
-      <!-- <button>Item 1</button>
-      <button>Item 2</button>
-      <button>Item 3</button> -->
+  <div class="options-container-dropdown-component shadow" #prueba tabindex="0" cdkTrapFocus cdkTrapFocusAutoCapture="true" (keydown) = "_handleKeydown($event)"
+      role="listbox"
+      id="panelId"
+      aria-labelledby="trigger">
+      
       <ng-content></ng-content>
   </div>
 </ng-template>

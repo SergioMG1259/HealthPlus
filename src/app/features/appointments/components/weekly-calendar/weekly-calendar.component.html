@@ -1,11 +1,16 @@
 <section class="flex buttons">
-    <button class="secondary-button arrow" (click)="this.changeWeek('prev')"><i class='bx bx-left-arrow-alt'></i></button>
-    <button class="secondary-button range" cdk-overlay-origin #originCalendar="cdkOverlayOrigin" (click)="this.onClickOpenCalendar()">
+    <button class="secondary-button arrow" (click)="this.changeWeek('prev')" aria-label="previous week">
+        <i class='bx bx-left-arrow-alt'></i>
+    </button>
+    <button class="secondary-button range" cdk-overlay-origin #originCalendar="cdkOverlayOrigin" 
+    (click)="this.onClickOpenCalendar()">
         <p >
             {{ generateWeekRange() }}
         </p>
     </button>
-    <button class="secondary-button arrow" (click)="this.changeWeek('next')"><i class='bx bx-right-arrow-alt'></i></button>
+    <button class="secondary-button arrow" (click)="this.changeWeek('next')" aria-label="next week">
+        <i class='bx bx-right-arrow-alt'></i>
+    </button>
 </section>
 
 <ng-template
@@ -59,7 +64,8 @@
                         <div class="event-content-wrapper">
                             <div class="flex">
                                 <p class="patient-name">Alfreds Futterkiste</p>
-                                <button class="button-details" (click)="this.openDetail(event)"><i class='bx bx-dots-vertical-rounded'></i></button>
+                                <button class="button-details" (click)="this.openDetail(event)"
+                                aria-label="open appointment detail"><i class='bx bx-dots-vertical-rounded'></i></button>
                             </div>
                             <p class="patient-issue">Clinic consulting</p>
                             <p class="event-hours">{{event.start.getHours() + ':00' + ' - ' + event.finish.getHours() + ':00'}}</p>

@@ -27,8 +27,8 @@ export class AppointmentsCalendarComponent implements OnInit {
       start: new Date(2024, 10, 18, 20, 0),
       finish: new Date(2024, 10, 18, 22, 0)
     },{
-      start: new Date(2024, 10, 20, 8, 0),
-      finish: new Date(2024, 10, 20, 10, 0)
+      start: new Date(2024, 10, 22, 8, 0),
+      finish: new Date(2024, 10, 22, 10, 0)
     }
   ]
 

@@ -11,11 +11,11 @@
     </div>
     <div class="buttons-calendar">
         <button class="primary-button" (click)="onClickchangeMonth('prev')"
-        [disabled]="this.indexMonth == 0 && this.indexYear == this.minYear">
+        [disabled]="this.indexMonth == 0 && this.indexYear == this.minYear" aria-label="previous month">
             <i class='bx bx-left-arrow-alt'></i>
         </button>
         <button class="primary-button" (click)="onClickchangeMonth('next')" 
-        [disabled]="this.indexMonth == 11 && this.indexYear == this.maxYear">
+        [disabled]="this.indexMonth == 11 && this.indexYear == this.maxYear" aria-label="next month">
             <i class='bx bx-right-arrow-alt'></i>
         </button>
     </div>

@@ -14,7 +14,7 @@ export class FilterPatientComponent implements OnInit, OnDestroy {
   gender = this._formBuilder.group({
     female: false,
     male: false
-  });
+  })
 
   // minWeight:number|null = null
   // maxWeight:number|null = null

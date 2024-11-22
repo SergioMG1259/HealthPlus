@@ -1,0 +1,7 @@
+<section cdkTrapFocus cdkTrapFocusAutoCapture="true">
+    <p>Are you sure you want to eliminate this patient? {{data.id}}</p>
+    <div class="flex buttons">
+        <button class="primary-button" (click)="this.close()">Cancel</button>
+        <button class="tertiary-button warning" (click)="this.close()">Delete</button>
+    </div>
+</section>

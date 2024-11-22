@@ -39,18 +39,20 @@ export class TabGroupComponent implements OnInit {
     }
 
     if (event.key === 'Enter') {
-      if(this.focusedIndex != this.selectedIndex)
+      if(this.focusedIndex != this.selectedIndex) {
+        event.preventDefault()
         this.selectTab(this.focusedIndex)
+      }
     }
     
     if (event.key === 'ArrowRight') {
-
+      event.preventDefault()
       if(this.focusedIndex == this.boxes.length - 1)
         this.focusedIndex = 0
       else
         this.focusedIndex++
     } else if (event.key === 'ArrowLeft') {
-
+      event.preventDefault()
       if(this.focusedIndex == 0)
         this.focusedIndex = this.boxes.length - 1
       else

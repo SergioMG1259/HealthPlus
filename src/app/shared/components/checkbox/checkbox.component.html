@@ -1,8 +1,9 @@
-<div class="flex">
+<label class="flex">
     <div class="checkbox-wrapper">
         <input type="checkbox" class="checkbox"
         (click)="onClick()" 
         (change)="onCheckboxChange()"
+        [attr.aria-checked]="this.value"
         [ngClass]="{'colorful':this.colorCode,'checked':this.value}" 
         [ngStyle]="getCheckboxStyles()">
             <i class='bx bx-check' 
@@ -10,5 +11,5 @@
             </i> 
     </div>
     <span class="text-checkbox"><ng-content></ng-content></span>
-</div>
+</label>
 

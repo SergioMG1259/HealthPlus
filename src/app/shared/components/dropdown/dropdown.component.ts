@@ -11,9 +11,13 @@ import { DropdownOptionComponent, OptionChange } from '../dropdown-option/dropdo
   encapsulation: ViewEncapsulation.None,
   host: {
     'class': 'dropdown-component',
-    '[class.dropdown-component]': 'isChanged',
+    '[class.dropdown-component-open]': '_isOpen',
     '[attr.tabindex]': '0',
-    '(keydown)':"_handleKeydown($event)"
+    '(keydown)':"_handleKeydown($event)",
+    '[attr.role]' : 'combobox',
+    // '[attr.aria-expanded]' : '_isOpen',
+    '[attr.aria-haspopup]' : 'listbox',
+    '[attr.aria-controls]' : 'panelId'
   },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -76,25 +80,41 @@ export class DropdownComponent implements OnInit, AfterContentInit, OnDestroy {
   }) as Observable<OptionChange>
 
   constructor(protected viewportRuler: ViewportRuler,protected changeDetectorRef: ChangeDetectorRef, 
-    private scrollStrategyOptions: ScrollStrategyOptions,private _ngZone:NgZone) { }
+    private scrollStrategyOptions: ScrollStrategyOptions,private _ngZone:NgZone, private elementRef: ElementRef) { }
 
   toggle() {
     this._isOpen? this.close() : this.open()
   }
 
+  @ViewChild('prueba') myInput!: ElementRef;
   open() {
     this._isOpen = true
-    if (this.type == 'select')
+    if (this.type == 'select') {
       this.widthOptionsList = this.trigger.nativeElement.getBoundingClientRect().width
-    this.focusedOptionIndex = this.findFocus()//encuentra el indice del elemento seleccionado y le da el foco
-    this.options?.get(this.focusedOptionIndex)!.setFocus(true)
+      this.focusedOptionIndex = this.findFocus()//encuentra el indice del elemento seleccionado y le da el foco
+      this.options?.get(this.focusedOptionIndex)!.setFocus(true)
+    } else {
+      this.options?.get(0)!.setFocus(true)
+    }
+    
     this.changeDetectorRef.markForCheck()
+  }
+  onOverlayAttached(): void {
+
+    // setTimeout(() => {
+    //   if (this.myInput) {
+    //     this.myInput.nativeElement.focus();
+    //     console.log(this.myInput);
+    //     console.log('Elemento actualmente enfocado:', document.activeElement)
+    //   }
+    // })
   }
 
   close() {
     if (this._isOpen) {
       this._isOpen = false
       this.options!.get(this.focusedOptionIndex)!.setFocus(false)//al ultimo elemento donde estuvo el foco se lo quita
+      // this.elementRef.nativeElement.focus()
       this.changeDetectorRef.markForCheck()
     }
   }

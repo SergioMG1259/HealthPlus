@@ -84,8 +84,9 @@
         
                 <div class="flex row">
                     <div class="flex input-container">
-                        <label for="dateOfBirth" class="label-section">Date of Birth</label>
-                        <app-date-picker class="datepicker" formControlName="dateOfBirth"></app-date-picker>
+                        <label class="label-section">Date of Birth</label>
+                        <app-date-picker class="datepicker" formControlName="dateOfBirth" 
+                            [minYear]="1900"></app-date-picker>
                         <p *ngIf="isFieldInvalid(this.firstStep,'dateOfBirth')" class="warning">Required field</p>
                     </div>
                     <div class="flex input-container">
@@ -99,12 +100,12 @@
                     <label for="gender-male" class="label-section">Gender</label>
                     <fieldset class="flex row"> 
                         <div class="flex radio-field">
-                            <input type="radio" value="1" name="gender" id="gender-male" formControlName="gender">
-                            <label class="label-radio">Female</label>
+                            <input type="radio" value="1" name="gender" id="gender-female" formControlName="gender">
+                            <label class="label-radio" for="gender-female">Female</label>
                         </div>
                         <div class="flex radio-field">
-                            <input type="radio" value="2" name="gender" formControlName="gender">
-                            <label class="label-radio">Male</label>
+                            <input type="radio" value="2" name="gender" formControlName="gender" id="gender-male">
+                            <label class="label-radio" for="gender-male">Male</label>
                         </div>
                     </fieldset>
                 </div>
@@ -168,25 +169,27 @@
                 </div>
    
                 <!-- Mostrar inputs adicionales cuando "Other" esté activo -->
-                <div *ngIf="this.showOtherInput" formArrayName="additionalAllergies" class="basic-info additional-allergies">
-                    <div *ngFor="let control of additionalAllergies.controls; let i = index" class="flex wrapper-input-array">
+                <div *ngIf="this.showOtherInput" formArrayName="additionalAllergies" class="basic-info additional-allergies" role="list">
+                    <div *ngFor="let control of additionalAllergies.controls; let i = index" class="flex wrapper-input-array" role="listitem">
                         <div class="input-array">
                             <input class="primary-input"
                             [formControlName]="i"
                             placeholder="Specify allergy"
+                            [attr.aria-label]="'input new allergy' + (i+1)"
                             [class.invalid]="control.invalid && control.touched" />
                             
                             <!-- <button class="secondary-button delete" (click)="removeAdditionalAllergy(i)">
                                 <i class='bx bx-minus'></i>
                             </button> -->
-                            <button class="delete button-only-icon icon-warning" (click)="removeAdditionalAllergy(i)">
+                            <button class="delete button-only-icon icon-warning" (click)="removeAdditionalAllergy(i)"
+                            [attr.aria-label]="'delete allergie at position' + (i + 1) ">
                                 <i class='bx bx-trash'></i>
                             </button>
 
                             <p *ngIf="control.invalid && control.touched" class="warning">Required field</p>
                         </div>
                     </div>
-                    <button class="primary-button add-button" 
+                    <button class="primary-button add-button" aria-label="add a new allergy input"
                         (click)="addAdditionalAllergy()">
                         <i class='bx bx-plus'></i>
                     </button>

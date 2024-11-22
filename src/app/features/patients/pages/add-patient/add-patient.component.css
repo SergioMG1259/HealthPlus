@@ -1,6 +1,9 @@
 .steps-wrapper {
     border: solid 2px rebeccapurple;
 }
+.warning {
+    margin-top: 5px;
+}
 .steps {
     border: solid 1px brown;
     justify-content: space-between;

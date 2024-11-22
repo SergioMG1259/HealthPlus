@@ -40,15 +40,15 @@
         </div>
 
         <div class="flex row" *ngIf="this.editing">
-            <label for="start" class="category-title hour-label">From:</label>
-            <app-dropdown id="start" placeholder="Start" class="hour-dropdown" [value]="this.startHour">
+            <label class="category-title hour-label">From:</label>
+            <app-dropdown placeholder="Start" class="hour-dropdown" [value]="this.startHour">
                 <app-dropdown-option *ngFor="let hour of hours" [value]="hour">{{hour}}:00</app-dropdown-option>
             </app-dropdown>
         </div>
 
         <div class="flex row" *ngIf="this.editing">
-            <label for="finish" class="category-title hour-label">To:</label>
-            <app-dropdown id="finish" placeholder="Finish" class="hour-dropdown" [value]="this.finishHour">
+            <label class="category-title hour-label">To:</label>
+            <app-dropdown placeholder="Finish" class="hour-dropdown" [value]="this.finishHour">
                 <app-dropdown-option *ngFor="let hour of hours" [value]="hour">{{hour}}:00</app-dropdown-option>
             </app-dropdown>
         </div>

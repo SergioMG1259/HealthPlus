@@ -2,7 +2,9 @@
     <app-card class="personal-info-wrapper">
         <app-card-header>
             <h2 class="card-component-title">Basic information</h2>
-            <button class="button-only-icon icon-default"><i class='bx bx-cog'></i></button>
+            <button class="button-only-icon icon-default"
+            aria-label="edit basic information" title="edit"><i class='bx bx-cog'></i>
+            </button>
         </app-card-header>
         <div class="items-basic">
             <div class="personal-info-item">
@@ -61,7 +63,9 @@
     <app-card class="medical-information-wrapper">
         <app-card-header>
             <h2 class="card-component-title">Medical information</h2>
-            <button class="button-only-icon icon-default"><i class='bx bx-cog'></i></button>
+            <button class="button-only-icon icon-default" 
+            aria-label="edit medical information" title="edit"><i class='bx bx-cog'></i>
+            </button>
        </app-card-header>
        <div class="items">
         <div class="medical-info-item">
@@ -92,9 +96,9 @@
     </app-card>
     <app-card class="conditions-wrapper">
         <app-tab-group>
-            <app-tab title="Meets">
-                <div class="flex meets-wrapper">
-                    <div class="flex meet-card" *ngFor="let item of [1,2,3,4,5]">
+            <app-tab title="Appointments">
+                <ul class="flex meets-wrapper" aria-label="list of appointments" tabindex="-1">
+                    <li class="flex meet-card" *ngFor="let item of [1,2,3,4,5]">
                         <div class="flex meet-column meet-date">
                             <div class="flex group">
                                 <p class="title">21/05/2024</p>
@@ -119,8 +123,8 @@
                                 <p>15/05/2024</p>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </app-tab>
             <app-tab title="Allergies">
                 <form [formGroup]="this.allergiesForm" class="flex allergies-wrapper" (keydown.enter)="$event.preventDefault()">
@@ -135,47 +139,50 @@
                         <app-checkbox formControlName = "other" (changeEvent)="this.onOtherCheckboxChange()">Other</app-checkbox> 
                     </div>
                     <!-- Mostrar inputs adicionales cuando "Other" esté activo -->
-                    <div *ngIf="this.showOtherInput" formArrayName="additionalAllergies" class="flex additional-allergies">
-                        <div *ngFor="let control of additionalAllergies.controls; let i = index" class="flex wrapper-input-array">
+                    <div *ngIf="this.showOtherInput" formArrayName="additionalAllergies" class="flex additional-allergies" role="list">
+                        <div *ngFor="let control of additionalAllergies.controls; let i = index" class="flex wrapper-input-array" role="listitem">
                             <div class="input-array">
                                 <input class="primary-input"
                                 [formControlName]="i"
                                 placeholder="Specify allergy"
+                                [attr.aria-label]="'input new allergy' + (i+1)"
                                 [class.invalid]="control.invalid && control.touched" />
                             
                                 <!-- <button class="secondary-button delete" (click)="removeAdditionalAllergy(i)">
                                 <i class='bx bx-minus'></i>
                                 </button> -->
-                                <button class="delete button-only-icon icon-warning" (click)="removeAdditionalAllergy(i)">
+                                <button class="delete button-only-icon icon-warning" (click)="removeAdditionalAllergy(i)"
+                                [attr.aria-label]="'delete allergie at position' + (i + 1) ">
                                     <i class='bx bx-trash'></i>
                                 </button>
 
                                 <p *ngIf="control.invalid && control.touched" class="warning">Required field</p>
                             </div>
                         </div>
-                        <button class="primary-button add-button" 
+                        <button class="primary-button add-button" aria-label="add a new allergy input"
                             (click)="addAdditionalAllergy()">
                             <i class='bx bx-plus'></i>
                         </button>
                     </div>
-                    <footer class="footer"><button class="primary-button">Save</button></footer>
+                    <footer class="footer"><button class="primary-button" [disabled] = "!this.allergiesForm.valid">Save</button></footer>
                 </form>
                 
             </app-tab>
             <app-tab title="Medications">
-                <div class="flex medications-wrapper">
+                <div class="flex medications-wrapper" role="list">
                     <div class="medications-button-wrapper">
-                        <button class="primary-button">Add medications</button>
+                        <button class="primary-button" role="listitem">Add medications</button>
                     </div>
-                    <div *ngFor="let item of [1,2,3,4,5,6,7,8];index as i" class="flex medications-card" [tabIndex]="0"
+                    <div *ngFor="let item of [1,2,3,4,5,6,7,8];index as i" class="flex medications-card" [tabIndex]="0" role="listitem"
                     [ngClass]="this.expandedIndex == i?'expanded' : 'reduced'" (click)="this.expandRow(i)" 
+                    [attr.aria-expanded] = "this.expandedIndex == i"
                     (keydown.enter)="this.expandRow(i)">
-                        <div class="column medications-card-left">
+                        <div class="column medications-card-left" [attr.aria-hidden] = "this.expandedIndex != i">
                             <p class="medications-sub-title">Medications</p>
                             <p>Take one 400 mg ibuprofen tablet every 8 hours for five days. It is recommended to take the 
                                 medication after meals to minimize the risk of stomach irritation.</p>
                         </div>
-                        <div class="column medications-card-right">
+                        <div class="column medications-card-right" [attr.aria-hidden] = "this.expandedIndex != i">
                             <p class="medications-sub-title">Date</p>
                             <p>15/05/2024</p>
                         </div>
@@ -189,7 +196,7 @@
         <app-card-header>
             <h2 class="card-component-title">Notes</h2>
        </app-card-header>
-       <textarea class="notes" placeholder="Max. 200 characters"></textarea>
+       <textarea class="notes" placeholder="Max. 200 characters" aria-label="notes" maxlength="200"></textarea>
        <div class="button-wrapper">
            <button class="primary-button">Save</button>
        </div>

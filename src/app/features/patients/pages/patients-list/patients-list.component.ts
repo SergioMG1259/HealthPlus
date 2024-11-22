@@ -3,6 +3,8 @@ import { FilterPatientService } from '../../services/filter-patient.service';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DialogService } from 'src/app/core/services/dialog.service';
+import { DialogDeletePatientComponent } from '../../components/dialog-delete-patient/dialog-delete-patient.component';
 
 @Component({
   selector: 'app-patients-list',
@@ -23,8 +25,7 @@ export class PatientsListComponent implements OnInit, AfterViewInit, OnDestroy {
   private _queryParamsSubscription!: Subscription
   
   constructor(private _filterService:FilterPatientService, public breakpointObserver: BreakpointObserver,
-    private router:Router,private route:ActivatedRoute
-  ) { }
+    private router:Router,private route:ActivatedRoute, private dialogService: DialogService) { }
   
   onClickSearch() {
     this.inputSearch == ''? this.inputSearch = null : this.inputSearch
@@ -83,10 +84,25 @@ export class PatientsListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.router.navigate(['/patients/add'])
   }
 
-  redirections(value: string) {
+  onClickOpenDialogDeletePatient(id?:number) {
+    const dialogRef = this.dialogService.open(DialogDeletePatientComponent,{data: { id: id}})
+    dialogRef.subscribe(result => {
+      console.log(result)
+      if (result) {
+        console.log('Dialog closed with result:', result);
+      } else {
+        console.log('Dialog closed without result');
+      }
+    })
+  }
+
+  redirections(value: string, id?:number) {
     this.redirection = value
     if(this.redirection == 'details')
       this.onClickGoToDetailsPatient()
+    else if (this.redirection == 'delete')
+      this.onClickOpenDialogDeletePatient(id)
+    this.redirection = null
   }
 
   onClickGoToDetailsPatient() {

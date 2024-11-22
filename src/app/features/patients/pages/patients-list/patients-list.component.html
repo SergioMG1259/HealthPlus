@@ -4,9 +4,9 @@
             <i class='bx bx-filter-alt'></i>Filter
         </button>
         <form class="flex search-form">
-            <input class="primary-input search-input" placeholder="Search" type="search" aria-label="Search" 
+            <input class="primary-input search-input" placeholder="Search" type="search" aria-label="search by patient name"
             name="search" [(ngModel)]="this.inputSearch">
-            <button class="primary-button search-button" (click)="onClickSearch()"><i class='bx bx-search-alt-2'></i></button>
+            <button class="primary-button search-button" aria-label="search" (click)="onClickSearch()"><i class='bx bx-search-alt-2'></i></button>
         </form>
     </div>
 
@@ -45,9 +45,8 @@
                     <td>939192382</td>
                     <td>31/12/2024</td>
                     <td class="action">
-                        <app-dropdown placeholder="placeholder" type="dot" [value]="this.redirection" (valueChange)="this.redirections($event)">
+                        <app-dropdown placeholder="placeholder" type="dot" [value]="this.redirection" (valueChange)="this.redirections($event, i)">
                             <app-dropdown-option type="dot" value="details">Details</app-dropdown-option>
-                            <app-dropdown-option type="dot" value="edit">Edit</app-dropdown-option>
                             <app-dropdown-option type="dot" value="delete">Delete</app-dropdown-option>
                         </app-dropdown>
                     </td>

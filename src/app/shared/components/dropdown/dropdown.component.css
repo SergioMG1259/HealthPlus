@@ -8,7 +8,8 @@
 .border {
     border: solid 1px var(--grey);
 }
-.dropdown-component:focus {
+/* .dropdown-component:focus, .dropdown-component-open { */
+.dropdown-component-open {
     border: solid 1px transparent;
     outline: var(--secondary-light) solid 2px;
 }
@@ -80,4 +81,7 @@
 }
 .options-container-dropdown-component::-webkit-scrollbar-thumb:hover {
     background: #555; /* Color del scroll al hacer hover */
+}
+.options-container-dropdown-component:focus-visible {
+    outline: solid 2px var(--outline-light);
 }

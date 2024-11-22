@@ -1,6 +1,7 @@
 <section class="flex buttons">
     <button class="secondary-button arrow" 
-    (click)="this.onClickchangeMonth('prev')" [disabled]="this.indexMonth == 0 && this.indexYear == minYear">
+    (click)="this.onClickchangeMonth('prev')" [disabled]="this.indexMonth == 0 && this.indexYear == minYear" 
+    aria-label="previous month">
         <i class='bx bx-left-arrow-alt'></i>
     </button>
 
@@ -13,7 +14,8 @@
     </app-dropdown>
 
     <button class="secondary-button arrow" 
-    (click)="this.onClickchangeMonth('next')" [disabled]="this.indexMonth == 11 && this.indexYear == maxYear">
+    (click)="this.onClickchangeMonth('next')" [disabled]="this.indexMonth == 11 && this.indexYear == maxYear"
+    aria-label="next month">
         <i class='bx bx-right-arrow-alt'></i>
     </button>
 </section>

@@ -1,6 +1,9 @@
-<header class="header" (keydown)="this.handleKeyDown($event)">
+<header class="header" (keydown)="this.handleKeyDown($event)" role="tablist">
     <div class="flex">
-        <div class="box-title" *ngFor="let tab of tabs; let i = index" 
+        <div class="box-title" *ngFor="let tab of tabs; let i = index" role="tab" 
+            [attr.aria-selected] = "this.focusedIndex == i"
+            [attr.aria-controls]="'tabpanel-' + i"
+            [id]="'tab-' + i"
             (click)="selectTab(i)" 
             [tabIndex]="this.focusedIndex == i? 0: -1" #box>
             <p>{{tab.title}}</p>
@@ -15,7 +18,7 @@
 <!-- <section class="tab-content" [ngStyle]="{minWidth: header.offsetWidth + 'px'}"> -->
 <section class="tab-content">
     <ng-container *ngFor="let tab of tabs; let i = index">
-      <div *ngIf="i === this.selectedIndex">
+      <div *ngIf="i === this.selectedIndex" role="tabpanel" [id]="'tabpanel-' + i" [attr.aria-labelledby]="'tab-' + i">
         <ng-container *ngTemplateOutlet="tab.content"></ng-container>
       </div>
     </ng-container>

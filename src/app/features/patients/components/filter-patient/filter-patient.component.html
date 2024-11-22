@@ -1,46 +1,25 @@
-<section cdkTrapFocus cdkTrapFocusAutoCapture="true" class="wrapper flex">
+<section cdkTrapFocus cdkTrapFocusAutoCapture="true" class="wrapper flex" role="dialog" aria-modal = true aria-label="filter by gender and age">
+
     <div>
         <span tabindex="-6" cdkFocusInitial></span>
-        <p class="title">Gender</p>
-        <div class="flex checkboxs" [formGroup]="gender">
+        <p class="title" id="gender-label">Gender</p>
+        <div class="flex checkboxs" [formGroup]="gender" aria-labelledby="gender-label">
             <app-checkbox formControlName="female">Female</app-checkbox>
             <app-checkbox formControlName="male">Male</app-checkbox>
         </div>
     </div>
 
-    <!-- <div>
-        <p class="title">Height Range</p>
-        <div class="filter-section flex">
-            <span class="text-input">min</span>
-            <input type="number" class="primary-input input-number left" placeholder="0" [(ngModel)]="this.minHeight">
-            <div class="separator">
-            </div>
-            <input type="number" class="primary-input input-number right" placeholder="999" [(ngModel)]="this.maxHeight">
-            <span class="text-input">max</span>
-        </div>
-    </div>
-
     <div>
-        <p class="title">Weight Range</p>
-        <div class="filter-section flex">
-            <span class="text-input">min</span>
-            <input type="number" class="primary-input input-number left" placeholder="0" [(ngModel)]="this.minWeight">
+        <p class="title" id="age-range-label">Age Range</p>
+        <div class="filter-section flex" aria-labelledby="age-range-label">
+            <label class="text-input" for="min-age">min</label>
+            <input aria-label="minimum age" id="min-age" type="number" class="primary-input input-number left" placeholder="0" [(ngModel)]="this.minAge">
+            
             <div class="separator">
             </div>
-            <input type="number" class="primary-input input-number right" placeholder="999" [(ngModel)]="this.maxWeight">
-            <span class="text-input">max</span>
-        </div>
-    </div> -->
-
-    <div>
-        <p class="title">Age Range</p>
-        <div class="filter-section flex">
-            <span class="text-input">min</span>
-            <input type="number" class="primary-input input-number left" placeholder="0" [(ngModel)]="this.minAge">
-            <div class="separator">
-            </div>
-            <input type="number" class="primary-input input-number right" placeholder="999" [(ngModel)]="this.maxAge">
-            <span class="text-input">max</span>
+            
+            <input aria-label="maximum age" id="max-age" type="number" class="primary-input input-number right" placeholder="999" [(ngModel)]="this.maxAge">
+            <label class="text-input" for="max-age">max</label>
         </div>
     </div>
 
