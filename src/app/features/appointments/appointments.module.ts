@@ -10,6 +10,7 @@ import { WeeklyCalendarComponent } from './components/weekly-calendar/weekly-cal
 import { MonthlyCalendarComponent } from './components/monthly-calendar/monthly-calendar.component';
 import { AppointmentsCalendarComponent } from './pages/appointments-calendar/appointments-calendar.component';
 import { AppointmentDetailComponent } from './components/appointment-detail/appointment-detail.component';
+import { DialogAddAppointmentComponent } from './components/dialog-add-appointment/dialog-add-appointment.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AppointmentDetailComponent } from './components/appointment-detail/appo
     WeeklyCalendarComponent,
     MonthlyCalendarComponent,
     AppointmentsCalendarComponent,
-    AppointmentDetailComponent
+    AppointmentDetailComponent,
+    DialogAddAppointmentComponent
   ],
   imports: [
     CommonModule,

@@ -297,6 +297,10 @@ textarea:focus-visible {
     outline: solid 2px var(--outline-light);
 }
 
+a:focus-visible {
+    outline: solid 2px var(--outline-light);
+}
+
 .warning {
     color: var(--warning);
     font-size: 14px;
@@ -311,7 +315,6 @@ textarea:focus-visible {
     box-shadow: 0px 5px 7px 2px rgba(0,0,0,0.1);
     padding: 15px;
 }
+@media screen and (max-width: 600px) {
 
-a:focus-visible {
-    outline: solid 2px var(--outline-light);
 }

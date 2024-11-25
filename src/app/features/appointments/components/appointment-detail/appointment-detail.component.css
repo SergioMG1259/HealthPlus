@@ -32,7 +32,6 @@
 .bx-calendar {
     color: var(--secondary-light);
     font-size: 18px;
-    margin-right: 5px;
 }
 .hours-wrapper {
     column-gap: 10px;
@@ -80,9 +79,25 @@
 .hour-dropdown {
     width: 70px;
 }
+.primary-input {
+    width: 184.8px;
+}
 
 @media screen and (max-width : 600px){
     :host {
         width: 240px;
     }
+    .category-title {
+        font-size: 14px;
+    }
+    .category {
+        font-size: 14px;
+    }
+    .bx-calendar {
+        font-size: 16px;
+    }
+    .hour {
+        font-size: 14px;
+    }
+    
 }

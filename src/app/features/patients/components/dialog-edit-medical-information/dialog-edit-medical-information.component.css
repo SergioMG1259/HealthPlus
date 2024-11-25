@@ -24,6 +24,9 @@
     margin-bottom: 5px; /* Espaciado entre el label y el input */
     width: fit-content;
 }
+.last {
+    width: 184.8px;
+}
 .buttons {
     column-gap: 20px;
     justify-content: end;

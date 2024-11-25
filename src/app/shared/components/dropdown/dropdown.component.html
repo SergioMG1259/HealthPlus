@@ -26,7 +26,7 @@
   (detach)="close()"
   (attach)="onOverlayAttached()">
    <!-- detach se dispara cuando el overlay se cierra, incluyendo cuando se hace scroll -->
-  <div class="options-container-dropdown-component shadow" #prueba tabindex="0" cdkTrapFocus cdkTrapFocusAutoCapture="true" (keydown) = "_handleKeydown($event)"
+  <div class="options-container-dropdown-component shadow" tabindex="0" cdkTrapFocus cdkTrapFocusAutoCapture="true" (keydown) = "_handleKeydown($event)"
       role="listbox"
       id="panelId"
       aria-labelledby="trigger">

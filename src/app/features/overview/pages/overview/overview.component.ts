@@ -11,7 +11,7 @@ export class OverviewComponent implements OnInit {
 
   cardMetrics: CardMetric[] = [
     {
-      category: "appointment",
+      category: "appointments",
       amount :  38,
       percentage: 17,
       direction: "down"

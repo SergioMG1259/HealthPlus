@@ -1,0 +1,211 @@
+.wrapper {
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.search-patient {
+    flex: 1 1 250px;
+}
+.inputs {
+    flex: 1 1 350px;
+}
+.result {
+    flex: 1 1 320px;
+}
+/*PATIENT*/
+.search-input {
+    border-radius: 5px 0px 0px 5px;
+    width: 100%;
+}
+.search-button {
+    border-radius: 0px 5px 5px 0px;
+}
+
+.patients-wrapper {
+    border-radius: 5px;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+    max-height: 134px;
+    overflow-y: auto;
+    padding: 2px;
+}
+.patient-item {
+    border-radius: 5px;
+    color: var(--secondary-text-light);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px;
+    text-wrap: nowrap;
+    transition: background-color 0.2s ease;
+}
+/* .patient-item:first-child {
+    border-radius: 5px 5px 0px 0px;
+}
+.patient-item:last-child {
+    border-radius: 0px 0px 5px 5px;
+} */
+.patient-item p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.patient-item:focus-visible {
+    outline: solid 2px var(--outline-light);
+}
+.patient-item:not(.selected):hover, .patient-item:not(.selected):focus{
+    background-color: var(--option-light-hover);
+    color: var(--primary-text-light);
+}
+.selected {
+    background-color: var(--secondary-light);
+    color: var(--tertiary-text-light);
+}
+.not-results {
+    color: var(--secondary-text-light);
+    font-size: 14px;
+}
+
+/*INPUTS*/
+.title {
+    margin-top: 10px;
+}
+.inputs-wrapper {
+    column-gap: 20px;
+    flex-wrap: wrap;
+    row-gap: 15px;
+}
+.dropdown {
+    width: 150px;
+}
+.input-container {
+    flex-direction: column;
+}
+.label-section {
+    color: var(--primary-text-light);
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.short {
+    width: 95px;
+}
+.row {
+    column-gap: 10px;
+}
+fieldset {
+    border: none;
+    width: fit-content;
+}
+.label-radio {
+    color: var(--secondary-text-light);
+    font-weight: 500;
+    margin-left: 5px;
+}
+.radio-field {
+    align-items: center;
+    color: var(--primary-text-light);
+    font-size: 16px;
+}
+.buttons {
+    margin-top: 10px;
+    text-align: end;
+}
+/*RESULT*/
+.probability-text {
+    font-size: 16px;
+    justify-content: space-between;
+}
+.low-text {
+    color: #4caf50;
+}
+.moderate-text {
+    color: #ff9800;
+}
+.height-text {
+    color: #f44336;
+}
+.very-height-text {
+    color: #b71c1c;
+}
+.bar-wrapper {
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    width: 100%;
+}
+.percents {
+    color: var(--secondary-text-light);
+    height: 320px;
+    position: relative;
+    width: 50px;
+}
+.zero-percent {
+    bottom: -3px;
+    position: absolute;
+}
+.low-percent {
+    bottom: 17%;
+    position: absolute;
+}
+.moderate-percent {
+    bottom: 47%;
+    position: absolute;
+}
+.height-percent {
+    bottom: 77%;
+    position: absolute;
+}
+.very-height-percent {
+    bottom: 95%;
+    position: absolute;
+}
+.line {
+    border: solid 2px var(--secondary-light);
+    bottom: 30%;
+    left: 0px;
+    position: absolute;
+    width: 100%;
+}
+.bar {
+    width: 70px; /* Ancho fijo */
+    height: 320px; /* Altura total del contenedor */
+    background: linear-gradient(
+        to top,
+        rgba(51, 220, 56, 0.3),     /* Verde transparente (low) */
+        rgba(255, 152, 0, 0.3) 20%, /* Naranja transparente (moderate) */
+        rgba(219, 49, 30, 0.3) 50%, /* Rojo transparente (high) */
+        rgba(255, 0, 0, 0.5) 80%  /* Rojo oscuro transparente (very-high) */
+      );
+    /* border: 2px solid black; */
+    border-radius: 5px;
+}
+.low {
+    border: solid 2px #4caf50;
+    border-radius: 0px 0px 5px 5px;
+    border-top: none;
+    height: 20%;
+}
+.moderate {
+    border: solid 2px #ff9800;
+    border-bottom: none;
+    border-top: none;
+    height: 30%;
+}
+.height {
+    border: solid 2px #f44336;
+    border-bottom: none;
+    border-top: none;
+    height: 30%;
+}
+.very-height {
+    border: solid 2px #b71c1c;
+    border-bottom: none;
+    border-radius: 5px 5px 0px 0px;
+    height: 20%;
+}
+@media screen and (max-width : 600px) {
+    .radio-field {
+        font-size: 14px;
+    }
+    .probability-text {
+        font-size: 14px;
+    }
+}

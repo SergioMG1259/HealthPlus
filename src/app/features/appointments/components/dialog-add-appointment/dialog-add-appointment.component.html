@@ -1,0 +1,76 @@
+<section class="flex wrapper" cdkTrapFocus cdkTrapFocusAutoCapture="true">
+    <p class="title">New Appointment</p>
+
+    <div class="flex input-container">
+        <label for="patient" class="label-section">Select a patient</label>
+        <div class="flex">
+            <input type="search" id="patient" class="primary-input input-search" placeholder="Patient name">
+            <button class="primary-button search-button" aria-label="search" (click)="this.onClickSearch()">
+                <i class='bx bx-search-alt-2'></i>
+            </button>
+        </div>
+
+        <div class="flex patients-wrapper" tabindex="-1" *ngIf="this.searching" role="list">
+            <ng-container *ngIf="this.patients.length > 0">
+                <div class="patient-item" *ngFor="let item of this.patients; index as i" tabindex="0" role="listitem"
+                (click)="this.onClickSelectPatient(item,i)" (keydown.enter) = "this.onClickSelectPatient(item,i)"
+                [ngClass]="{'selected':this.indexSelected == i}">
+                    <p>{{item.name}}</p>
+                </div>
+            </ng-container>
+            <span class="not-results" *ngIf="this.patients.length == 0">Not results</span>
+        </div>
+    </div>
+
+    <div class="flex input-container">
+        <label class="label-section">Select a day</label>
+        <app-date-picker [minDate]="this.minDate"></app-date-picker>
+    </div>
+
+    <div class="flex row">
+        <label class="category-title hour-label">From:</label>
+        <app-dropdown placeholder="Start" class="hour-dropdown" [value]="this.startHour">
+            <app-dropdown-option *ngFor="let hour of hours" [value]="hour">{{hour}}:00</app-dropdown-option>
+        </app-dropdown>
+    </div>
+
+    <div class="flex row">
+        <label class="category-title hour-label">To:</label>
+        <app-dropdown placeholder="Start" class="hour-dropdown" [value]="this.finishHour">
+            <app-dropdown-option *ngFor="let hour of hours" [value]="hour">{{hour}}:00</app-dropdown-option>
+        </app-dropdown>
+    </div>
+
+    <div class="flex input-container">
+        <label for="price" class="label-section">Price (S/)</label>
+        <input type="number" id="price" class="primary-input" placeholder="Ex. 100">
+    </div>
+
+    <div class="flex buttons">
+        <button class="tertiary-button" (click)="onClickCancel()">Cancel</button>
+        <button class="primary-button" (click)="onClickSave()">Save</button>
+    </div>
+</section>
+
+<!-- <ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayHasBackdrop
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayOrigin]="origin"
+  [cdkConnectedOverlayScrollStrategy]="scrollStrategy"
+  [cdkConnectedOverlayOpen]="panelOpen"
+  [cdkConnectedOverlayPositions]="_positions"
+  [cdkConnectedOverlayWidth]="input.offsetWidth"
+  (backdropClick)="close()"
+  (detach)="close()">
+  <div class="options-container-dropdown-component shadow" #prueba tabindex="0" cdkTrapFocus cdkTrapFocusAutoCapture="true" 
+      role="listbox"
+      id="panelId"
+      aria-labelledby="trigger">
+        <div class="patient-item" *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13]; index as i"
+        [ngClass]="{'selected':this.indexSelected == i}">
+            <p>Alfreds Futterkiste</p>
+        </div>
+
+  </div>
+</ng-template> -->

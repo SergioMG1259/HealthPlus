@@ -42,15 +42,15 @@
     font-weight: 700;
     margin: 8px 0px 0px 5px
 }
-.appointment .icon-container i{
+.appointments .icon-container i{
     color: #4db0c4;
 }
-.appointment {
+.appointments {
     background: #2e839b;
     background: -webkit-linear-gradient(to top right, #2e839b,#4daec2,#62cfe0);
     background: linear-gradient(to top right,#2e839b,#4daec2,#62cfe0);  
 }
-.appointment .icon-container {
+.appointments .icon-container {
     box-shadow: 5px 5px 0px 0px #53b8cb;
     -webkit-box-shadow: 5px 5px 0px 0px #53b8cb;
     -moz-box-shadow: 5px 5px 0px 0px #53b8cb;

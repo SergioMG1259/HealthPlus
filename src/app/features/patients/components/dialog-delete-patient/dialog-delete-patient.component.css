@@ -7,3 +7,11 @@
     justify-content: end;
     margin-top: 20px;
 }
+@media screen and (max-width: 600px) {
+    :host {
+        width: 200px;
+    }
+}
+.dialog-panel {
+    padding: 5px;
+}

@@ -22,6 +22,11 @@
         </div>
 
         <div class="flex input-container">
+            <label for="cholesterol" class="label-section">Cholesterol</label>
+            <input type="number" id="cholesterol" class="primary-input" placeholder="Ex. 20">
+            <!-- <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p> -->
+        </div>
+        <!-- <div class="flex input-container">
             <label class="label-section">Blood group</label>
             <app-dropdown placeholder="blood group" type="select" [value]="this.aux" class="dropdown">
                 <app-dropdown-option type="select" value="A">A</app-dropdown-option>
@@ -29,8 +34,7 @@
                 <app-dropdown-option type="select" value="AB">AB</app-dropdown-option>
                 <app-dropdown-option type="select" value="0">O</app-dropdown-option>
             </app-dropdown>
-            <!-- <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p> -->
-        </div>
+        </div> -->
     </div>
 
     <div class="flex row">
@@ -46,6 +50,13 @@
             <!-- <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p> -->
         </div>
     </div>
+
+    <div class="flex input-container">
+        <label for="blood-sugar" class="label-section">Blood sugar</label>
+        <input type="number" id="blood-sugar" class="primary-input last" placeholder="Ex. 110">
+        <!-- <p *ngIf="isFieldInvalid(this.firstStep,'names')" class="warning">Required field</p> -->
+    </div>
+
     <div class="flex buttons">
         <button class="tertiary-button" (click)="onClickCancel()">Cancel</button>
         <button class="primary-button" (click)="onClickSave()">Save</button>

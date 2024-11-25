@@ -27,7 +27,7 @@ export class DialogService {
       panelClass: 'dialog-panel',
       width: config.width,
       positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically(),
-      scrollStrategy: this.overlay.scrollStrategies.block()
+      scrollStrategy: this.overlay.scrollStrategies.reposition()
     })
 
     // Listen for backdrop clicks to close the dialog

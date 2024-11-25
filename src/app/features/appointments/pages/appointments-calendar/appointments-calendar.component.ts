@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { DialogService } from 'src/app/core/services/dialog.service';
+import { DialogAddAppointmentComponent } from '../../components/dialog-add-appointment/dialog-add-appointment.component';
 
 interface Event {
   start: Date
@@ -27,8 +29,8 @@ export class AppointmentsCalendarComponent implements OnInit {
       start: new Date(2024, 10, 18, 20, 0),
       finish: new Date(2024, 10, 18, 22, 0)
     },{
-      start: new Date(2024, 10, 22, 8, 0),
-      finish: new Date(2024, 10, 22, 10, 0)
+      start: new Date(2024, 10, 23, 8, 0),
+      finish: new Date(2024, 10, 23, 10, 0)
     }
   ]
 
@@ -39,7 +41,20 @@ export class AppointmentsCalendarComponent implements OnInit {
     this.changeDetectorRef.markForCheck()
   }
 
-  constructor(protected changeDetectorRef: ChangeDetectorRef) { }
+  constructor(protected changeDetectorRef: ChangeDetectorRef, private dialogService: DialogService) { }
+
+  onClickOpenDialogAddAppointment() {
+    const dialogRef = this.dialogService.open(DialogAddAppointmentComponent)
+
+    dialogRef.subscribe(result => {
+      console.log(result)
+      if (result) {
+        console.log('Dialog Add closed with result:', result);
+      } else {
+        console.log('Dialog Add closed without result');
+      }
+    })
+  }
 
   ngOnInit(): void {
   }

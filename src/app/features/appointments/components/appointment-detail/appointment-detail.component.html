@@ -16,8 +16,18 @@
         </div>
 
         <div class="flex" *ngIf="!this.editing">
+            <p class="category-title">Price (S/):</p>
+            <p class="category">100</p>
+        </div>
+
+        <div *ngIf="this.editing" class="flex column">
+            <label class="category-title">Price (S/):</label>
+            <input type="number" class="primary-input" placeholder="Ex. 100">
+        </div>
+
+        <div class="flex" *ngIf="!this.editing">
             <i class='bx bx-calendar'></i>
-            <p>{{this.appointment.start | date: 'dd/MM/yyyy'}}</p>
+            <p class="category">{{this.appointment.start | date: 'dd/MM/yyyy'}}</p>
         </div>
 
         <div *ngIf="this.editing" class="flex column">
@@ -34,8 +44,8 @@
                 <div class="circle"></div>
             </div>
             <div class="flex hours">
-                <span>{{this.appointment.start.getHours()}}:00</span>
-                <span>{{this.appointment.finish.getHours()}}:00</span>
+                <span class="hour">{{this.appointment.start.getHours()}}:00</span>
+                <span class="hour">{{this.appointment.finish.getHours()}}:00</span>
             </div>
         </div>
 

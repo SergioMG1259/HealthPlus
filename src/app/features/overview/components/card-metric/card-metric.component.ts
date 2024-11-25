@@ -9,7 +9,7 @@ import { CardMetric } from '../../models/card-metric';
 export class CardMetricComponent implements OnInit {
 
   iconsDictionary: Record<string, string> = {
-    appointment: "bx-calendar",
+    appointments: "bx-calendar",
     patients: "bx-handicap",
     predicts: "bx-heart",
     earning: "bx-money"
